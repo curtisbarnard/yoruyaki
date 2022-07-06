@@ -10,6 +10,7 @@ function App() {
         name={element.name}
         description={element.description}
         key={element.id}
+        stock={element.stock}
       />
     );
   });

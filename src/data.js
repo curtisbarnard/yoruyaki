@@ -12,7 +12,7 @@ export const data = [
     description: 'Blanched spinach with salt and sesame oil',
     category: 'otsumami',
     img: 'spinach.webp',
-    stock: 3,
+    stock: 0,
     id: '8097s3s',
   },
   {
