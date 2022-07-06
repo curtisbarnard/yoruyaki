@@ -1,24 +1,12 @@
 import MenuSections from './components/MenuSections';
-import MenuCard from './components/MenuCard';
-import { data } from './data';
-
+import Otsumami from './components/Otsumami';
+import Skewers from './components/Skewers';
 function App() {
-  const cards = data.map((element) => {
-    return (
-      <MenuCard
-        img={element.img}
-        name={element.name}
-        description={element.description}
-        key={element.id}
-        stock={element.stock}
-      />
-    );
-  });
-
   return (
     <div className='App'>
       <MenuSections />
-      <ul>{cards}</ul>
+      <Otsumami />
+      <Skewers />
     </div>
   );
 }

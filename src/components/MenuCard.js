@@ -1,5 +1,4 @@
 export default function MenuCard(props) {
-  console.log(props.stock);
   return (
     <li className='mx-2 my-4 p-2 shadow-md bg-indigo-50 rounded-md flex items-center h-24 relative'>
       {/* Greyscale when an item goes out of stock */}
