@@ -9,6 +9,7 @@ function App() {
         img={element.img}
         name={element.name}
         description={element.description}
+        key={element.id}
       />
     );
   });
@@ -16,7 +17,7 @@ function App() {
   return (
     <div className='App'>
       <MenuSections />
-      {cards}
+      <ul>{cards}</ul>
     </div>
   );
 }

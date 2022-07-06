@@ -1,6 +1,6 @@
 export default function MenuCard(props) {
   return (
-    <div className='mx-2 my-4 p-2 shadow-md bg-indigo-50 rounded-md flex items-center h-24'>
+    <li className='mx-2 my-4 p-2 shadow-md bg-indigo-50 rounded-md flex items-center h-24'>
       <img
         className='rounded-md h-20 w-20 shrink-0 shadow-sm'
         src={`images/${props.img}`}
@@ -13,6 +13,6 @@ export default function MenuCard(props) {
       <div className='flex shrink-0 justify-center items-center h-16 w-16 text-3xl bg-white rounded-full'>
         0
       </div>
-    </div>
+    </li>
   );
 }

@@ -5,6 +5,7 @@ export const data = [
     category: 'otsumami',
     img: 'edamame.webp',
     stock: 4,
+    id: '43tr4y5',
   },
   {
     name: 'Sesame Spinach',
@@ -12,6 +13,7 @@ export const data = [
     category: 'otsumami',
     img: 'spinach.webp',
     stock: 3,
+    id: '8097s3s',
   },
   {
     name: 'Onigiri',
@@ -19,6 +21,7 @@ export const data = [
     category: 'otsumami',
     img: 'onigiri.jpg',
     stock: 5,
+    id: '652ljfy',
   },
   {
     name: 'Iced Kyuuri',
@@ -26,5 +29,6 @@ export const data = [
     category: 'otsumami',
     img: 'cucumber.webp',
     stock: 5,
+    id: '10n24sj',
   },
 ];
