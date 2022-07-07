@@ -31,4 +31,3 @@ export default function MenuCard(props) {
 }
 
 // TODO block clicking to add QTY for out of stock items
-// TODO + instead of 0 for original display value
