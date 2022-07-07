@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 export default function MenuCard(props) {
+  // State so user can set qty of each item
   const [qty, setQty] = useState(0);
-
-  function handleClick() {
+  function plusClick() {
     setQty((prevQty) => prevQty + 1);
   }
+  function minusClick() {
+    setQty((prevQty) => prevQty - 1);
+  }
+
   return (
     <li className='mx-2 my-4 p-2 shadow-md bg-indigo-50 rounded-md flex items-center h-24 relative'>
       {/* Greyscale when an item goes out of stock */}
@@ -20,12 +24,26 @@ export default function MenuCard(props) {
         <h3 className='text-xl font-bold'>{props.name}</h3>
         <p>{props.description}</p>
       </div>
-      <div
-        onClick={handleClick}
-        className='flex shrink-0 justify-center items-center h-12 w-12 text-2xl bg-white rounded-full shadow-sm'
-      >
-        {qty > 0 ? qty : '+'}
-      </div>
+      {/* Only show plus bubble when stock is greater than 0 */}
+      {props.stock > 0 && (
+        <button
+          onClick={plusClick}
+          className={
+            'flex shrink-0 justify-center items-center h-12 w-12 text-2xl bg-white rounded-full shadow-sm'
+          }
+        >
+          {qty > 0 ? qty : '+'}
+        </button>
+      )}
+      {/* Only show minus bubble when the QTY is greater than 0 */}
+      {qty > 0 && (
+        <button
+          onClick={minusClick}
+          className='absolute right-14 -bottom-3 flex justify-center items-center h-12 w-12 text-4xl bg-yellow-200 rounded-full shadow-md'
+        >
+          -
+        </button>
+      )}
     </li>
   );
 }
