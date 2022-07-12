@@ -47,5 +47,3 @@ export default function MenuCard(props) {
     </li>
   );
 }
-
-// TODO block clicking to add QTY for out of stock items

@@ -34,7 +34,7 @@ export const data = [
   {
     name: 'Negima',
     description: 'Chicken thigh and green onions with tare sauce',
-    category: 'skewer',
+    category: 'skewers',
     img: 'negima.jpg',
     stock: 10,
     id: '936sbvt',
@@ -42,7 +42,7 @@ export const data = [
   {
     name: 'Tsukune',
     description: 'Chicken meatballs covered in tare sauce',
-    category: 'skewer',
+    category: 'skewers',
     img: 'tsukune.webp',
     stock: 4,
     id: '025sl4q',
@@ -50,7 +50,7 @@ export const data = [
   {
     name: 'Kirin',
     description: 'Kirin Ichiban Japanese Lager',
-    category: 'drink',
+    category: 'drinks',
     img: 'kirin.jpg',
     stock: 5,
     id: 'kjsy91p',
@@ -58,7 +58,7 @@ export const data = [
   {
     name: 'Umeshu Soda',
     description: 'Aged Umeshu mixed with soda water',
-    category: 'drink',
+    category: 'drinks',
     img: 'umeshu-soda.jpg',
     stock: 0,
     id: 'cno2a8',
