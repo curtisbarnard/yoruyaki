@@ -1,20 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const {
+  getInventory,
+  createInventory,
+  updateInventory,
+  deleteInventory,
+} = require('../controllers/inventoryController');
 
-router.get('/', (req, res) => {
-  res.status(200).json({ message: 'Get Inventory' });
-});
-
-router.post('/', (req, res) => {
-  res.status(200).json({ message: 'Create Inventory' });
-});
-
-router.put('/:id', (req, res) => {
-  res.status(200).json({ message: `Update inventory item ${req.params.id}` });
-});
-
-router.delete('/:id', (req, res) => {
-  res.status(200).json({ message: `Delete inventory item ${req.params.id}` });
-});
+router.route('/').get(getInventory).post(createInventory);
+router.route('/:id').put(updateInventory).delete(deleteInventory);
 
 module.exports = router;
