@@ -1,14 +1,16 @@
+const asyncHandler = require('express-async-handler');
+
 // Get complete inventory
 // GET /api/inventory
 // Private
-const getInventory = (req, res) => {
+const getInventory = asyncHandler(async (req, res) => {
   res.status(200).json({ message: 'Get Inventory' });
-};
+});
 
 // Create inventory item
 // POST /api/inventory
 // Private
-const createInventory = (req, res) => {
+const createInventory = asyncHandler(async (req, res) => {
   // error handling for missing body data
   if (!req.body.test) {
     res.status(400);
@@ -16,21 +18,21 @@ const createInventory = (req, res) => {
   }
 
   res.status(200).json({ message: 'Create Inventory' });
-};
+});
 
 // Update inventory item
 // PUT /api/inventory/:id
 // Private
-const updateInventory = (req, res) => {
+const updateInventory = asyncHandler(async (req, res) => {
   res.status(200).json({ message: `Update inventory item ${req.params.id}` });
-};
+});
 
 // Delete inventory item
 // DELETE /api/inventory/:id
 // Private
-const deleteInventory = (req, res) => {
+const deleteInventory = asyncHandler(async (req, res) => {
   res.status(200).json({ message: `Delete inventory item ${req.params.id}` });
-};
+});
 
 module.exports = {
   getInventory,
