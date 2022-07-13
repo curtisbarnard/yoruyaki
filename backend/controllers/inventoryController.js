@@ -9,6 +9,12 @@ const getInventory = (req, res) => {
 // POST /api/inventory
 // Private
 const createInventory = (req, res) => {
+  // error handling for missing body data
+  if (!req.body.test) {
+    res.status(400);
+    throw new Error('Please add a test field');
+  }
+
   res.status(200).json({ message: 'Create Inventory' });
 };
 
