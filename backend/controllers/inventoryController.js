@@ -1,10 +1,12 @@
 const asyncHandler = require('express-async-handler');
+const Inventory = require('../model/inventoryModel');
 
 // Get complete inventory
 // GET /api/inventory
 // Private
 const getInventory = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: 'Get Inventory' });
+  const inventory = await Inventory.find();
+  res.status(200).json(inventory);
 });
 
 // Create inventory item
@@ -12,26 +14,63 @@ const getInventory = asyncHandler(async (req, res) => {
 // Private
 const createInventory = asyncHandler(async (req, res) => {
   // error handling for missing body data
-  if (!req.body.test) {
+  if (
+    !req.body.itemName ||
+    !req.body.itemDesc ||
+    !req.body.category ||
+    !req.body.stock
+  ) {
     res.status(400);
-    throw new Error('Please add a test field');
+    throw new Error('Please make sure you have all require fields filled out');
   }
 
-  res.status(200).json({ message: 'Create Inventory' });
+  const inventoryItem = await Inventory.create({
+    itemName: req.body.itemName,
+    itemDesc: req.body.itemDesc,
+    category: req.body.category,
+    stock: req.body.stock,
+    image: req.body.image,
+  });
+
+  res.status(200).json(inventoryItem);
 });
 
 // Update inventory item
 // PUT /api/inventory/:id
 // Private
 const updateInventory = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: `Update inventory item ${req.params.id}` });
+  const inventoryItem = await Inventory.findById(req.params.id);
+
+  if (!inventoryItem) {
+    res.status(400);
+    throw new Error('Inventory item not found');
+  }
+
+  const updatedInventoryItem = await Inventory.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    {
+      new: true,
+    }
+  );
+
+  res.status(200).json(updatedInventoryItem);
 });
 
 // Delete inventory item
 // DELETE /api/inventory/:id
 // Private
 const deleteInventory = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: `Delete inventory item ${req.params.id}` });
+  const inventoryItem = await Inventory.findById(req.params.id);
+
+  if (!inventoryItem) {
+    res.status(400);
+    throw new Error('Inventory item not found');
+  }
+
+  await inventoryItem.remove();
+
+  res.status(200).json({ id: req.params.id });
 });
 
 module.exports = {
