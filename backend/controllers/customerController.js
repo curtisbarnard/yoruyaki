@@ -38,7 +38,7 @@ const createCustomer = asyncHandler(async (req, res) => {
     res.status(201).json({
       _id: customer.id,
       name: customer.name,
-      email: customer.id,
+      email: customer.email,
     });
   } else {
     res.status(400);
@@ -50,7 +50,19 @@ const createCustomer = asyncHandler(async (req, res) => {
 // POST /api/customers/login
 // Public
 const loginCustomer = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: 'login customer' });
+  const { email, password } = req.body;
+  const customer = await Customer.findOne({ email });
+
+  if (customer && (await bcrypt.compare(password, customer.password))) {
+    res.json({
+      _id: customer.id,
+      name: customer.name,
+      email: customer.email,
+    });
+  } else {
+    res.status(400);
+    throw new Error('Invalid email or password');
+  }
 });
 
 // Get Customer Data
