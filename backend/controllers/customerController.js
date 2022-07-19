@@ -71,7 +71,13 @@ const loginCustomer = asyncHandler(async (req, res) => {
 // GET /api/customers/me
 // Private
 const getCustomer = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: 'get customer info' });
+  const { _id, name, email } = await Customer.findById(req.customer.id);
+
+  res.status(200).json({
+    _id,
+    name,
+    email,
+  });
 });
 
 // Generate JWT
