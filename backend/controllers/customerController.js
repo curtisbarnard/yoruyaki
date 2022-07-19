@@ -1,11 +1,49 @@
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 const asyncHandler = require('express-async-handler');
 const Customer = require('../model/customerModel');
+const e = require('express');
 
 // Create new customer profile
 // POST /api/customers
 // Public
 const createCustomer = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: 'create customer' });
+  const { name, email, password } = req.body;
+
+  if (!name || !email || !password) {
+    res.status(400);
+    throw new Error('Please add all fields');
+  }
+
+  // Check if customer with same email already exist
+  const customerExists = await Customer.findOne({ email });
+
+  if (customerExists) {
+    res.status(400);
+    throw new Error('Customer with that email already exists');
+  }
+
+  // hashing password
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
+
+  // Create customer
+  const customer = await Customer.create({
+    name,
+    email,
+    password: hashedPassword,
+  });
+
+  if (customer) {
+    res.status(201).json({
+      _id: customer.id,
+      name: customer.name,
+      email: customer.id,
+    });
+  } else {
+    res.status(400);
+    throw new Error('Invalid customer data');
+  }
 });
 
 // Authenticate Customer
