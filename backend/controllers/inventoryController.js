@@ -3,7 +3,7 @@ const Inventory = require('../model/inventoryModel');
 
 // Get complete inventory
 // GET /api/inventory
-// Private
+// Public
 const getInventory = asyncHandler(async (req, res) => {
   const inventory = await Inventory.find();
   res.status(200).json(inventory);
