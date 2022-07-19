@@ -1,13 +1,8 @@
-import MenuSections from './components/MenuSections';
-import MenuCard from './components/MenuCard';
-
-function App() {
+import Menu from './components/Menu';
+export default function App() {
   return (
-    <div className='App'>
-      <MenuSections />
-      <MenuCard />
-    </div>
+    <>
+      <Menu />
+    </>
   );
 }
-
-export default App;
