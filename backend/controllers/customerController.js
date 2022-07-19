@@ -39,6 +39,7 @@ const createCustomer = asyncHandler(async (req, res) => {
       _id: customer.id,
       name: customer.name,
       email: customer.email,
+      token: generateToken(customer._id),
     });
   } else {
     res.status(400);
@@ -58,6 +59,7 @@ const loginCustomer = asyncHandler(async (req, res) => {
       _id: customer.id,
       name: customer.name,
       email: customer.email,
+      token: generateToken(customer._id),
     });
   } else {
     res.status(400);
@@ -67,10 +69,15 @@ const loginCustomer = asyncHandler(async (req, res) => {
 
 // Get Customer Data
 // GET /api/customers/me
-// Public
+// Private
 const getCustomer = asyncHandler(async (req, res) => {
   res.status(200).json({ message: 'get customer info' });
 });
+
+// Generate JWT
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+};
 
 module.exports = {
   createCustomer,
