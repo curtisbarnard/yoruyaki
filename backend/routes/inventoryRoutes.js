@@ -7,7 +7,10 @@ const {
   deleteInventory,
 } = require('../controllers/inventoryController');
 
-router.route('/').get(getInventory).post(createInventory);
-router.route('/:id').put(updateInventory).delete(deleteInventory);
+router.route('/').get(getInventory).post(protect, createInventory);
+router
+  .route('/:id')
+  .put(protect, updateInventory)
+  .delete(protect, deleteInventory);
 
 module.exports = router;
