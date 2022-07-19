@@ -6,6 +6,7 @@ const {
   updateInventory,
   deleteInventory,
 } = require('../controllers/inventoryController');
+const { protect } = require('../middleware/authmiddleware');
 
 router.route('/').get(getInventory).post(protect, createInventory);
 router
