@@ -1,20 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Button from '../components/Button';
+import { Link } from 'react-router-dom';
 
 export default function Login() {
-  // Testing useEffect not relevant to this project
-  const [prefData, setPrefData] = useState({});
-  useEffect(() => {
-    fetch('https://japan-info-api.herokuapp.com/api/prefecture')
-      .then((res) => res.json())
-      .then((apiData) => setPrefData(apiData));
-    // empty array below allows the useeffect to run only once and not get stuck in a loop
-  }, []);
-  let prefList = [];
-  for (const item in prefData) {
-    prefList.push(<h2>{prefData[item].jName}</h2>);
-  }
-
   // Handling Form State
   const [formData, setFormData] = useState({
     name: '',
@@ -92,9 +80,14 @@ export default function Login() {
             Passwords do not match
           </span>
         )}
-        <Button title='Sign Up' />
+        <Button title='Sign Up' />{' '}
+        <Link
+          className='px-4 py-1 rounded-full bg-indigo-800 text-yellow-300 font-bold text-lg'
+          to='/menu'
+        >
+          Menu
+        </Link>
       </form>
-      <div>{prefList}</div>
     </>
   );
 }
