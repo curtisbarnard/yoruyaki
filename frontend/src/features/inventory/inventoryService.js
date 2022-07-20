@@ -8,8 +8,15 @@ const createInventoryItem = async (inventoryData) => {
   return response.data;
 };
 
+// Get all inventory
+const getInventory = async () => {
+  const response = await axios.get(API_URL);
+  return response.data;
+};
+
 const inventoryService = {
   createInventoryItem,
+  getInventory,
 };
 
 export default inventoryService;

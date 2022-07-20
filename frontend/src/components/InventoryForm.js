@@ -1,12 +1,26 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { createInventoryItem } from '../features/inventory/inventorySlice';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  createInventoryItem,
+  getInventory,
+} from '../features/inventory/inventorySlice';
 import Input from './Input';
 import Button from './Button';
 
 export default function InventoryForm() {
   // Redux stuff
   const dispatch = useDispatch();
+  const { inventory, isLoading, isError, message } = useSelector(
+    (state) => state.inventory
+  );
+
+  // Dealing with side effects
+  useEffect(() => {
+    if (isError) {
+      console.log(message);
+    }
+    dispatch(getInventory());
+  }, []);
 
   // Handling Form State
   const [formData, setFormData] = useState({

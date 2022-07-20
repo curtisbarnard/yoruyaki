@@ -28,6 +28,25 @@ export const createInventoryItem = createAsyncThunk(
   }
 );
 
+// Get inventory items
+export const getInventory = createAsyncThunk(
+  'inventory/getAll',
+  async (_, thunkAPI) => {
+    try {
+      return await inventoryService.getInventory();
+    } catch (error) {
+      // Checking in multiple places for error
+      const message =
+        (error.response &&
+          error.response.date &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 // Inventory Slice
 export const inventorySlice = createSlice({
   name: 'inventory',
@@ -46,6 +65,19 @@ export const inventorySlice = createSlice({
         state.inventory.push(action.payload);
       })
       .addCase(createInventoryItem.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getInventory.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getInventory.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.inventory.push(action.payload);
+      })
+      .addCase(getInventory.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
