@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import MenuSections from './MenuSections';
-import ItemsList from './ItemsList';
+import MenuSections from '../components/MenuSections';
+import ItemsList from '../components/ItemsList';
 
 export default function Menu() {
   const [menuSection, setMenuSection] = useState('skewers');
