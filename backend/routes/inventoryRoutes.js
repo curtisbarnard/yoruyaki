@@ -8,7 +8,7 @@ const {
 } = require('../controllers/inventoryController');
 const { protect } = require('../middleware/authmiddleware');
 
-router.route('/').get(getInventory).post(protect, createInventory);
+router.route('/').get(getInventory).post(createInventory);
 router
   .route('/:id')
   .put(protect, updateInventory)

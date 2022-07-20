@@ -71,12 +71,10 @@ const loginCustomer = asyncHandler(async (req, res) => {
 // GET /api/customers/me
 // Private
 const getCustomer = asyncHandler(async (req, res) => {
-  const { _id, name, email } = await Customer.findById(req.customer.id);
-
   res.status(200).json({
-    _id,
-    name,
-    email,
+    _id: req.customer.id,
+    name: req.customer.name,
+    email: req.customer.email,
   });
 });
 
