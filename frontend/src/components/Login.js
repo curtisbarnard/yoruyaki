@@ -1,9 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import Button from './Button';
 import Input from './Input';
-import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { login, reset } from '../features/auth/authSlice';
+import Loading from './Loading';
 
 export default function Login() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { customer, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    if (isError) {
+      throw new Error();
+    }
+    if (isSuccess || customer) {
+      navigate('/menu');
+    }
+
+    dispatch(reset());
+  }, [customer, isError, isSuccess, message, navigate, dispatch]);
+
   // Handling Form State
   const [formData, setFormData] = useState({
     email: '',
@@ -20,7 +41,15 @@ export default function Login() {
   // Handling Form submission
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(formData);
+    const customerData = {
+      email: formData.email,
+      password: formData.password,
+    };
+    dispatch(login(customerData));
+  }
+
+  if (isLoading) {
+    return <Loading />;
   }
 
   // JSX to be rendered

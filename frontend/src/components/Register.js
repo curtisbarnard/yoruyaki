@@ -43,7 +43,6 @@ export default function Register() {
   // Handling Form submission
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(formData);
     if (formData.password !== formData.passwordConfirm) {
       throw new Error('Passwords do not match');
     } else {
