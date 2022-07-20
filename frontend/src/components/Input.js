@@ -5,7 +5,7 @@ export default function Input(props) {
         {props.label}
       </label>
       <input
-        className='px-2 py-1 border border-black rounded-full'
+        className='px-2 py-1 border-2 border-indigo-100 rounded-full focus:outline-indigo-800'
         onChange={props.handleChange}
         placeholder={props.placeholder}
         name={props.name}
