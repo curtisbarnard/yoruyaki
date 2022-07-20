@@ -11,7 +11,7 @@ const getInventory = asyncHandler(async (req, res) => {
 
 // Create inventory item
 // POST /api/inventory
-// Private
+// Public
 const createInventory = asyncHandler(async (req, res) => {
   // error handling for missing body data
   if (
@@ -21,7 +21,7 @@ const createInventory = asyncHandler(async (req, res) => {
     !req.body.stock
   ) {
     res.status(400);
-    throw new Error('Please make sure you have all require fields filled out');
+    throw new Error('Please make sure you have all required fields filled out');
   }
 
   const inventoryItem = await Inventory.create({
