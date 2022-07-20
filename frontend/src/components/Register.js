@@ -1,8 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import Button from './Button';
 import Input from './Input';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { register, reset } from '../features/auth/authSlice';
+import Loading from './Loading';
 
 export default function Register() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { customer, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    if (isError) {
+      throw new Error();
+    }
+    if (isSuccess || customer) {
+      navigate('/menu');
+    }
+
+    dispatch(reset());
+  }, [customer, isError, isSuccess, message, navigate, dispatch]);
+
   // Handling Form State
   const [formData, setFormData] = useState({
     name: '',
@@ -22,6 +44,20 @@ export default function Register() {
   function handleSubmit(event) {
     event.preventDefault();
     console.log(formData);
+    if (formData.password !== formData.passwordConfirm) {
+      throw new Error('Passwords do not match');
+    } else {
+      const customerData = {
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+      };
+      dispatch(register(customerData));
+    }
+  }
+
+  if (isLoading) {
+    return <Loading />;
   }
 
   // JSX to be rendered
