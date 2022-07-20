@@ -60,7 +60,6 @@ export default function InventoryForm() {
   }
 
   // Mapping items from state to array for display
-  // TODO something seems off here, need to look into a better way
   const itemNames = inventory.map((item) => {
     return <h3 key={item._id}>{item.itemName}</h3>;
   });
