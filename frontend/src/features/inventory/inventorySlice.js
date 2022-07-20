@@ -47,6 +47,26 @@ export const getInventory = createAsyncThunk(
   }
 );
 
+// Delete inventory item
+// TODO this route is should be protected, how can I only let a single user delete items? do I still use a token?
+export const deleteInventoryItem = createAsyncThunk(
+  'inventory/delete',
+  async (id, thunkAPI) => {
+    try {
+      return await inventoryService.deleteInventoryItem(id);
+    } catch (error) {
+      // Checking in multiple places for error
+      const message =
+        (error.response &&
+          error.response.date &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 // Inventory Slice
 export const inventorySlice = createSlice({
   name: 'inventory',
@@ -75,9 +95,24 @@ export const inventorySlice = createSlice({
       .addCase(getInventory.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.inventory.push(action.payload);
+        state.inventory = action.payload;
       })
       .addCase(getInventory.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(deleteInventoryItem.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteInventoryItem.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.inventory = state.inventory.filter(
+          (item) => item._id !== action.payload.id
+        );
+      })
+      .addCase(deleteInventoryItem.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

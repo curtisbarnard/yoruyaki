@@ -14,9 +14,16 @@ const getInventory = async () => {
   return response.data;
 };
 
+// Delete inventory item
+const deleteInventoryItem = async (id) => {
+  const response = await axios.delete(API_URL + id);
+  return response.data;
+};
+
 const inventoryService = {
   createInventoryItem,
   getInventory,
+  deleteInventoryItem,
 };
 
 export default inventoryService;

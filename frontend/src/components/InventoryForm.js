@@ -3,9 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   createInventoryItem,
   getInventory,
+  inventorySlice,
+  reset,
 } from '../features/inventory/inventorySlice';
 import Input from './Input';
 import Button from './Button';
+import Loading from './Loading';
 
 export default function InventoryForm() {
   // Redux stuff
@@ -20,7 +23,10 @@ export default function InventoryForm() {
       console.log(message);
     }
     dispatch(getInventory());
-  }, []);
+    return () => {
+      dispatch(reset());
+    };
+  }, [isError, message, dispatch]);
 
   // Handling Form State
   const [formData, setFormData] = useState({
@@ -48,6 +54,16 @@ export default function InventoryForm() {
       category: '',
     });
   }
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  // Mapping items from state to array for display
+  // TODO something seems off here, need to look into a better way
+  const itemNames = inventory.map((item) => {
+    return <h3 key={item._id}>{item.itemName}</h3>;
+  });
 
   // JSX to render
   return (
@@ -87,6 +103,7 @@ export default function InventoryForm() {
         />
         <Button title='Submit' />
       </form>
+      <div>{itemNames}</div>
     </>
   );
 }
