@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import ToggleButtons from '../components/ToggleButtons';
 import ItemsList from '../components/ItemsList';
-import Button from '../components/SubmitButton';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout, reset } from '../features/auth/authSlice';
 
