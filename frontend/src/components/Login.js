@@ -7,16 +7,19 @@ import { login, reset } from '../features/auth/authSlice';
 import Loading from './Loading';
 
 export default function Login() {
+  // Redux Variables
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  // Get state for redux store for customer
   const { customer, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   );
 
+  // Dealing with side effects
   useEffect(() => {
     if (isError) {
-      throw new Error();
+      console.log(message);
     }
     if (isSuccess || customer) {
       navigate('/menu');
