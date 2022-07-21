@@ -12,7 +12,7 @@ export default function Menu() {
   const handleLogout = () => {
     dispatch(logout());
     dispatch(reset());
-    navigate('/login');
+    navigate('/');
   };
 
   const [menuSection, setMenuSection] = useState('skewers');
