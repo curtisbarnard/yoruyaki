@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import Button from './SubmitButton';
+import { useEffect, useState } from 'react';
+import SubmitButton from './SubmitButton';
 import Input from './Input';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -34,9 +34,8 @@ export default function Register() {
   });
 
   function handleChange(event) {
-    const { name, value } = event.target;
     setFormData((prevState) => {
-      return { ...prevState, [name]: value };
+      return { ...prevState, [event.target.name]: event.target.value };
     });
   }
 
@@ -104,7 +103,7 @@ export default function Register() {
             Passwords do not match
           </span>
         )}
-        <Button title='Submit' />
+        <SubmitButton title='Submit' />
       </form>
     </>
   );
