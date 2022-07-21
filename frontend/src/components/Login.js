@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Button from './Button';
+import Button from './SubmitButton';
 import Input from './Input';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -56,7 +56,7 @@ export default function Login() {
   return (
     <>
       <form
-        className='w-[190px] h-[100vh] mx-auto flex flex-col justify-center items-center'
+        className='mx-auto flex flex-col justify-evenly h-full'
         onSubmit={handleSubmit}
       >
         <Input
@@ -75,7 +75,7 @@ export default function Login() {
           handleChange={handleChange}
           type='password'
         />
-        <Button title='Sign In' />
+        <Button title='Submit' />
       </form>
     </>
   );
