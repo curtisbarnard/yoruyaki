@@ -63,7 +63,7 @@ export default function Register() {
   return (
     <>
       <form
-        className='w-[190px] h-[100vh] mx-auto flex flex-col justify-center items-center'
+        className='mx-auto flex flex-col justify-evenly h-full'
         onSubmit={handleSubmit}
       >
         <Input
@@ -104,7 +104,7 @@ export default function Register() {
             Passwords do not match
           </span>
         )}
-        <Button title='Sign Up' />
+        <Button title='Submit' />
       </form>
     </>
   );

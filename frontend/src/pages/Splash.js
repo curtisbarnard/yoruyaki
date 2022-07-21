@@ -1,20 +1,26 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Login from '../components/Login';
+import Register from '../components/Register';
 import Button from '../components/SubmitButton';
 import ClickButton from '../components/ClickButton';
+import ToggleButtons from '../components/ToggleButtons';
 
 export default function Splash() {
   const [showLogin, setShowLogin] = useState('hidden');
 
   function handleClick() {
-    setShowLogin('login');
+    setShowLogin('sign in');
   }
 
   function closeWindow() {
     setShowLogin('hidden');
   }
 
+  function toggleSignUp(id) {
+    setShowLogin(id);
+  }
+  const sections = ['Sign In', 'Sign Up'];
   return (
     <>
       <div className='splash-background'>
@@ -37,8 +43,14 @@ export default function Splash() {
             </Link>
           </div>
           {showLogin !== 'hidden' && (
-            <div className='absolute bg-white rounded-t-3xl h-1/2 bottom-0 inset-x-0'>
-              <Login />
+            <div className='absolute px-4 py-6 bg-white rounded-t-3xl h-2/3 bottom-0 inset-x-0'>
+              <ToggleButtons
+                sections={sections}
+                currentSection={showLogin}
+                updateSection={toggleSignUp}
+              />
+              {showLogin === 'sign in' && <Login />}
+              {showLogin === 'sign up' && <Register />}
             </div>
           )}
         </div>

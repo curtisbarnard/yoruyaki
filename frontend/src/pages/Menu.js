@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MenuSections from '../components/MenuSections';
+import ToggleButtons from '../components/ToggleButtons';
 import ItemsList from '../components/ItemsList';
 import Button from '../components/SubmitButton';
 import { Link, useNavigate } from 'react-router-dom';
@@ -20,6 +20,8 @@ export default function Menu() {
   function updateMenuSection(id) {
     setMenuSection(id);
   }
+
+  const sections = ['Otsumami', 'Skewers', 'Drinks'];
   return (
     <>
       {/* Show logout button if user is logged in */}
@@ -31,10 +33,17 @@ export default function Menu() {
           Logout
         </button>
       )}
-      <MenuSections
-        currentSection={menuSection}
-        updateMenuSection={updateMenuSection}
-      />
+
+      <header className='w-full h-20 px-2 flex items-center bg-indigo-900'>
+        <nav className='w-full'>
+          <ToggleButtons
+            sections={sections}
+            currentSection={menuSection}
+            updateSection={updateMenuSection}
+          />
+        </nav>
+      </header>
+
       <ItemsList currentSection={menuSection} />
     </>
   );

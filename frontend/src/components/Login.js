@@ -56,7 +56,7 @@ export default function Login() {
   return (
     <>
       <form
-        className='mx-auto flex flex-col p-6 justify-evenly h-full'
+        className='mx-auto flex flex-col justify-evenly h-full'
         onSubmit={handleSubmit}
       >
         <Input
@@ -75,7 +75,7 @@ export default function Login() {
           handleChange={handleChange}
           type='password'
         />
-        <Button title='Submit' className='self-end' />
+        <Button title='Submit' />
       </form>
     </>
   );
