@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const dotenv = require('dotenv').config();
 const { errorHandler } = require('./middleware/errorMiddleware');
@@ -12,6 +13,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use('/api/inventory', require('./routes/inventoryRoutes'));
 app.use('/api/customers', require('./routes/customerRoutes'));
+
+// Serve frontend
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../frontend/build')));
+  app.get('*', (req, res) =>
+    res.sendFile(
+      path.resolve(__dirname, '../', 'frontend', 'build', 'index.html')
+    )
+  );
+} else {
+  app.get('/', (req, res) => res.send('Please set node to production'));
+}
 
 app.use(errorHandler);
 
