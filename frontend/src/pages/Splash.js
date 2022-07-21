@@ -1,11 +1,31 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Login from '../components/Login';
+import Button from '../components/SubmitButton';
 
 export default function Splash() {
+  const [showLogin, setShowLogin] = useState('login');
+
   return (
     <>
-      <div className='flex flex-col items-center justify-center h-[80vh]'>
-        <h1>Yoruyaki</h1>
-        <span>夜焼き</span>
+      <div className='splash-background'>
+        <div className='relative flex flex-col h-[100vh] bg-indigo-900/25 backdrop-blur-sm backdrop-brightness-50'>
+          <div className='shrink-0 flex flex-col items-center justify-center h-[80vh] text-yellow-400'>
+            <h1 className='text-5xl font-semibold pb-2'>Yoruyaki</h1>
+            <span className='text-4xl font-light ml-20'>夜焼き</span>
+          </div>
+          <div className='shrink-0 grow flex justify-around'>
+            <Button title='Sign In' className='h-max' />
+            <Link to='/menu'>
+              <Button title='See Menu' />
+            </Link>
+          </div>
+          {showLogin !== 'hidden' && (
+            <div className='absolute bg-white rounded-t-3xl h-1/2 bottom-0 inset-x-0'>
+              <Login />
+            </div>
+          )}
+        </div>
       </div>
     </>
   );

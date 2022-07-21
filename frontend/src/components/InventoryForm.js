@@ -7,7 +7,7 @@ import {
   reset,
 } from '../features/inventory/inventorySlice';
 import Input from './Input';
-import Button from './Button';
+import Button from './SubmitButton';
 import Loading from './Loading';
 
 export default function InventoryForm() {

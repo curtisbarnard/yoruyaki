@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Button from './Button';
+import Button from './SubmitButton';
 import Input from './Input';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import MenuSections from '../components/MenuSections';
 import ItemsList from '../components/ItemsList';
-import Button from '../components/Button';
+import Button from '../components/SubmitButton';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout, reset } from '../features/auth/authSlice';
