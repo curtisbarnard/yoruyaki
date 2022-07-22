@@ -23,9 +23,8 @@ export default function Register() {
     }
     if (isSuccess || customer) {
       navigate('/menu');
+      dispatch(reset());
     }
-
-    dispatch(reset());
   }, [customer, isError, isSuccess, message, navigate, dispatch]);
 
   // Handling Form State
