@@ -22,7 +22,9 @@ export default function InventoryForm() {
     if (isError) {
       console.log(message);
     }
+
     dispatch(getInventory());
+
     return () => {
       dispatch(reset());
     };
@@ -58,11 +60,6 @@ export default function InventoryForm() {
   if (isLoading) {
     return <Loading />;
   }
-
-  // Mapping items from state to array for display
-  const itemNames = inventory.map((item) => {
-    return <h3 key={item._id}>{item.itemName}</h3>;
-  });
 
   // JSX to render
   return (
@@ -102,7 +99,6 @@ export default function InventoryForm() {
         />
         <Button title='Submit' />
       </form>
-      <div>{itemNames}</div>
     </>
   );
 }
