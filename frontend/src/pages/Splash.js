@@ -16,12 +16,15 @@ export default function Splash() {
   // State for error modal
   const { isError, message } = useSelector((state) => state.auth);
 
+  // TODO refactor all click handlers from four to maybe one or two functions
+  function closeError() {
+    dispatch(reset());
+  }
   // State for showing login modal
   const [showLogin, setShowLogin] = useState('hidden');
 
   function handleClick() {
     setShowLogin('sign in');
-    dispatch(reset());
   }
 
   function closeWindow() {
@@ -66,7 +69,7 @@ export default function Splash() {
           )}
         </div>
         {isError && (
-          <ErrorModal handleClick={handleClick} errorMessage={message} />
+          <ErrorModal handleClick={closeError} errorMessage={message} />
         )}
       </div>
     </>
