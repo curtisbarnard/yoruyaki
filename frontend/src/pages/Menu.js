@@ -8,9 +8,13 @@ import ToggleButtons from '../components/ToggleButtons';
 import ItemsList from '../components/ItemsList';
 
 export default function Menu() {
+  // Setting redux variables
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  // Getting state from redux store for customer
   const { customer } = useSelector((state) => state.auth);
+
   const handleLogout = () => {
     dispatch(logout());
     dispatch(reset());
