@@ -1,16 +1,27 @@
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { reset } from '../features/auth/authSlice';
 import Login from '../components/Login';
 import Register from '../components/Register';
 import Button from '../components/SubmitButton';
 import ClickButton from '../components/ClickButton';
 import ToggleButtons from '../components/ToggleButtons';
+import ErrorModal from '../components/ErrorModal';
 
 export default function Splash() {
+  // Redux variables
+  const dispatch = useDispatch();
+
+  // State for error modal
+  const { isError, message } = useSelector((state) => state.auth);
+
+  // State for showing login modal
   const [showLogin, setShowLogin] = useState('hidden');
 
   function handleClick() {
     setShowLogin('sign in');
+    dispatch(reset());
   }
 
   function closeWindow() {
@@ -54,6 +65,9 @@ export default function Splash() {
             </div>
           )}
         </div>
+        {isError && (
+          <ErrorModal handleClick={handleClick} errorMessage={message} />
+        )}
       </div>
     </>
   );

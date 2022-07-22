@@ -1,28 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import Button from './SubmitButton';
-import Input from './Input';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { login, reset } from '../features/auth/authSlice';
+import SubmitButton from './SubmitButton';
+import Input from './Input';
 import Loading from './Loading';
 
 export default function Login() {
+  // Redux Variables
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  // Get state from redux store for customer
   const { customer, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   );
 
+  // Dealing with side effects
   useEffect(() => {
     if (isError) {
-      throw new Error();
+      console.log(message);
     }
     if (isSuccess || customer) {
       navigate('/menu');
+      dispatch(reset());
     }
-
-    dispatch(reset());
   }, [customer, isError, isSuccess, message, navigate, dispatch]);
 
   // Handling Form State
@@ -75,7 +77,7 @@ export default function Login() {
           handleChange={handleChange}
           type='password'
         />
-        <Button title='Submit' />
+        <SubmitButton title='Submit' />
       </form>
     </>
   );

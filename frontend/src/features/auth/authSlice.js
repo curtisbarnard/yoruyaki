@@ -23,7 +23,7 @@ export const register = createAsyncThunk(
       // Checking in multiple places for error
       const message =
         (error.response &&
-          error.response.date &&
+          error.response.data &&
           error.response.data.message) ||
         error.message ||
         error.toString();
@@ -42,7 +42,7 @@ export const login = createAsyncThunk(
       // Checking in multiple places for error
       const message =
         (error.response &&
-          error.response.date &&
+          error.response.data &&
           error.response.data.message) ||
         error.message ||
         error.toString();
