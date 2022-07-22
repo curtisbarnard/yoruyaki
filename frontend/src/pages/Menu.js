@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import ToggleButtons from '../components/ToggleButtons';
-import ItemsList from '../components/ItemsList';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+
 import { logout, reset } from '../features/auth/authSlice';
+
+import ToggleButtons from '../components/ToggleButtons';
+import ItemsList from '../components/ItemsList';
 
 export default function Menu() {
   const navigate = useNavigate();
