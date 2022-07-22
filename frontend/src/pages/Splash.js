@@ -5,8 +5,14 @@ import Register from '../components/Register';
 import Button from '../components/SubmitButton';
 import ClickButton from '../components/ClickButton';
 import ToggleButtons from '../components/ToggleButtons';
+import ErrorModal from '../components/ErrorModal';
+import { useSelector } from 'react-redux';
 
 export default function Splash() {
+  // State for error modal
+  const { isError, message } = useSelector((state) => state.auth);
+
+  // State for showing login modal
   const [showLogin, setShowLogin] = useState('hidden');
 
   function handleClick() {
@@ -54,6 +60,7 @@ export default function Splash() {
             </div>
           )}
         </div>
+        {isError && <ErrorModal errorMessage={message} />}
       </div>
     </>
   );
