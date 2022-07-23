@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getInventory } from '../features/inventory/inventorySlice';
 import Loading from './Loading';
+import InventoryItem from './InventoryItem';
 
 export default function InventorySection() {
   // Redux variables
@@ -12,17 +13,10 @@ export default function InventorySection() {
     (state) => state.inventory
   );
 
-  // Deal with side effects
+  // Grab inventory from database
   useEffect(() => {
-    if (isError) {
-      console.log(message);
-    }
     dispatch(getInventory());
-  }, [isError, message, dispatch]);
-
-  // input styling
-  const inputStyling =
-    'px-2 py-2 text-lg border-b-2 border-indigo-100 focus:outline-8 focus:outline-indigo-400';
+  }, []);
 
   if (isLoading) {
     return <Loading />;
@@ -42,35 +36,7 @@ export default function InventorySection() {
 
   // Map inventory items to components list
   const inventoryItems = sortedInventory.map((item) => {
-    return (
-      <div key={item._id} className='w-full grid grid-cols-12 px-10'>
-        <button key={`edit ${item._id}`}>Edit</button>
-        <div
-          className={`${inputStyling} text-center`}
-          key={item._id + item.stock}
-        >
-          {item.stock}
-        </div>
-        <div
-          className={`${inputStyling} font-semibold col-span-2`}
-          key={item._id + item.itemName}
-        >
-          {item.itemName}
-        </div>
-        <div
-          className={`${inputStyling} col-span-6`}
-          key={item._id + item.itemDesc}
-        >
-          {item.itemDesc}
-        </div>
-        <div
-          className={`${inputStyling} col-span-2`}
-          key={item._id + item.category}
-        >
-          {item.category}
-        </div>
-      </div>
-    );
+    return <InventoryItem {...item} />;
   });
   // JSX to Render
   return <>{inventoryItems}</>;
