@@ -36,7 +36,7 @@ export default function InventorySection() {
 
   // Map inventory items to components list
   const inventoryItems = sortedInventory.map((item) => {
-    return <InventoryItem {...item} />;
+    return <InventoryItem key={item._id} {...item} />;
   });
   // JSX to Render
   return <>{inventoryItems}</>;
