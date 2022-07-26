@@ -16,11 +16,17 @@ export default function EditInventoryForm(props) {
     setFormState((prevState) => {
       return { ...prevState, [event.target.name]: event.target.value };
     });
-    console.log(props._id);
-    if (inventory[event.target.name] !== event.target.value) {
-      setWasEdited(true);
+    const itemInGlobalState = inventory.find(
+      (element) => element._id === props._id
+    );
+    setWasEdited(true);
+
+    if (
+      itemInGlobalState[event.target.name] === event.target.value ||
+      itemInGlobalState[event.target.name] === +event.target.value
+    ) {
+      setWasEdited(false);
     }
-    setWasEdited(false);
   }
 
   // input styling
