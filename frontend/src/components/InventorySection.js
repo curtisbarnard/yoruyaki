@@ -8,10 +8,8 @@ export default function InventorySection() {
   // Redux variables
   const dispatch = useDispatch();
 
-  // Get state from redux store for inventory
-  const { inventory, isError, isLoading, message } = useSelector(
-    (state) => state.inventory
-  );
+  // Get state from redux store
+  const { inventory, isLoading } = useSelector((state) => state.inventory);
 
   // Grab inventory from database
   useEffect(() => {
@@ -39,5 +37,5 @@ export default function InventorySection() {
     return <InventoryItem key={item._id} {...item} />;
   });
   // JSX to Render
-  return <>{inventoryItems}</>;
+  return <ul>{inventoryItems}</ul>;
 }
