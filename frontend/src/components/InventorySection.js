@@ -9,12 +9,14 @@ export default function InventorySection() {
   const dispatch = useDispatch();
 
   // Get state from redux store
-  const { inventory, isLoading } = useSelector((state) => state.inventory);
+  const { inventory, isLoading, isSuccess } = useSelector(
+    (state) => state.inventory
+  );
 
   // Grab inventory from database
   useEffect(() => {
     dispatch(getInventory());
-  }, []);
+  }, [isSuccess]);
 
   if (isLoading) {
     return <Loading />;

@@ -12,7 +12,7 @@ export default function Admin() {
         <ToggleButtons sections={sections} />
       </div>
 
-      <div className='grid grid-cols-12 px-10 py-2 text-2xl font-semibold'>
+      <div className='relative grid grid-cols-12 px-10 py-2 text-2xl font-semibold'>
         <div></div>
         <span className='text-center'>QTY</span>
         <span className='col-span-2'>Item Name</span>

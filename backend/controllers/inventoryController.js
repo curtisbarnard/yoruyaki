@@ -59,7 +59,7 @@ const updateInventory = asyncHandler(async (req, res) => {
 
 // Delete inventory item
 // DELETE /api/inventory/:id
-// Private
+// Public
 const deleteInventory = asyncHandler(async (req, res) => {
   const inventoryItem = await Inventory.findById(req.params.id);
 
