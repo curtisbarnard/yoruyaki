@@ -5,7 +5,7 @@ const {
   getOrders,
   createOrder,
   deleteOrder,
-} = require('../controllers/ordersController');
+} = require('../controllers/orderController');
 const { protect } = require('../middleware/authmiddleware');
 
 router.route('/').get(getOrders).get(getAllOrders).post(createOrder);
