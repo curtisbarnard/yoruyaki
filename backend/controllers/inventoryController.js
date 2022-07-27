@@ -29,7 +29,6 @@ const createInventory = asyncHandler(async (req, res) => {
     itemDesc: req.body.itemDesc,
     category: req.body.category,
     stock: req.body.stock,
-    image: req.body.image,
   });
 
   res.status(200).json(inventoryItem);
@@ -37,7 +36,7 @@ const createInventory = asyncHandler(async (req, res) => {
 
 // Update inventory item
 // PUT /api/inventory/:id
-// Private
+// Public
 const updateInventory = asyncHandler(async (req, res) => {
   const inventoryItem = await Inventory.findById(req.params.id);
 
@@ -53,13 +52,12 @@ const updateInventory = asyncHandler(async (req, res) => {
       new: true,
     }
   );
-
   res.status(200).json(updatedInventoryItem);
 });
 
 // Delete inventory item
 // DELETE /api/inventory/:id
-// Private
+// Public
 const deleteInventory = asyncHandler(async (req, res) => {
   const inventoryItem = await Inventory.findById(req.params.id);
 

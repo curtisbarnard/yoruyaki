@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
-import ToggleButtons from '../components/ToggleButtons';
-import ItemsList from '../components/ItemsList';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+
 import { logout, reset } from '../features/auth/authSlice';
 
+import ToggleButtons from '../components/ToggleButtons';
+import ItemsList from '../components/ItemsList';
+
 export default function Menu() {
+  // Setting redux variables
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  // Getting state from redux store for customer
   const { customer } = useSelector((state) => state.auth);
+
   const handleLogout = () => {
     dispatch(logout());
     dispatch(reset());
