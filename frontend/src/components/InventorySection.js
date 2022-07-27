@@ -26,14 +26,10 @@ export default function InventorySection(props) {
   // Sort inventory items alphabetically and by category
   const sortedInventory = [...inventory].sort((a, b) => {
     if (a.category === b.category) {
-      alphaSort(a, b);
+      return a.itemName.charCodeAt(0) - b.itemName.charCodeAt(0);
     }
     return a.category.charCodeAt(0) - b.category.charCodeAt(0);
   });
-
-  function alphaSort(a, b) {
-    return a.itemName.charCodeAt(0) - b.itemName.charCodeAt(0);
-  }
 
   // Map inventory items to components list
   const inventoryItems = sortedInventory.map((item) => {
