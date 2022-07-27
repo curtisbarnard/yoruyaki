@@ -26,7 +26,7 @@ export default function Admin() {
         <h2 className='text-yellow-300 text-2xl font-bold'>Admin Panel</h2>
         <ClickButton handleClick={toggleAddItemForm} title='Add Item' />
       </header>
-      <div className='mx-auto max-w-md'>
+      <div className='mx-auto max-w-md py-4'>
         <ToggleButtons
           sections={sections}
           currentSection={currentSection}
