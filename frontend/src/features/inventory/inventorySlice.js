@@ -145,8 +145,11 @@ export const inventorySlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         // TODO below needs to be modified for update
-        // state.inventory =
-        // console.log(action.payload);
+        const itemIndex = state.inventory.findIndex(
+          (item) => item._id === action.payload._id
+        );
+        state.inventory.splice(itemIndex, 1, action.payload);
+        console.log(action.payload);
       })
       .addCase(updateInventoryItem.rejected, (state, action) => {
         state.isLoading = false;
