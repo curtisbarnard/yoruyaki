@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteInventoryItem } from '../features/inventory/inventorySlice';
+import {
+  deleteInventoryItem,
+  updateInventoryItem,
+} from '../features/inventory/inventorySlice';
 import DeleteModal from './deleteModal';
 
 export default function EditInventoryForm(props) {
@@ -49,6 +52,15 @@ export default function EditInventoryForm(props) {
     setDeleteModal((prevState) => !prevState);
   }
 
+  function updateItem(event) {
+    event.preventDefault();
+    const inventoryData = {
+      id: props._id,
+      body: formState,
+    };
+    dispatch(updateInventoryItem(inventoryData));
+  }
+
   // input styling
   const inputStyling =
     'px-2 py-2 text-lg border-b-2 border-indigo-100 focus:outline-8 focus:outline-indigo-400';
@@ -63,7 +75,7 @@ export default function EditInventoryForm(props) {
         <div>
           <button onClick={showModalClick}>Delete</button>
           <button onClick={() => props.setIsEditing(false)}>Cancel</button>
-          {wasEdited && <button>Update</button>}
+          {wasEdited && <button onClick={updateItem}>Update</button>}
         </div>
         <input
           type='number'

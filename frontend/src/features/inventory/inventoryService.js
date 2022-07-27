@@ -21,8 +21,9 @@ const deleteInventoryItem = async (id) => {
 };
 
 // Update inventory item
-const updateInventoryItem = async (id) => {
-  const response = await axios.put(API_URL + id);
+const updateInventoryItem = async (id, body) => {
+  console.log(body);
+  const response = await axios.put(API_URL + id, body);
   return response.data;
 };
 

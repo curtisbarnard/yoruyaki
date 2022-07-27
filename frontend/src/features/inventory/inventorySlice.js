@@ -67,13 +67,14 @@ export const deleteInventoryItem = createAsyncThunk(
   }
 );
 
-// Delete inventory item
+// Update inventory item
 // TODO this route is should be protected, how can I only let admin update items? do I still use a token?
 export const updateInventoryItem = createAsyncThunk(
   'inventory/update',
-  async (id, thunkAPI) => {
+  async (inventoryData, thunkAPI) => {
     try {
-      return await inventoryService.updateInventoryItem(id);
+      const { id, body } = inventoryData;
+      return await inventoryService.updateInventoryItem(id, body);
     } catch (error) {
       // Checking in multiple places for error
       const message =
@@ -145,7 +146,7 @@ export const inventorySlice = createSlice({
         state.isSuccess = true;
         // TODO below needs to be modified for update
         // state.inventory =
-        console.log(action.payload);
+        // console.log(action.payload);
       })
       .addCase(updateInventoryItem.rejected, (state, action) => {
         state.isLoading = false;
