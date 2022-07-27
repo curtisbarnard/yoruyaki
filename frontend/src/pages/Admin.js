@@ -7,12 +7,17 @@ export default function Admin() {
   const sections = ['Inventory', 'Current Orders', 'Past Orders'];
   // Initialize component state
   const [addItemForm, setAddItemForm] = useState(false);
+  const [currentSection, setCurrentSection] = useState('inventory');
 
+  // Handling button clicks
   function toggleAddItemForm(event) {
     event.preventDefault();
     setAddItemForm((prevState) => !prevState);
   }
 
+  function updateSection(id) {
+    setCurrentSection(id);
+  }
   // JSX to be rendered
   return (
     <>
@@ -22,20 +27,28 @@ export default function Admin() {
         <ClickButton handleClick={toggleAddItemForm} title='Add Item' />
       </header>
       <div className='mx-auto max-w-md'>
-        <ToggleButtons sections={sections} />
+        <ToggleButtons
+          sections={sections}
+          currentSection={currentSection}
+          updateSection={updateSection}
+        />
       </div>
 
-      <div className='relative grid grid-cols-12 px-10 py-2 text-2xl font-semibold'>
-        <div></div>
-        <span className='text-center'>QTY</span>
-        <span className='col-span-2'>Item Name</span>
-        <span className='col-span-6'>Description</span>
-        <span className='col-span-2'>Category</span>
-      </div>
-      <InventorySection
-        addItemForm={addItemForm}
-        setAddItemForm={setAddItemForm}
-      />
+      {currentSection === 'inventory' && (
+        <section>
+          <div className='relative grid grid-cols-12 px-10 py-2 text-2xl font-semibold'>
+            <div></div>
+            <span className='text-center'>QTY</span>
+            <span className='col-span-2'>Item Name</span>
+            <span className='col-span-6'>Description</span>
+            <span className='col-span-2'>Category</span>
+          </div>
+          <InventorySection
+            addItemForm={addItemForm}
+            setAddItemForm={setAddItemForm}
+          />
+        </section>
+      )}
     </>
   );
 }
