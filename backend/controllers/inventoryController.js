@@ -37,7 +37,7 @@ const createInventory = asyncHandler(async (req, res) => {
 
 // Update inventory item
 // PUT /api/inventory/:id
-// Private
+// Public
 const updateInventory = asyncHandler(async (req, res) => {
   const inventoryItem = await Inventory.findById(req.params.id);
 

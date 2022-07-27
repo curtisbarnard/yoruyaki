@@ -9,6 +9,6 @@ const {
 const { protect } = require('../middleware/authmiddleware');
 
 router.route('/').get(getInventory).post(createInventory);
-router.route('/:id').put(protect, updateInventory).delete(deleteInventory);
+router.route('/:id').put(updateInventory).delete(deleteInventory);
 
 module.exports = router;
