@@ -144,7 +144,6 @@ export const inventorySlice = createSlice({
       .addCase(updateInventoryItem.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        // TODO below needs to be modified for update
         const itemIndex = state.inventory.findIndex(
           (item) => item._id === action.payload._id
         );

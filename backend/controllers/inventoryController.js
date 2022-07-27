@@ -29,7 +29,6 @@ const createInventory = asyncHandler(async (req, res) => {
     itemDesc: req.body.itemDesc,
     category: req.body.category,
     stock: req.body.stock,
-    image: req.body.image,
   });
 
   res.status(200).json(inventoryItem);

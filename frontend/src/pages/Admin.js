@@ -1,13 +1,26 @@
+import { useState } from 'react';
 import ToggleButtons from '../components/ToggleButtons';
 import InventorySection from '../components/InventorySection';
+import ClickButton from '../components/ClickButton';
 
 export default function Admin() {
   const sections = ['Inventory', 'Current Orders', 'Past Orders'];
+  // Initialize component state
+  const [addItemForm, setAddItemForm] = useState(false);
 
+  function toggleAddItemForm(event) {
+    event.preventDefault();
+    setAddItemForm((prevState) => !prevState);
+  }
+
+  // JSX to be rendered
   return (
     <>
-      <h1>Yoruyaki</h1>
-      <h2>Admin Panel</h2>
+      <header className='bg-indigo-800 flex justify-between p-4 items-center'>
+        <h1 className='text-yellow-300 text-4xl font-semibold'>Yoruyaki</h1>
+        <h2 className='text-yellow-300 text-2xl font-bold'>Admin Panel</h2>
+        <ClickButton handleClick={toggleAddItemForm} title='Add Item' />
+      </header>
       <div className='mx-auto max-w-md'>
         <ToggleButtons sections={sections} />
       </div>
@@ -19,7 +32,10 @@ export default function Admin() {
         <span className='col-span-6'>Description</span>
         <span className='col-span-2'>Category</span>
       </div>
-      <InventorySection />
+      <InventorySection
+        addItemForm={addItemForm}
+        setAddItemForm={setAddItemForm}
+      />
     </>
   );
 }

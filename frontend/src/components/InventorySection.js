@@ -3,8 +3,9 @@ import { useEffect } from 'react';
 import { getInventory } from '../features/inventory/inventorySlice';
 import Loading from './Loading';
 import InventoryItem from './InventoryItem';
+import EditInventoryForm from './EditInventoryForm';
 
-export default function InventorySection() {
+export default function InventorySection(props) {
   // Redux variables
   const dispatch = useDispatch();
 
@@ -39,5 +40,15 @@ export default function InventorySection() {
     return <InventoryItem key={item._id} {...item} />;
   });
   // JSX to Render
-  return <ul>{inventoryItems}</ul>;
+  return (
+    <ul>
+      {props.addItemForm && (
+        <EditInventoryForm
+          addItemForm={props.addItemForm}
+          setAddItemForm={props.setAddItemForm}
+        />
+      )}
+      {inventoryItems}
+    </ul>
+  );
 }
