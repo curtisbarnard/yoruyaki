@@ -36,6 +36,20 @@ const createOrder = asyncHandler(async (req, res) => {
   res.status(200).json(order);
 });
 
+// Get customer orders
+// GET /api/order/:customerId
+// Public
+const getCustomerOrders = asyncHandler(async (req, res) => {
+  const orders = await Order.find({ customerId: req.params.customerId });
+
+  if (!orders) {
+    res.status(400);
+    throw new Error('No orders not found');
+  }
+
+  res.status(200).json(orders);
+});
+
 // Delete order
 // DELETE /api/order/:id
 // Public
@@ -55,5 +69,6 @@ const deleteOrder = asyncHandler(async (req, res) => {
 module.exports = {
   getAllOrders,
   createOrder,
+  getCustomerOrders,
   deleteOrder,
 };
