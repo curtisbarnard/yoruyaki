@@ -9,32 +9,34 @@ const getAllOrders = asyncHandler(async (req, res) => {
   res.status(200).json(orders);
 });
 
-// Get user orders
-// POST /api/orders/:id
+// Create order
+// POST /api/orders
 // Public
-const getOrder = asyncHandler(async (req, res) => {
+const createOrder = asyncHandler(async (req, res) => {
   // error handling for missing body data
   if (
-    !req.body.itemName ||
-    !req.body.itemDesc ||
-    !req.body.category ||
-    !req.body.stock
+    !req.body.customerId ||
+    !req.body.orderItems ||
+    !req.body.orderStatus ||
+    !req.body.totalPrice
   ) {
     res.status(400);
-    throw new Error('Please make sure you have all required fields filled out');
+    throw new Error(
+      'Please make sure order contains customer ID, order items, order status and total price'
+    );
   }
 
-  const inventoryItem = await Inventory.create({
-    itemName: req.body.itemName,
-    itemDesc: req.body.itemDesc,
-    category: req.body.category,
-    stock: req.body.stock,
+  const order = await Order.create({
+    customerId: req.body.customerId,
+    orderItems: req.body.orderItems,
+    orderStatus: req.body.orderStatus,
+    totalPrice: req.body.totalPrice,
   });
 
-  res.status(200).json(inventoryItem);
+  res.status(200).json(order);
 });
 
 module.exports = {
   getAllOrders,
-  getOrder,
+  createOrder,
 };
