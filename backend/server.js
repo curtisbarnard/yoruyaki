@@ -13,6 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use('/api/inventory', require('./routes/inventoryRoutes'));
 app.use('/api/customers', require('./routes/customerRoutes'));
+app.use('/api/orders', require('./routes/orderRoutes'));
 
 // Serve frontend
 if (process.env.NODE_ENV === 'production') {
