@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getInventory } from '../features/inventory/inventorySlice';
 import MenuCard from './MenuCard';
-import { data } from '../data';
 
 export default function ItemsList(props) {
   // Set redux variables
