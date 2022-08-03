@@ -1,13 +1,32 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { createOrder, addItem, removeItem } from '../features/order/orderSlice';
+
 export default function MenuCard(props) {
+  // Set redux variables
+  const dispatch = useDispatch();
+
+  // Getting state from redux store for order contents
+  const { order, isError, isLoading, message } = useSelector(
+    (state) => state.order
+  );
+
   // State so user can set qty of each item
   const [qty, setQty] = useState(0);
-  function plusClick() {
-    setQty((prevQty) => prevQty + 1);
+
+  function addToOrder() {
+    dispatch(addItem({ itemName: props.itemName, qty: 1 }));
   }
-  function minusClick() {
-    setQty((prevQty) => prevQty - 1);
+
+  function removeFromOrder() {
+    dispatch(removeItem(props.itemName));
   }
+
+  function addOne() {}
+
+  function minusOne() {}
+
   // TODO need to figure out storing images
   return (
     <li className='mx-2 my-4 p-2 shadow-md bg-indigo-50 rounded-md flex items-center h-24 relative'>

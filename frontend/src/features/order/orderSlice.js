@@ -34,6 +34,15 @@ export const orderSlice = createSlice({
   initialState,
   reducers: {
     reset: (state) => initialState,
+    addItem: (state, action) => {
+      state.order.push(action.payload);
+    },
+    removeItem: (state, action) => {
+      state.order = state.order.filter(
+        (item) => item.itemName !== action.payload
+      );
+    },
+    addOne,
   },
   extraReducers: (builder) => {
     builder
@@ -53,5 +62,5 @@ export const orderSlice = createSlice({
   },
 });
 
-export const { reset } = orderSlice.actions;
+export const { reset, addItem, removeItem } = orderSlice.actions;
 export default orderSlice.reducer;
