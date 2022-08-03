@@ -37,7 +37,7 @@ const createOrder = asyncHandler(async (req, res) => {
 });
 
 // Get customer orders
-// GET /api/order/:customerId
+// GET /api/orders/:customerId
 // Public
 const getCustomerOrders = asyncHandler(async (req, res) => {
   const orders = await Order.find({ customerId: req.params.customerId });
@@ -50,8 +50,25 @@ const getCustomerOrders = asyncHandler(async (req, res) => {
   res.status(200).json(orders);
 });
 
+// Get open customer orders
+// GET /api/orders/open/:customerId
+// Public
+const getOpenCustomerOrders = asyncHandler(async (req, res) => {
+  const orders = await Order.find({
+    customerId: req.params.customerId,
+    orderStatus: 'open',
+  });
+
+  if (!orders) {
+    res.status(400);
+    throw new Error('No orders not found');
+  }
+
+  res.status(200).json(orders);
+});
+
 // Delete order
-// DELETE /api/order/:id
+// DELETE /api/orders/:id
 // Public
 const deleteOrder = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
@@ -70,5 +87,6 @@ module.exports = {
   getAllOrders,
   createOrder,
   getCustomerOrders,
+  getOpenCustomerOrders,
   deleteOrder,
 };
