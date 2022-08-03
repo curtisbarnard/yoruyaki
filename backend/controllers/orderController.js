@@ -36,7 +36,24 @@ const createOrder = asyncHandler(async (req, res) => {
   res.status(200).json(order);
 });
 
+// Delete order
+// DELETE /api/order/:id
+// Public
+const deleteOrder = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id);
+
+  if (!order) {
+    res.status(400);
+    throw new Error('Order not found');
+  }
+
+  await order.remove();
+
+  res.status(200).json({ id: req.params.id });
+});
+
 module.exports = {
   getAllOrders,
   createOrder,
+  deleteOrder,
 };
