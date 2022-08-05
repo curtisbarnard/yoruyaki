@@ -20,12 +20,7 @@ export default function MenuCard(props) {
 
   const qty = order.find((item) => item.itemName === props.itemName)?.qty;
 
-  function removeFromOrder() {
-    dispatch(removeItem(props.itemName));
-  }
-
   function addOne(event) {
-    console.log(event.target);
     if (event.target.innerText === '+') {
       dispatch(addItem({ itemName: props.itemName, qty: 1 }));
     } else {
@@ -33,8 +28,12 @@ export default function MenuCard(props) {
     }
   }
 
-  function removeOne() {
-    dispatch(minusOne({ itemName: props.itemName }));
+  function removeOne(event) {
+    if (qty === 1) {
+      dispatch(removeItem({ itemName: props.itemName }));
+    } else {
+      dispatch(minusOne({ itemName: props.itemName }));
+    }
   }
 
   // TODO need to figure out storing images

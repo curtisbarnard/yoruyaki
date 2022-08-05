@@ -39,7 +39,7 @@ export const orderSlice = createSlice({
     },
     removeItem: (state, action) => {
       state.order = state.order.filter(
-        (item) => item.itemName !== action.payload
+        (item) => item.itemName !== action.payload.itemName
       );
     },
     plusOne: (state, action) => {
