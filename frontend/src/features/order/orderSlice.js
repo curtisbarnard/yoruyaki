@@ -42,7 +42,30 @@ export const orderSlice = createSlice({
         (item) => item.itemName !== action.payload
       );
     },
-    addOne,
+    plusOne: (state, action) => {
+      state.order = state.order.map((item) => {
+        if (item.itemName === action.payload.itemName) {
+          const newQty = item.qty + 1;
+          return {
+            itemName: item.itemName,
+            qty: newQty,
+          };
+        }
+        return item;
+      });
+    },
+    minusOne: (state, action) => {
+      state.order = state.order.map((item) => {
+        if (item.itemName === action.payload.itemName) {
+          const newQty = item.qty - 1;
+          return {
+            itemName: item.itemName,
+            qty: newQty,
+          };
+        }
+        return item;
+      });
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -62,5 +85,6 @@ export const orderSlice = createSlice({
   },
 });
 
-export const { reset, addItem, removeItem } = orderSlice.actions;
+export const { reset, addItem, removeItem, plusOne, minusOne } =
+  orderSlice.actions;
 export default orderSlice.reducer;

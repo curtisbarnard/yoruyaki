@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { createOrder, addItem, removeItem } from '../features/order/orderSlice';
+import {
+  createOrder,
+  addItem,
+  removeItem,
+  plusOne,
+  minusOne,
+} from '../features/order/orderSlice';
 
 export default function MenuCard(props) {
   // Set redux variables
@@ -12,20 +18,24 @@ export default function MenuCard(props) {
     (state) => state.order
   );
 
-  // State so user can set qty of each item
-  const [qty, setQty] = useState(0);
-
-  function addToOrder() {
-    dispatch(addItem({ itemName: props.itemName, qty: 1 }));
-  }
+  const qty = order.find((item) => item.itemName === props.itemName)?.qty;
 
   function removeFromOrder() {
     dispatch(removeItem(props.itemName));
   }
 
-  function addOne() {}
+  function addOne(event) {
+    console.log(event.target);
+    if (event.target.innerText === '+') {
+      dispatch(addItem({ itemName: props.itemName, qty: 1 }));
+    } else {
+      dispatch(plusOne({ itemName: props.itemName }));
+    }
+  }
 
-  function minusOne() {}
+  function removeOne() {
+    dispatch(minusOne({ itemName: props.itemName }));
+  }
 
   // TODO need to figure out storing images
   return (
@@ -46,7 +56,7 @@ export default function MenuCard(props) {
       {/* Only show plus bubble when stock is greater than 0 */}
       {props.stock > 0 && (
         <button
-          onClick={plusClick}
+          onClick={addOne}
           className={
             'flex shrink-0 justify-center items-center h-12 w-12 text-2xl bg-white rounded-full shadow-sm'
           }
@@ -57,7 +67,7 @@ export default function MenuCard(props) {
       {/* Only show minus bubble when the QTY is greater than 0 */}
       {qty > 0 && (
         <button
-          onClick={minusClick}
+          onClick={removeOne}
           className='absolute right-14 -bottom-3 flex justify-center items-center h-12 w-12 text-4xl bg-yellow-200 rounded-full shadow-md'
         >
           -
