@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import {
-  createOrder,
   addItem,
   removeItem,
   plusOne,
@@ -14,9 +13,7 @@ export default function MenuCard(props) {
   const dispatch = useDispatch();
 
   // Getting state from redux store for order contents
-  const { order, isError, isLoading, message } = useSelector(
-    (state) => state.order
-  );
+  const { order } = useSelector((state) => state.order);
 
   const qty = order.find((item) => item.itemName === props.itemName)?.qty;
 
