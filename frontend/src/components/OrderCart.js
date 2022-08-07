@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createOrder, reset } from '../features/order/orderSlice';
@@ -14,7 +14,9 @@ export default function OrderCart() {
   const [viewCart, setViewCart] = useState(false);
 
   // Getting state from redux store for order contents
-  const { order, isSuccess } = useSelector((state) => state.order);
+  const { order, isSuccess, isError, message } = useSelector(
+    (state) => state.order
+  );
 
   // Array of order items that will be displayed
   const orderList = order.map((item) => {
@@ -26,6 +28,16 @@ export default function OrderCart() {
     );
   });
 
+  useEffect(() => {
+    if (isError) {
+      console.log(message);
+    }
+    if (isSuccess) {
+      navigate('/customerorder');
+      dispatch(reset());
+    }
+  }, [isError, isSuccess]);
+
   // Handle shopping cart button clicks
   function toggleCart() {
     setViewCart((state) => !state);
@@ -36,14 +48,10 @@ export default function OrderCart() {
     const orderContents = {
       customerId: JSON.parse(localStorage.getItem('customer'))._id,
       orderItems: order,
-      orderStatus: 'Submitted',
+      orderStatus: 'open',
       totalPrice: 49.99,
     };
     dispatch(createOrder(orderContents));
-    if (isSuccess) {
-      navigate('/admin');
-      dispatch(reset());
-    }
   }
 
   // JSX to be rendered
