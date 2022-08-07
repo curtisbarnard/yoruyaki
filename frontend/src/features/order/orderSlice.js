@@ -3,6 +3,7 @@ import orderService from './orderService';
 
 const initialState = {
   order: [],
+  openOrders: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -15,6 +16,25 @@ export const createOrder = createAsyncThunk(
   async (orderData, thunkAPI) => {
     try {
       return await orderService.createOrder(orderData);
+    } catch (error) {
+      // Checking in multiple places for error
+      const message =
+        (error.response &&
+          error.response.date &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Get customers open orders (GET)
+export const getOpenOrders = createAsyncThunk(
+  'orders/open/get',
+  async (customerID, thunkAPI) => {
+    try {
+      return await orderService.getOpenOrders(customerID);
     } catch (error) {
       // Checking in multiple places for error
       const message =
@@ -78,6 +98,19 @@ export const orderSlice = createSlice({
         state.order = [];
       })
       .addCase(createOrder.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getOpenOrders.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getOpenOrders.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.openOrders = action.payload;
+      })
+      .addCase(getOpenOrders.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
