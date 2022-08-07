@@ -1,14 +1,20 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { createOrder, reset } from '../features/order/orderSlice';
 import shoppingCart from '../images/shopping-cart.svg';
-import SubmitButton from './SubmitButton';
+import ClickButton from './ClickButton';
 
 export default function OrderCart() {
+  // Setup REDUX variables
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   // State for showing the shopping cart
   const [viewCart, setViewCart] = useState(false);
 
   // Getting state from redux store for order contents
-  const { order } = useSelector((state) => state.order);
+  const { order, isSuccess } = useSelector((state) => state.order);
 
   // Array of order items that will be displayed
   const orderList = order.map((item) => {
@@ -23,6 +29,21 @@ export default function OrderCart() {
   // Handle shopping cart button clicks
   function toggleCart() {
     setViewCart((state) => !state);
+  }
+
+  function submitOrder(event) {
+    event.preventDefault();
+    const orderContents = {
+      customerId: JSON.parse(localStorage.getItem('customer'))._id,
+      orderItems: order,
+      orderStatus: 'Submitted',
+      totalPrice: 49.99,
+    };
+    dispatch(createOrder(orderContents));
+    if (isSuccess) {
+      navigate('/admin');
+      dispatch(reset());
+    }
   }
 
   // JSX to be rendered
@@ -45,7 +66,11 @@ export default function OrderCart() {
             {orderList}
           </ul>
         )}
-        <SubmitButton className='self-end' title='Submit' />
+        <ClickButton
+          handleClick={submitOrder}
+          className='self-end'
+          title='Submit'
+        />
       </div>
     </div>
   );
