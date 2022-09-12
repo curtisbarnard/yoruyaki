@@ -38,6 +38,19 @@ export const getOpenOrders = createAsyncThunk('orders/open/get', async (customer
   }
 });
 
+export const getAllOrders = createAsyncThunk('orders/get', async (thunkAPI) => {
+  try {
+    return await orderService.getAllOrders();
+  } catch (error) {
+    // Checking in multiple places for error
+    const message =
+      (error.response && error.response.date && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    return thunkAPI.rejectWithValue(message);
+  }
+});
+
 // Order Slice
 export const orderSlice = createSlice({
   name: 'orders',
@@ -104,6 +117,19 @@ export const orderSlice = createSlice({
         state.openOrders = action.payload;
       })
       .addCase(getOpenOrders.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getAllOrders.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getAllOrders.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.openOrders = action.payload;
+      })
+      .addCase(getAllOrders.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
