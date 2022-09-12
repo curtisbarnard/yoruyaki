@@ -127,7 +127,11 @@ export const orderSlice = createSlice({
       .addCase(getAllOrders.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.openOrders = action.payload;
+
+        const openOrders = action.payload.filter(
+          (order) => order.orderStatus === 'open' || order.orderStatus === 'in progress'
+        );
+        state.openOrders = openOrders;
       })
       .addCase(getAllOrders.rejected, (state, action) => {
         state.isLoading = false;
