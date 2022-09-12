@@ -12,7 +12,7 @@ const {
 router.route('/').get(getAllOrders).post(createOrder);
 router.route('/:customerId').get(getCustomerOrders);
 router.route('/open/:customerId').get(getOpenCustomerOrders);
-router.route('/completed/:orderId').get(markOrderComplete);
+router.route('/completed/:orderId').put(markOrderComplete);
 router.route('/:id').delete(deleteOrder);
 
 module.exports = router;
