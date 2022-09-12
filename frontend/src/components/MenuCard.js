@@ -1,13 +1,38 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import {
+  addItem,
+  removeItem,
+  plusOne,
+  minusOne,
+} from '../features/order/orderSlice';
+
 export default function MenuCard(props) {
-  // State so user can set qty of each item
-  const [qty, setQty] = useState(0);
-  function plusClick() {
-    setQty((prevQty) => prevQty + 1);
+  // Set redux variables
+  const dispatch = useDispatch();
+
+  // Getting state from redux store for order contents
+  const { order } = useSelector((state) => state.order);
+
+  const qty = order.find((item) => item.itemName === props.itemName)?.qty;
+
+  function addOne(event) {
+    if (event.target.innerText === '+') {
+      dispatch(addItem({ itemName: props.itemName, qty: 1 }));
+    } else {
+      dispatch(plusOne({ itemName: props.itemName }));
+    }
   }
-  function minusClick() {
-    setQty((prevQty) => prevQty - 1);
+
+  function removeOne(event) {
+    if (qty === 1) {
+      dispatch(removeItem({ itemName: props.itemName }));
+    } else {
+      dispatch(minusOne({ itemName: props.itemName }));
+    }
   }
+
   // TODO need to figure out storing images
   return (
     <li className='mx-2 my-4 p-2 shadow-md bg-indigo-50 rounded-md flex items-center h-24 relative'>
@@ -27,7 +52,7 @@ export default function MenuCard(props) {
       {/* Only show plus bubble when stock is greater than 0 */}
       {props.stock > 0 && (
         <button
-          onClick={plusClick}
+          onClick={addOne}
           className={
             'flex shrink-0 justify-center items-center h-12 w-12 text-2xl bg-white rounded-full shadow-sm'
           }
@@ -38,7 +63,7 @@ export default function MenuCard(props) {
       {/* Only show minus bubble when the QTY is greater than 0 */}
       {qty > 0 && (
         <button
-          onClick={minusClick}
+          onClick={removeOne}
           className='absolute right-14 -bottom-3 flex justify-center items-center h-12 w-12 text-4xl bg-yellow-200 rounded-full shadow-md'
         >
           -

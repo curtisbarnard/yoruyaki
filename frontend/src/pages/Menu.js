@@ -6,6 +6,7 @@ import { logout, reset } from '../features/auth/authSlice';
 
 import ToggleButtons from '../components/ToggleButtons';
 import ItemsList from '../components/ItemsList';
+import OrderCart from '../components/OrderCart';
 
 export default function Menu() {
   // Setting redux variables
@@ -50,6 +51,7 @@ export default function Menu() {
       </header>
 
       <ItemsList currentSection={menuSection} />
+      <OrderCart />
     </>
   );
 }
