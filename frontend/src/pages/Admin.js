@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ToggleButtons from '../components/ToggleButtons';
 import InventorySection from '../components/InventorySection';
+import CurrentOrdersSection from '../components/CurrentOrdersSection';
 import ClickButton from '../components/ClickButton';
 
 export default function Admin() {
@@ -43,10 +44,12 @@ export default function Admin() {
             <span className='col-span-6'>Description</span>
             <span className='col-span-2'>Category</span>
           </div>
-          <InventorySection
-            addItemForm={addItemForm}
-            setAddItemForm={setAddItemForm}
-          />
+          <InventorySection addItemForm={addItemForm} setAddItemForm={setAddItemForm} />
+        </section>
+      )}
+      {currentSection === 'current orders' && (
+        <section>
+          <CurrentOrdersSection />
         </section>
       )}
     </>
