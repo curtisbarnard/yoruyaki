@@ -20,10 +20,17 @@ const getOpenOrders = async (customerID) => {
   return response.data;
 };
 
+// Mark order Complete
+const markOrderComplete = async (orderID) => {
+  const response = await axios.put(API_URL + 'completed/' + orderID);
+  return response.data;
+};
+
 const orderService = {
   createOrder,
   getAllOrders,
   getOpenOrders,
+  markOrderComplete,
 };
 
 export default orderService;

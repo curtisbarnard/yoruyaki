@@ -38,6 +38,7 @@ export const getOpenOrders = createAsyncThunk('orders/open/get', async (customer
   }
 });
 
+// Get all orders and filter for those not complete (GET)
 export const getAllOrders = createAsyncThunk('orders/get', async (thunkAPI) => {
   try {
     return await orderService.getAllOrders();
@@ -50,6 +51,23 @@ export const getAllOrders = createAsyncThunk('orders/get', async (thunkAPI) => {
     return thunkAPI.rejectWithValue(message);
   }
 });
+
+// Mark order complete (PUT)
+export const markOrderComplete = createAsyncThunk(
+  'orders/completed/put',
+  async (orderId, thunkAPI) => {
+    try {
+      return await orderService.markOrderComplete(orderId);
+    } catch (error) {
+      // Checking in multiple places for error
+      const message =
+        (error.response && error.response.date && error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 // Order Slice
 export const orderSlice = createSlice({
@@ -134,6 +152,19 @@ export const orderSlice = createSlice({
         state.openOrders = openOrders;
       })
       .addCase(getAllOrders.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(markOrderComplete.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(markOrderComplete.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.openOrders = state.openOrders.filter((order) => order._id !== action.payload.id);
+      })
+      .addCase(markOrderComplete.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
