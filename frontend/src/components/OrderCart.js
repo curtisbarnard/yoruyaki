@@ -31,10 +31,10 @@ export default function OrderCart() {
       console.log(message);
     }
     if (isSuccess) {
-      dispatch(reset());
       navigate('/customerorder');
+      dispatch(reset());
     }
-  }, [isError, openOrders]);
+  }, [isError, isSuccess]);
 
   // Handle shopping cart button clicks
   function toggleCart() {
