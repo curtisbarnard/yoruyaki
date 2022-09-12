@@ -14,10 +14,14 @@ export default function CurrentOrdersSection() {
     dispatch(getAllOrders());
   }, []);
 
+  //TODO - Get customer name for order
+  //TODO - Add total price to card
+  //TODO - add button to mark order complete
+
   const ordersArray = openOrders.map((order) => {
     const orderItems = order.orderItems.map((item) => {
       return (
-        <li className='flex justify-between' key={item.itemName}>
+        <li className='flex justify-between text-lg py-1 px-4' key={item.itemName}>
           <span>{item.itemName}</span>
           <span>{item.qty}</span>
         </li>
@@ -25,12 +29,13 @@ export default function CurrentOrdersSection() {
     });
     return (
       <div
-        className='grid grid-cols-2 items-baseline bg-slate-300 rounded-md shadow-md p-4'
+        className='grid grid-cols-2 content-start items-baseline bg-indigo-900
+         rounded-lg shadow-md p-4'
         key={order._id}
       >
-        <h3 className='text-2xl'>#{order._id.slice(-8)}</h3>
-        <span className=''>Bobby Joe</span>
-        <ul className='col-span-2 pr-6'>{orderItems}</ul>
+        <h3 className='text-2xl text-yellow-300 font-semibold'>#{order._id.slice(-8)}</h3>
+        <span className='text-yellow-300'>Bobby Joe</span>
+        <ul className='col-span-2 p-2 bg-indigo-50 rounded-md mt-2'>{orderItems}</ul>
       </div>
     );
   });
