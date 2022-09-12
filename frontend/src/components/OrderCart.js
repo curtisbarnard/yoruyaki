@@ -14,9 +14,7 @@ export default function OrderCart() {
   const [viewCart, setViewCart] = useState(false);
 
   // Getting state from redux store for order contents
-  const { order, isSuccess, isError, message } = useSelector(
-    (state) => state.order
-  );
+  const { order, openOrders, isSuccess, isError, message } = useSelector((state) => state.order);
 
   // Array of order items that will be displayed
   const orderList = order.map((item) => {
@@ -33,10 +31,10 @@ export default function OrderCart() {
       console.log(message);
     }
     if (isSuccess) {
-      navigate('/customerorder');
       dispatch(reset());
+      navigate('/customerorder');
     }
-  }, [isError, isSuccess]);
+  }, [isError, openOrders]);
 
   // Handle shopping cart button clicks
   function toggleCart() {
@@ -70,15 +68,9 @@ export default function OrderCart() {
       <div className='bg-white rounded-xl w-full px-3 py-2 flex flex-col justify-between'>
         <h2 className='text-2xl'>Order Summary</h2>
         {order.length > 0 && (
-          <ul className='w-full bg-indigo-50 rounded-lg py-2 px-6 my-4'>
-            {orderList}
-          </ul>
+          <ul className='w-full bg-indigo-50 rounded-lg py-2 px-6 my-4'>{orderList}</ul>
         )}
-        <ClickButton
-          handleClick={submitOrder}
-          className='self-end'
-          title='Submit'
-        />
+        <ClickButton handleClick={submitOrder} className='self-end' title='Submit' />
       </div>
     </div>
   );

@@ -11,56 +11,49 @@ const initialState = {
 };
 
 // Submit a new order (Create/POST)
-export const createOrder = createAsyncThunk(
-  'orders/create',
-  async (orderData, thunkAPI) => {
-    try {
-      return await orderService.createOrder(orderData);
-    } catch (error) {
-      // Checking in multiple places for error
-      const message =
-        (error.response &&
-          error.response.date &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(message);
-    }
+export const createOrder = createAsyncThunk('orders/create', async (orderData, thunkAPI) => {
+  try {
+    return await orderService.createOrder(orderData);
+  } catch (error) {
+    // Checking in multiple places for error
+    const message =
+      (error.response && error.response.date && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    return thunkAPI.rejectWithValue(message);
   }
-);
+});
 
 // Get customers open orders (GET)
-export const getOpenOrders = createAsyncThunk(
-  'orders/open/get',
-  async (customerID, thunkAPI) => {
-    try {
-      return await orderService.getOpenOrders(customerID);
-    } catch (error) {
-      // Checking in multiple places for error
-      const message =
-        (error.response &&
-          error.response.date &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(message);
-    }
+export const getOpenOrders = createAsyncThunk('orders/open/get', async (customerID, thunkAPI) => {
+  try {
+    return await orderService.getOpenOrders(customerID);
+  } catch (error) {
+    // Checking in multiple places for error
+    const message =
+      (error.response && error.response.date && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    return thunkAPI.rejectWithValue(message);
   }
-);
+});
 
 // Order Slice
 export const orderSlice = createSlice({
   name: 'orders',
   initialState,
   reducers: {
-    reset: (state) => initialState,
+    reset: (state) => {
+      state.isError = false;
+      state.isSuccess = false;
+      state.isLoading = false;
+      state.message = '';
+    },
     addItem: (state, action) => {
       state.order.push(action.payload);
     },
     removeItem: (state, action) => {
-      state.order = state.order.filter(
-        (item) => item.itemName !== action.payload.itemName
-      );
+      state.order = state.order.filter((item) => item.itemName !== action.payload.itemName);
     },
     plusOne: (state, action) => {
       state.order = state.order.map((item) => {
@@ -118,6 +111,5 @@ export const orderSlice = createSlice({
   },
 });
 
-export const { reset, addItem, removeItem, plusOne, minusOne } =
-  orderSlice.actions;
+export const { reset, addItem, removeItem, plusOne, minusOne } = orderSlice.actions;
 export default orderSlice.reducer;

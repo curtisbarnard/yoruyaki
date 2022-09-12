@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getOpenOrders } from '../features/order/orderSlice';
+import { getOpenOrders, reset } from '../features/order/orderSlice';
 import ClickButton from '../components/ClickButton';
 
 export default function CustomerOrder() {
@@ -10,9 +10,7 @@ export default function CustomerOrder() {
   const navigate = useNavigate();
 
   // get state from redux store for openOrders
-  const { openOrders, isSuccess, isError, message } = useSelector(
-    (state) => state.order
-  );
+  const { openOrders, isSuccess, isError, message } = useSelector((state) => state.order);
 
   useEffect(() => {
     const customerID = JSON.parse(localStorage.getItem('customer'))._id;
@@ -23,12 +21,14 @@ export default function CustomerOrder() {
     if (isError) {
       console.log(message);
     }
-  }, [isError]);
+    if (isSuccess) {
+      dispatch(reset());
+    }
+  }, [isError, isSuccess]);
 
   // Handle button clicks
   function navOrderMore(event) {
     event.preventDefault();
-    // TODO Need to figure out how to navigate away from page, below not working.
     navigate('/menu');
   }
 
@@ -59,12 +59,8 @@ export default function CustomerOrder() {
       </header>
       <section className='px-6 pb-8'>
         <h2 className='text-2xl'>Order #{order ? order._id.slice(-8) : ''}</h2>
-        <ul className='w-full bg-indigo-50 rounded-lg py-2 px-6 my-6'>
-          {orderItemElements}
-        </ul>
-        <p className='text-xl text-center'>
-          Thanks for coming to this pop-up event!
-        </p>
+        <ul className='w-full bg-indigo-50 rounded-lg py-2 px-6 my-6'>{orderItemElements}</ul>
+        <p className='text-xl text-center'>Thanks for coming to this pop-up event!</p>
       </section>
       <section className='px-6 pb-8'>
         <h2 className='text-2xl mb-4'>Order Progress</h2>
