@@ -55,7 +55,7 @@ export default function CustomerOrder() {
     <>
       <header className='grid grid-cols-3 p-8'>
         <h1 className=' text-5xl col-span-full font-semibold'>Yoruyaki</h1>
-        <span className='text-4xl col-start-2'>夜焼き</span>
+        <span className='text-4xl col-start-2 col-end-4'>夜焼き</span>
       </header>
       <section className='px-6 pb-8'>
         <h2 className='text-2xl'>Order #{order ? order._id.slice(-8) : ''}</h2>
