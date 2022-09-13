@@ -43,8 +43,10 @@ export default function OrderCart() {
 
   function submitOrder(event) {
     event.preventDefault();
+    const customer = JSON.parse(localStorage.getItem('customer'));
     const orderContents = {
-      customerId: JSON.parse(localStorage.getItem('customer'))._id,
+      customerId: customer._id,
+      customerName: customer.name,
       orderItems: order,
       orderStatus: 'open',
       totalPrice: 49.99,

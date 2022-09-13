@@ -28,6 +28,7 @@ const createOrder = asyncHandler(async (req, res) => {
 
   const order = await Order.create({
     customerId: req.body.customerId,
+    customerName: req.body.customerName,
     orderItems: req.body.orderItems,
     orderStatus: req.body.orderStatus,
     totalPrice: req.body.totalPrice,

@@ -10,11 +10,9 @@ export default function CurrentOrdersSection() {
   // get state from redux store for openOrders
   const { openOrders, isSuccess, isError, message } = useSelector((state) => state.order);
 
+  // Get open orders on page load
   useEffect(() => {
     dispatch(getAllOrders());
-    if (isSuccess) {
-      dispatch(reset());
-    }
   }, []);
 
   // Cleanup
@@ -24,13 +22,13 @@ export default function CurrentOrdersSection() {
     }
   }, [isSuccess]);
 
-  //TODO - Get customer name for order
-
+  // Async function to make an order complete
   function markComplete(event) {
     event.preventDefault();
     dispatch(markOrderComplete(event.target.parentElement.id));
   }
 
+  // Creating the array of order cards
   const ordersArray = openOrders.map((order) => {
     const orderItems = order.orderItems.map((item) => {
       return (
@@ -48,7 +46,7 @@ export default function CurrentOrdersSection() {
         id={order._id}
       >
         <h3 className='text-2xl text-yellow-300 font-semibold'>#{order._id.slice(-8)}</h3>
-        <span className='text-yellow-300'>Bobby Joe</span>
+        <span className='text-yellow-300'>{order.customerName}</span>
         <ul className='col-span-2 p-2 bg-indigo-50 rounded-md mt-2'>{orderItems}</ul>
         <ClickButton className='mt-4' title='Done' handleClick={markComplete} />
         <span className='text-yellow-300 text-xl self-end justify-self-end'>
@@ -57,6 +55,8 @@ export default function CurrentOrdersSection() {
       </div>
     );
   });
+
+  // JSX to be rendered
   return (
     <>
       <div className='grid grid-cols-4 gap-4 m-6'>{ordersArray}</div>
