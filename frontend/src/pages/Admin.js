@@ -22,10 +22,16 @@ export default function Admin() {
   // JSX to be rendered
   return (
     <>
-      <header className='bg-indigo-900 flex justify-between p-4 items-center'>
+      <header className='bg-indigo-900 grid grid-cols-3 px-6 h-16 items-center'>
         <h1 className='text-yellow-300 text-4xl font-semibold'>Yoruyaki</h1>
-        <h2 className='text-yellow-300 text-2xl font-bold'>Admin Panel</h2>
-        <ClickButton handleClick={toggleAddItemForm} title='Add Item' />
+        <h2 className='text-yellow-300 text-2xl font-bold  justify-self-center'>Admin Panel</h2>
+        {currentSection === 'inventory' && (
+          <ClickButton
+            className='justify-self-end'
+            handleClick={toggleAddItemForm}
+            title='Add Item'
+          />
+        )}
       </header>
       <div className='mx-auto max-w-md py-4'>
         <ToggleButtons
