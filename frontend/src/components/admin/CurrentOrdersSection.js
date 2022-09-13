@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { markOrderComplete, reset } from '../../features/order/orderSlice';
+import { getAllOrders, markOrderComplete, reset } from '../../features/order/orderSlice';
 import OrderCard from './OrderCard';
 
 export default function CurrentOrdersSection() {
@@ -8,9 +8,12 @@ export default function CurrentOrdersSection() {
   const dispatch = useDispatch();
 
   // get state from redux store for openOrders
-  const { openOrders, completedOrders, isSuccess, isError, message } = useSelector(
-    (state) => state.order
-  );
+  const { openOrders, isSuccess, isError, message } = useSelector((state) => state.order);
+
+  // Get open orders on page load
+  useEffect(() => {
+    dispatch(getAllOrders());
+  }, []);
 
   // Cleanup
   useEffect(() => {

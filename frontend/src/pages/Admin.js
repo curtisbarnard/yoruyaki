@@ -14,11 +14,6 @@ export default function Admin() {
 
   const { isSuccess, isError, message } = useSelector((state) => state.order);
 
-  // Get open orders on page load
-  useEffect(() => {
-    dispatch(getAllOrders());
-  }, []);
-
   // Cleanup
   useEffect(() => {
     if (isError) {

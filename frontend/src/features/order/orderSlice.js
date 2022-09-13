@@ -58,7 +58,6 @@ export const markOrderComplete = createAsyncThunk(
   'orders/completed/put',
   async (orderId, thunkAPI) => {
     try {
-      console.log('Thunk running');
       return await orderService.markOrderComplete(orderId);
     } catch (error) {
       // Checking in multiple places for error
