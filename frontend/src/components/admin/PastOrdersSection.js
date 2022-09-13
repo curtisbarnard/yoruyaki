@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getAllOrders, markOrderComplete, reset } from '../../features/order/orderSlice';
 import OrderCard from './OrderCard';
 
-export default function CurrentOrdersSection() {
+export default function PastOrdersSection() {
   // setup redux variables
   const dispatch = useDispatch();
 

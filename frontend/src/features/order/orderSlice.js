@@ -4,6 +4,7 @@ import orderService from './orderService';
 const initialState = {
   order: [],
   openOrders: [],
+  completedOrders: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -38,7 +39,7 @@ export const getOpenOrders = createAsyncThunk('orders/open/get', async (customer
   }
 });
 
-// Get all orders and filter for those not complete (GET)
+// Get all orders (GET)
 export const getAllOrders = createAsyncThunk('orders/get', async (thunkAPI) => {
   try {
     return await orderService.getAllOrders();
@@ -146,11 +147,14 @@ export const orderSlice = createSlice({
       .addCase(getAllOrders.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-
-        const openOrders = action.payload.filter(
+        // Set open orders by filtering all returned orders. Then set completed orders by filtering all returned orders. Probably not efficient to do this client side.
+        const open = action.payload.filter(
           (order) => order.orderStatus === 'open' || order.orderStatus === 'in progress'
         );
-        state.openOrders = openOrders;
+        state.openOrders = open;
+
+        const completed = action.payload.filter((order) => order.orderStatus === 'completed');
+        state.completedOrders = completed;
       })
       .addCase(getAllOrders.rejected, (state, action) => {
         state.isLoading = false;
