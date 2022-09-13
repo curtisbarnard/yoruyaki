@@ -71,13 +71,11 @@ const getOpenCustomerOrders = asyncHandler(async (req, res) => {
 // PUT /api/orders/completed/:orderId
 // Public
 const markOrderComplete = asyncHandler(async (req, res) => {
-  const order = await Order.find({
-    orderId: req.params.orderId,
-  });
+  const order = await Order.findById(req.params.orderId);
 
   if (!order) {
     res.status(400);
-    throw new Error('No orders not found');
+    throw new Error('Order not found');
   }
 
   order.orderStatus = 'completed';

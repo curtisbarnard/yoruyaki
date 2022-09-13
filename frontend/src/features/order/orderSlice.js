@@ -57,6 +57,7 @@ export const markOrderComplete = createAsyncThunk(
   'orders/completed/put',
   async (orderId, thunkAPI) => {
     try {
+      console.log('Thunk running');
       return await orderService.markOrderComplete(orderId);
     } catch (error) {
       // Checking in multiple places for error
@@ -162,7 +163,7 @@ export const orderSlice = createSlice({
       .addCase(markOrderComplete.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.openOrders = state.openOrders.filter((order) => order._id !== action.payload.id);
+        state.openOrders = state.openOrders.filter((order) => order._id !== action.payload._id);
       })
       .addCase(markOrderComplete.rejected, (state, action) => {
         state.isLoading = false;

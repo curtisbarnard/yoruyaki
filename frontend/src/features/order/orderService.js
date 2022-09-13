@@ -23,6 +23,7 @@ const getOpenOrders = async (customerID) => {
 // Mark order Complete
 const markOrderComplete = async (orderID) => {
   const response = await axios.put(API_URL + 'completed/' + orderID);
+  console.log(response.data);
   return response.data;
 };
 
