@@ -15,7 +15,7 @@ export default function OrderCard(props) {
        rounded-lg shadow-md p-4'
       id={props.id}
     >
-      <h3 className='text-2xl text-yellow-300 font-semibold'>#{props.id.slice(-8)}</h3>
+      <h3 className='text-2xl text-yellow-300 font-semibold'>#{props.id.slice(-5)}</h3>
       <span className='text-yellow-300'>{props.customerName}</span>
       <ul className='col-span-2 p-2 bg-indigo-50 rounded-md mt-2'>{orderItems}</ul>
       {/* Conditional below allows card to be used on the past orders page */}
