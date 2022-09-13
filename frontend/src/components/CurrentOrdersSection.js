@@ -25,8 +25,6 @@ export default function CurrentOrdersSection() {
   }, [isSuccess]);
 
   //TODO - Get customer name for order
-  //TODO - Add total price to card
-  //TODO - add button to mark order complete
 
   function markComplete(event) {
     event.preventDefault();
@@ -53,6 +51,9 @@ export default function CurrentOrdersSection() {
         <span className='text-yellow-300'>Bobby Joe</span>
         <ul className='col-span-2 p-2 bg-indigo-50 rounded-md mt-2'>{orderItems}</ul>
         <ClickButton className='mt-4' title='Done' handleClick={markComplete} />
+        <span className='text-yellow-300 text-xl self-end justify-self-end'>
+          ${order.totalPrice}
+        </span>
       </div>
     );
   });
