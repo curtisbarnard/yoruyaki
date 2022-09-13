@@ -1,10 +1,34 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getAllOrders, reset } from '../features/order/orderSlice';
 import ToggleButtons from '../components/ToggleButtons';
 import InventorySection from '../components/admin/InventorySection';
 import CurrentOrdersSection from '../components/admin/CurrentOrdersSection';
+import PastOrdersSection from '../components/admin/PastOrdersSection';
 import ClickButton from '../components/ClickButton';
 
 export default function Admin() {
+  // Getting order data from DB and putting into Redux state
+  // setup redux variables
+  const dispatch = useDispatch();
+
+  const { isSuccess, isError, message } = useSelector((state) => state.order);
+
+  // Get open orders on page load
+  useEffect(() => {
+    dispatch(getAllOrders());
+  }, []);
+
+  // Cleanup
+  useEffect(() => {
+    if (isError) {
+      console.error(message);
+    }
+    if (isSuccess) {
+      dispatch(reset());
+    }
+  }, [isSuccess, isError]);
+
   const sections = ['Inventory', 'Current Orders', 'Past Orders'];
   // Initialize component state
   const [addItemForm, setAddItemForm] = useState(false);
@@ -56,6 +80,11 @@ export default function Admin() {
       {currentSection === 'current orders' && (
         <section>
           <CurrentOrdersSection />
+        </section>
+      )}
+      {currentSection === 'past orders' && (
+        <section>
+          <PastOrdersSection />
         </section>
       )}
     </>

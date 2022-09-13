@@ -13,7 +13,6 @@ export default function OrderCard(props) {
     <div
       className='grid grid-cols-2 content-start items-baseline bg-indigo-900
        rounded-lg shadow-md p-4'
-      key={props.id}
       id={props.id}
     >
       <h3 className='text-2xl text-yellow-300 font-semibold'>#{props.id.slice(-8)}</h3>
@@ -23,7 +22,9 @@ export default function OrderCard(props) {
       {props.orderStatus !== 'completed' && (
         <ClickButton className='mt-4' title='Done' handleClick={props.handleClick} />
       )}
-      <span className='text-yellow-300 text-xl self-end justify-self-end'>${props.totalPrice}</span>
+      <span className='text-yellow-300 text-xl col-start-2 self-end justify-self-end mt-4'>
+        ${props.totalPrice}
+      </span>
     </div>
   );
 }

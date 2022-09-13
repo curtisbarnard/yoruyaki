@@ -1,36 +1,11 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getAllOrders, markOrderComplete, reset } from '../../features/order/orderSlice';
+import { useSelector } from 'react-redux';
 import OrderCard from './OrderCard';
 
 export default function PastOrdersSection() {
-  // setup redux variables
-  const dispatch = useDispatch();
-
   // get state from redux store for openOrders
-  const { openOrders, isSuccess, isError, message } = useSelector((state) => state.order);
-
-  // Get open orders on page load
-  useEffect(() => {
-    dispatch(getAllOrders());
-  }, []);
-
-  // Cleanup
-  useEffect(() => {
-    if (isSuccess) {
-      dispatch(reset());
-    }
-  }, [isSuccess]);
-
-  // Async function to make an order complete
-  function markComplete(event) {
-    event.preventDefault();
-    dispatch(markOrderComplete(event.target.parentElement.id));
-  }
-
+  const { completedOrders } = useSelector((state) => state.order);
   // Creating the array of order cards
-  const ordersArray = openOrders.map((order) => {
-    console.log(order);
+  const ordersArray = completedOrders.map((order) => {
     return (
       <OrderCard
         id={order._id}
@@ -38,7 +13,7 @@ export default function PastOrdersSection() {
         totalPrice={order.totalPrice}
         orderItems={order.orderItems}
         orderStatus={order.orderStatus}
-        handleClick={markComplete}
+        key={order._id}
       />
     );
   });
