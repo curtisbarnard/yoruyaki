@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const orderSchema = mongoose.Schema(
   {
     customerId: String,
+    customerName: String,
     orderItems: Array,
     orderStatus: String,
     totalPrice: Number,

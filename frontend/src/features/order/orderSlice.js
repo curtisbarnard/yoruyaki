@@ -4,6 +4,7 @@ import orderService from './orderService';
 const initialState = {
   order: [],
   openOrders: [],
+  completedOrders: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -37,6 +38,37 @@ export const getOpenOrders = createAsyncThunk('orders/open/get', async (customer
     return thunkAPI.rejectWithValue(message);
   }
 });
+
+// Get all orders (GET)
+export const getAllOrders = createAsyncThunk('orders/get', async (thunkAPI) => {
+  try {
+    return await orderService.getAllOrders();
+  } catch (error) {
+    // Checking in multiple places for error
+    const message =
+      (error.response && error.response.date && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    return thunkAPI.rejectWithValue(message);
+  }
+});
+
+// Mark order complete (PUT)
+export const markOrderComplete = createAsyncThunk(
+  'orders/completed/put',
+  async (orderId, thunkAPI) => {
+    try {
+      return await orderService.markOrderComplete(orderId);
+    } catch (error) {
+      // Checking in multiple places for error
+      const message =
+        (error.response && error.response.date && error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 // Order Slice
 export const orderSlice = createSlice({
@@ -104,6 +136,39 @@ export const orderSlice = createSlice({
         state.openOrders = action.payload;
       })
       .addCase(getOpenOrders.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getAllOrders.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getAllOrders.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        // Set open orders by filtering all returned orders. Then set completed orders by filtering all returned orders. Probably not efficient to do this client side.
+        const open = action.payload.filter(
+          (order) => order.orderStatus === 'open' || order.orderStatus === 'in progress'
+        );
+        state.openOrders = open;
+
+        const completed = action.payload.filter((order) => order.orderStatus === 'completed');
+        state.completedOrders = completed;
+      })
+      .addCase(getAllOrders.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(markOrderComplete.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(markOrderComplete.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.openOrders = state.openOrders.filter((order) => order._id !== action.payload._id);
+      })
+      .addCase(markOrderComplete.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

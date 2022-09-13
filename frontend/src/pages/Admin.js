@@ -1,9 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getAllOrders, reset } from '../features/order/orderSlice';
 import ToggleButtons from '../components/ToggleButtons';
-import InventorySection from '../components/InventorySection';
+import InventorySection from '../components/admin/InventorySection';
+import CurrentOrdersSection from '../components/admin/CurrentOrdersSection';
+import PastOrdersSection from '../components/admin/PastOrdersSection';
 import ClickButton from '../components/ClickButton';
 
 export default function Admin() {
+  // Getting order data from DB and putting into Redux state
+  // setup redux variables
+  const dispatch = useDispatch();
+
+  const { isSuccess, isError, message } = useSelector((state) => state.order);
+
+  // Cleanup
+  useEffect(() => {
+    if (isError) {
+      console.error(message);
+    }
+    if (isSuccess) {
+      dispatch(reset());
+    }
+  }, [isSuccess, isError]);
+
   const sections = ['Inventory', 'Current Orders', 'Past Orders'];
   // Initialize component state
   const [addItemForm, setAddItemForm] = useState(false);
@@ -21,10 +41,16 @@ export default function Admin() {
   // JSX to be rendered
   return (
     <>
-      <header className='bg-indigo-800 flex justify-between p-4 items-center'>
+      <header className='bg-indigo-900 grid grid-cols-3 px-6 h-16 items-center'>
         <h1 className='text-yellow-300 text-4xl font-semibold'>Yoruyaki</h1>
-        <h2 className='text-yellow-300 text-2xl font-bold'>Admin Panel</h2>
-        <ClickButton handleClick={toggleAddItemForm} title='Add Item' />
+        <h2 className='text-yellow-300 text-2xl font-bold  justify-self-center'>Admin Panel</h2>
+        {currentSection === 'inventory' && (
+          <ClickButton
+            className='justify-self-end'
+            handleClick={toggleAddItemForm}
+            title='Add Item'
+          />
+        )}
       </header>
       <div className='mx-auto max-w-md py-4'>
         <ToggleButtons
@@ -43,10 +69,17 @@ export default function Admin() {
             <span className='col-span-6'>Description</span>
             <span className='col-span-2'>Category</span>
           </div>
-          <InventorySection
-            addItemForm={addItemForm}
-            setAddItemForm={setAddItemForm}
-          />
+          <InventorySection addItemForm={addItemForm} setAddItemForm={setAddItemForm} />
+        </section>
+      )}
+      {currentSection === 'current orders' && (
+        <section>
+          <CurrentOrdersSection />
+        </section>
+      )}
+      {currentSection === 'past orders' && (
+        <section>
+          <PastOrdersSection />
         </section>
       )}
     </>

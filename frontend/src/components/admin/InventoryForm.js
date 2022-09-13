@@ -5,17 +5,15 @@ import {
   getInventory,
   inventorySlice,
   reset,
-} from '../features/inventory/inventorySlice';
-import Input from './Input';
-import Button from './SubmitButton';
-import Loading from './Loading';
+} from '../../features/inventory/inventorySlice';
+import Input from '../Input';
+import Button from '../SubmitButton';
+import Loading from '../Loading';
 
 export default function InventoryForm() {
   // Redux stuff
   const dispatch = useDispatch();
-  const { inventory, isLoading, isError, message } = useSelector(
-    (state) => state.inventory
-  );
+  const { inventory, isLoading, isError, message } = useSelector((state) => state.inventory);
 
   // Dealing with side effects
   useEffect(() => {

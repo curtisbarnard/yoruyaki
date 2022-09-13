@@ -28,6 +28,7 @@ const createOrder = asyncHandler(async (req, res) => {
 
   const order = await Order.create({
     customerId: req.body.customerId,
+    customerName: req.body.customerName,
     orderItems: req.body.orderItems,
     orderStatus: req.body.orderStatus,
     totalPrice: req.body.totalPrice,
@@ -67,6 +68,23 @@ const getOpenCustomerOrders = asyncHandler(async (req, res) => {
   res.status(200).json(orders);
 });
 
+// Mark order Complete
+// PUT /api/orders/completed/:orderId
+// Public
+const markOrderComplete = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.orderId);
+
+  if (!order) {
+    res.status(400);
+    throw new Error('Order not found');
+  }
+
+  order.orderStatus = 'completed';
+  await order.save();
+
+  res.status(200).json(order);
+});
+
 // Delete order
 // DELETE /api/orders/:id
 // Public
@@ -88,5 +106,6 @@ module.exports = {
   createOrder,
   getCustomerOrders,
   getOpenCustomerOrders,
+  markOrderComplete,
   deleteOrder,
 };

@@ -58,7 +58,7 @@ export default function CustomerOrder() {
         <span className='text-4xl col-start-2 col-end-4'>夜焼き</span>
       </header>
       <section className='px-6 pb-8'>
-        <h2 className='text-2xl'>Order #{order ? order._id.slice(-8) : ''}</h2>
+        <h2 className='text-2xl'>Order #{order ? order._id.slice(-5) : ''}</h2>
         <ul className='w-full bg-indigo-50 rounded-lg py-2 px-6 my-6'>{orderItemElements}</ul>
         <p className='text-xl text-center'>Thanks for coming to this pop-up event!</p>
       </section>
