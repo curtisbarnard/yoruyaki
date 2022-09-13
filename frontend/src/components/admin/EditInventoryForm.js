@@ -4,8 +4,8 @@ import {
   deleteInventoryItem,
   updateInventoryItem,
   createInventoryItem,
-} from '../features/inventory/inventorySlice';
-import DeleteModal from './deleteModal';
+} from '../../features/inventory/inventorySlice';
+import DeleteModal from '../deleteModal';
 
 export default function EditInventoryForm(props) {
   const dispatch = useDispatch();
@@ -42,9 +42,7 @@ export default function EditInventoryForm(props) {
     // }
 
     if (!props.addItemForm) {
-      const itemInGlobalState = inventory.find(
-        (element) => element._id === props._id
-      );
+      const itemInGlobalState = inventory.find((element) => element._id === props._id);
       if (
         itemInGlobalState[event.target.name] === event.target.value ||
         itemInGlobalState[event.target.name] === +event.target.value
@@ -98,21 +96,13 @@ export default function EditInventoryForm(props) {
   // JSX to be rendered
   return (
     <li>
-      {deleteModal && (
-        <DeleteModal cancelClick={showModalClick} confirmClick={deleteItem} />
-      )}
+      {deleteModal && <DeleteModal cancelClick={showModalClick} confirmClick={deleteItem} />}
       <form className='w-full grid grid-cols-12 px-10'>
         <div>
-          {!props.addItemForm && (
-            <button onClick={showModalClick}>Delete</button>
-          )}
+          {!props.addItemForm && <button onClick={showModalClick}>Delete</button>}
           <button onClick={cancelClick}>Cancel</button>
-          {wasEdited && !props.addItemForm && (
-            <button onClick={updateItem}>Update</button>
-          )}
-          {wasEdited && props.addItemForm && (
-            <button onClick={createItem}>Create</button>
-          )}
+          {wasEdited && !props.addItemForm && <button onClick={updateItem}>Update</button>}
+          {wasEdited && props.addItemForm && <button onClick={createItem}>Create</button>}
         </div>
         <input
           type='number'

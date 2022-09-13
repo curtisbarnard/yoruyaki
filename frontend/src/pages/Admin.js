@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ToggleButtons from '../components/ToggleButtons';
-import InventorySection from '../components/InventorySection';
-import CurrentOrdersSection from '../components/CurrentOrdersSection';
+import InventorySection from '../components/admin/InventorySection';
+import CurrentOrdersSection from '../components/admin/CurrentOrdersSection';
 import ClickButton from '../components/ClickButton';
 
 export default function Admin() {

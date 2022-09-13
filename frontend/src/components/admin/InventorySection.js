@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getInventory } from '../features/inventory/inventorySlice';
-import Loading from './Loading';
+import { getInventory } from '../../features/inventory/inventorySlice';
+import Loading from '../Loading';
 import InventoryItem from './InventoryItem';
 import EditInventoryForm from './EditInventoryForm';
 
@@ -10,9 +10,7 @@ export default function InventorySection(props) {
   const dispatch = useDispatch();
 
   // Get state from redux store
-  const { inventory, isLoading, isSuccess } = useSelector(
-    (state) => state.inventory
-  );
+  const { inventory, isLoading, isSuccess } = useSelector((state) => state.inventory);
 
   // Grab inventory from database
   useEffect(() => {
@@ -39,10 +37,7 @@ export default function InventorySection(props) {
   return (
     <ul>
       {props.addItemForm && (
-        <EditInventoryForm
-          addItemForm={props.addItemForm}
-          setAddItemForm={props.setAddItemForm}
-        />
+        <EditInventoryForm addItemForm={props.addItemForm} setAddItemForm={props.setAddItemForm} />
       )}
       {inventoryItems}
     </ul>

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllOrders, markOrderComplete, reset } from '../features/order/orderSlice';
-import ClickButton from './ClickButton';
+import { getAllOrders, markOrderComplete, reset } from '../../features/order/orderSlice';
+import ClickButton from '../ClickButton';
 
 export default function CurrentOrdersSection() {
   // setup redux variables
