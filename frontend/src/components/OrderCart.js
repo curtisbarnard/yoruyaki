@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createOrder, reset } from '../features/order/orderSlice';
+import { depleteInventoryItem } from '../features/inventory/inventorySlice';
 import shoppingCart from '../images/shopping-cart.svg';
 import ClickButton from './ClickButton';
 
@@ -60,6 +61,11 @@ export default function OrderCart() {
       totalPrice: orderTotal,
     };
     dispatch(createOrder(orderContents));
+
+    // Update stock levels for each item in the DB
+    orderContents.orderItems.map((item) => {
+      dispatch(depleteInventoryItem(item));
+    });
   }
 
   // JSX to be rendered
