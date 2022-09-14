@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import {
-  addItem,
-  removeItem,
-  plusOne,
-  minusOne,
-} from '../features/order/orderSlice';
+import { addItem, removeItem, plusOne, minusOne } from '../features/order/orderSlice';
 
 export default function MenuCard(props) {
   // Set redux variables
@@ -19,7 +14,7 @@ export default function MenuCard(props) {
 
   function addOne(event) {
     if (event.target.innerText === '+') {
-      dispatch(addItem({ itemName: props.itemName, qty: 1 }));
+      dispatch(addItem({ itemName: props.itemName, qty: 1, price: props.price }));
     } else {
       dispatch(plusOne({ itemName: props.itemName }));
     }
@@ -45,9 +40,10 @@ export default function MenuCard(props) {
         src={`images/${props.img}`}
         alt={props.itemDesc}
       /> */}
-      <div className='mx-2 grow'>
-        <h3 className='text-xl font-bold'>{props.itemName}</h3>
-        <p>{props.itemDesc}</p>
+      <div className='mx-2 grow grid grid-cols-3'>
+        <h3 className='text-xl font-bold col-span-2 '>{props.itemName}</h3>
+        <span className='self-end'>${props.price}</span>
+        <p className='col-span-3'>{props.itemDesc}</p>
       </div>
       {/* Only show plus bubble when stock is greater than 0 */}
       {props.stock > 0 && (

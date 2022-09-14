@@ -14,14 +14,18 @@ export default function OrderCart() {
   const [viewCart, setViewCart] = useState(false);
 
   // Getting state from redux store for order contents
-  const { order, openOrders, isSuccess, isError, message } = useSelector((state) => state.order);
+  const { order, isSuccess, isError, message } = useSelector((state) => state.order);
 
   // Array of order items that will be displayed
   const orderList = order.map((item) => {
+    console.log(item.qty, item.price);
+    const itemTotal = +item.qty * +item.price;
     return (
       <li className='text-lg flex justify-between my-2' key={item.itemName}>
         <span>{item.itemName}</span>
+        <span>${item.price}</span>
         <span className='bg-white rounded-lg px-4'>{item.qty}</span>
+        <span>${itemTotal}</span>
       </li>
     );
   });
