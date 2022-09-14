@@ -1,11 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  createInventoryItem,
-  getInventory,
-  inventorySlice,
-  reset,
-} from '../../features/inventory/inventorySlice';
+import { createInventoryItem, getInventory, reset } from '../../features/inventory/inventorySlice';
 import Input from '../Input';
 import Button from '../SubmitButton';
 import Loading from '../Loading';
@@ -30,7 +25,8 @@ export default function InventoryForm() {
 
   // Handling Form State
   const [formData, setFormData] = useState({
-    stock: '',
+    stock: 0,
+    price: 0,
     itemName: '',
     itemDesc: '',
     category: '',
@@ -48,7 +44,8 @@ export default function InventoryForm() {
     event.preventDefault();
     dispatch(createInventoryItem(formData));
     setFormData({
-      stock: '',
+      stock: 0,
+      price: 0,
       itemName: '',
       itemDesc: '',
       category: '',
@@ -65,7 +62,6 @@ export default function InventoryForm() {
       <form onSubmit={handleSubmit}>
         <Input
           name='stock'
-          placeholder='0'
           value={formData.stock}
           type='number'
           label='Item QTY'
@@ -73,10 +69,17 @@ export default function InventoryForm() {
         />
         <Input
           name='itemName'
-          placeholder='Tsukune'
           value={formData.itemName}
           type='text'
           label='Item Name'
+          handleChange={handleChange}
+        />
+        <Input
+          name='price'
+          value={formData.itemName}
+          type='number'
+          step='0.25'
+          label='Price'
           handleChange={handleChange}
         />
         <Input
