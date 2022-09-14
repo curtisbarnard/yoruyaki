@@ -23,7 +23,8 @@ export default function InventoryItem(props) {
       {isEditing && <h1>Hello!</h1>}
       <div className={`${inputStyling} text-center`}>{props.stock}</div>
       <div className={`${inputStyling} font-semibold col-span-2`}>{props.itemName}</div>
-      <div className={`${inputStyling} col-span-6`}>{props.itemDesc}</div>
+      <div className={`${inputStyling}`}>{props.price}</div>
+      <div className={`${inputStyling} col-span-5`}>{props.itemDesc}</div>
       <div className={`${inputStyling} col-span-2`}>{props.category}</div>
     </li>
   );

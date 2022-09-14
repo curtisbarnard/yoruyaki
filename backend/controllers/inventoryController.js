@@ -16,6 +16,7 @@ const createInventory = asyncHandler(async (req, res) => {
   // error handling for missing body data
   if (
     !req.body.itemName ||
+    !req.body.price ||
     !req.body.itemDesc ||
     !req.body.category ||
     !req.body.stock
@@ -26,6 +27,7 @@ const createInventory = asyncHandler(async (req, res) => {
 
   const inventoryItem = await Inventory.create({
     itemName: req.body.itemName,
+    price: req.body.price,
     itemDesc: req.body.itemDesc,
     category: req.body.category,
     stock: req.body.stock,
@@ -45,13 +47,9 @@ const updateInventory = asyncHandler(async (req, res) => {
     throw new Error('Inventory item not found');
   }
 
-  const updatedInventoryItem = await Inventory.findByIdAndUpdate(
-    req.params.id,
-    req.body,
-    {
-      new: true,
-    }
-  );
+  const updatedInventoryItem = await Inventory.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  });
   res.status(200).json(updatedInventoryItem);
 });
 

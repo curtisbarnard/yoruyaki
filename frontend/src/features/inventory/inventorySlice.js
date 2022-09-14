@@ -18,9 +18,7 @@ export const createInventoryItem = createAsyncThunk(
     } catch (error) {
       // Checking in multiple places for error
       const message =
-        (error.response &&
-          error.response.date &&
-          error.response.data.message) ||
+        (error.response && error.response.date && error.response.data.message) ||
         error.message ||
         error.toString();
       return thunkAPI.rejectWithValue(message);
@@ -29,43 +27,33 @@ export const createInventoryItem = createAsyncThunk(
 );
 
 // Get inventory items
-export const getInventory = createAsyncThunk(
-  'inventory/getAll',
-  async (_, thunkAPI) => {
-    try {
-      return await inventoryService.getInventory();
-    } catch (error) {
-      // Checking in multiple places for error
-      const message =
-        (error.response &&
-          error.response.date &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(message);
-    }
+export const getInventory = createAsyncThunk('inventory/getAll', async (_, thunkAPI) => {
+  try {
+    return await inventoryService.getInventory();
+  } catch (error) {
+    // Checking in multiple places for error
+    const message =
+      (error.response && error.response.date && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    return thunkAPI.rejectWithValue(message);
   }
-);
+});
 
 // Delete inventory item
 // TODO this route is should be protected, how can I only let a admin delete items? do I still use a token?
-export const deleteInventoryItem = createAsyncThunk(
-  'inventory/delete',
-  async (id, thunkAPI) => {
-    try {
-      return await inventoryService.deleteInventoryItem(id);
-    } catch (error) {
-      // Checking in multiple places for error
-      const message =
-        (error.response &&
-          error.response.date &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(message);
-    }
+export const deleteInventoryItem = createAsyncThunk('inventory/delete', async (id, thunkAPI) => {
+  try {
+    return await inventoryService.deleteInventoryItem(id);
+  } catch (error) {
+    // Checking in multiple places for error
+    const message =
+      (error.response && error.response.date && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    return thunkAPI.rejectWithValue(message);
   }
-);
+});
 
 // Update inventory item
 // TODO this route is should be protected, how can I only let admin update items? do I still use a token?
@@ -78,9 +66,7 @@ export const updateInventoryItem = createAsyncThunk(
     } catch (error) {
       // Checking in multiple places for error
       const message =
-        (error.response &&
-          error.response.date &&
-          error.response.data.message) ||
+        (error.response && error.response.date && error.response.data.message) ||
         error.message ||
         error.toString();
       return thunkAPI.rejectWithValue(message);
@@ -129,9 +115,7 @@ export const inventorySlice = createSlice({
       .addCase(deleteInventoryItem.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.inventory = state.inventory.filter(
-          (item) => item._id !== action.payload.id
-        );
+        state.inventory = state.inventory.filter((item) => item._id !== action.payload.id);
       })
       .addCase(deleteInventoryItem.rejected, (state, action) => {
         state.isLoading = false;
@@ -144,11 +128,8 @@ export const inventorySlice = createSlice({
       .addCase(updateInventoryItem.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        const itemIndex = state.inventory.findIndex(
-          (item) => item._id === action.payload._id
-        );
+        const itemIndex = state.inventory.findIndex((item) => item._id === action.payload._id);
         state.inventory.splice(itemIndex, 1, action.payload);
-        console.log(action.payload);
       })
       .addCase(updateInventoryItem.rejected, (state, action) => {
         state.isLoading = false;

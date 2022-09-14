@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllOrders, reset } from '../features/order/orderSlice';
+import { reset } from '../features/order/orderSlice';
 import ToggleButtons from '../components/ToggleButtons';
 import InventorySection from '../components/admin/InventorySection';
 import CurrentOrdersSection from '../components/admin/CurrentOrdersSection';
@@ -22,7 +22,7 @@ export default function Admin() {
     if (isSuccess) {
       dispatch(reset());
     }
-  }, [isSuccess, isError]);
+  }, [isSuccess, isError, message, dispatch]);
 
   const sections = ['Inventory', 'Current Orders', 'Past Orders'];
   // Initialize component state
@@ -66,7 +66,8 @@ export default function Admin() {
             <div></div>
             <span className='text-center'>QTY</span>
             <span className='col-span-2'>Item Name</span>
-            <span className='col-span-6'>Description</span>
+            <span>Price</span>
+            <span className='col-span-5'>Description</span>
             <span className='col-span-2'>Category</span>
           </div>
           <InventorySection addItemForm={addItemForm} setAddItemForm={setAddItemForm} />

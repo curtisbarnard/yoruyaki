@@ -94,6 +94,7 @@ export const orderSlice = createSlice({
           return {
             itemName: item.itemName,
             qty: newQty,
+            price: item.price,
           };
         }
         return item;
@@ -106,6 +107,7 @@ export const orderSlice = createSlice({
           return {
             itemName: item.itemName,
             qty: newQty,
+            price: item.price,
           };
         }
         return item;
