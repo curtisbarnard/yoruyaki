@@ -18,17 +18,20 @@ export default function OrderCart() {
 
   // Array of order items that will be displayed
   const orderList = order.map((item) => {
-    console.log(item.qty, item.price);
-    const itemTotal = +item.qty * +item.price;
+    const itemTotal = item.qty * item.price;
+
     return (
-      <li className='text-lg flex justify-between my-2' key={item.itemName}>
-        <span>{item.itemName}</span>
+      <li className='text-lg grid grid-cols-5 my-2' key={item.itemName}>
+        <span className='col-span-2'>{item.itemName}</span>
         <span>${item.price}</span>
-        <span className='bg-white rounded-lg px-4'>{item.qty}</span>
-        <span>${itemTotal}</span>
+        <span className='bg-white rounded-lg px-4 justify-self-center'>{item.qty}</span>
+        <span className='justify-self-end'>${itemTotal.toFixed(2)}</span>
       </li>
     );
   });
+
+  // Calculate order total for cart display
+  const orderTotal = order.reduce((sum, cur) => sum + cur.price * cur.qty, 0);
 
   useEffect(() => {
     if (isError) {
@@ -48,12 +51,13 @@ export default function OrderCart() {
   function submitOrder(event) {
     event.preventDefault();
     const customer = JSON.parse(localStorage.getItem('customer'));
+
     const orderContents = {
       customerId: customer._id,
       customerName: customer.name,
       orderItems: order,
       orderStatus: 'open',
-      totalPrice: 49.99,
+      totalPrice: orderTotal,
     };
     dispatch(createOrder(orderContents));
   }
@@ -76,6 +80,7 @@ export default function OrderCart() {
         {order.length > 0 && (
           <ul className='w-full bg-indigo-50 rounded-lg py-2 px-6 my-4'>{orderList}</ul>
         )}
+        <span className='text-lg font-bold self-end mb-4 pr-6'>Total ${orderTotal}</span>
         <ClickButton handleClick={submitOrder} className='self-end' title='Submit' />
       </div>
     </div>
