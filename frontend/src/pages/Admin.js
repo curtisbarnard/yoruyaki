@@ -22,7 +22,7 @@ export default function Admin() {
     if (isSuccess) {
       dispatch(reset());
     }
-  }, [isSuccess, isError, message]);
+  }, [isSuccess, isError, message, dispatch]);
 
   const sections = ['Inventory', 'Current Orders', 'Past Orders'];
   // Initialize component state
