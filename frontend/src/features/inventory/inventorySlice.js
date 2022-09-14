@@ -153,6 +153,20 @@ export const inventorySlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
+      })
+      .addCase(depleteInventoryItem.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(depleteInventoryItem.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        const itemIndex = state.inventory.findIndex((item) => item._id === action.payload._id);
+        state.inventory.splice(itemIndex, 1, action.payload);
+      })
+      .addCase(depleteInventoryItem.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
       });
   },
 });
