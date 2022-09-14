@@ -66,7 +66,8 @@ export default function Admin() {
             <div></div>
             <span className='text-center'>QTY</span>
             <span className='col-span-2'>Item Name</span>
-            <span className='col-span-6'>Description</span>
+            <span>Price</span>
+            <span className='col-span-5'>Description</span>
             <span className='col-span-2'>Category</span>
           </div>
           <InventorySection addItemForm={addItemForm} setAddItemForm={setAddItemForm} />

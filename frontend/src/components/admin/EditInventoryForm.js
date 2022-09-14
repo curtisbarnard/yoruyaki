@@ -16,6 +16,7 @@ export default function EditInventoryForm(props) {
   const [formState, setFormState] = useState({
     stock: props.stock || 0,
     itemName: props.itemName || '',
+    price: props.price || 0,
     itemDesc: props.itemDesc || '',
     category: props.category || '',
   });
@@ -28,18 +29,6 @@ export default function EditInventoryForm(props) {
       return { ...prevState, [event.target.name]: event.target.value };
     });
     setWasEdited(true);
-
-    // TODO set edited as false when form goes back to blank values
-    // if (props.addItemForm) {
-    //   if (
-    //     !formState.stock &&
-    //     !formState.itemName &&
-    //     !formState.itemDesc &&
-    //     !formState.category
-    //   ) {
-    //     setWasEdited(false);
-    //   }
-    // }
 
     if (!props.addItemForm) {
       const itemInGlobalState = inventory.find((element) => element._id === props._id);
@@ -119,11 +108,19 @@ export default function EditInventoryForm(props) {
           className={`${inputStyling} font-semibold col-span-2`}
         />
         <input
+          type='number'
+          step='0.25'
+          name='price'
+          value={formState.price}
+          onChange={onFormChange}
+          className={`${inputStyling}`}
+        />
+        <input
           type='text'
           name='itemDesc'
           value={formState.itemDesc}
           onChange={onFormChange}
-          className={`${inputStyling} col-span-6`}
+          className={`${inputStyling} col-span-5`}
         />
         <input
           type='text'
