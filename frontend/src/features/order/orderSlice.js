@@ -92,6 +92,7 @@ export const orderSlice = createSlice({
         if (item.itemName === action.payload.itemName) {
           const newQty = item.qty + 1;
           return {
+            id: item.id,
             itemName: item.itemName,
             qty: newQty,
             price: item.price,
@@ -105,6 +106,7 @@ export const orderSlice = createSlice({
         if (item.itemName === action.payload.itemName) {
           const newQty = item.qty - 1;
           return {
+            id: item.id,
             itemName: item.itemName,
             qty: newQty,
             price: item.price,
