@@ -64,7 +64,7 @@ const depleteInventory = asyncHandler(async (req, res) => {
     throw new Error('Inventory item not found');
   }
 
-  const newQty = inventoryItem.stock - req.body;
+  const newQty = inventoryItem.stock - req.body.qty;
 
   if (newQty < 0) {
     res.status(400);
@@ -78,6 +78,7 @@ const depleteInventory = asyncHandler(async (req, res) => {
       new: true,
     }
   );
+
   res.status(200).json(updatedInventoryItem);
 });
 

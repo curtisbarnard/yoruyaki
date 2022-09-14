@@ -14,7 +14,7 @@ export default function MenuCard(props) {
 
   function addOne(event) {
     if (event.target.innerText === '+') {
-      dispatch(addItem({ itemName: props.itemName, qty: 1, price: props.price }));
+      dispatch(addItem({ id: props._id, itemName: props.itemName, qty: 1, price: props.price }));
     } else {
       dispatch(plusOne({ itemName: props.itemName }));
     }

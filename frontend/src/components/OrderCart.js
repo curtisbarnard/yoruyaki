@@ -53,6 +53,11 @@ export default function OrderCart() {
     event.preventDefault();
     const customer = JSON.parse(localStorage.getItem('customer'));
 
+    // Update stock levels for each item in the DB
+    order.map((item) => {
+      dispatch(depleteInventoryItem(item));
+    });
+
     const orderContents = {
       customerId: customer._id,
       customerName: customer.name,
@@ -61,11 +66,6 @@ export default function OrderCart() {
       totalPrice: orderTotal,
     };
     dispatch(createOrder(orderContents));
-
-    // Update stock levels for each item in the DB
-    orderContents.orderItems.map((item) => {
-      dispatch(depleteInventoryItem(item));
-    });
   }
 
   // JSX to be rendered

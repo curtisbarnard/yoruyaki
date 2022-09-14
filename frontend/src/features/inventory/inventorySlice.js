@@ -80,7 +80,7 @@ export const depleteInventoryItem = createAsyncThunk(
   async (item, thunkAPI) => {
     try {
       const { id, qty } = item;
-      return await inventoryService.depleteInventoryItem(id, qty);
+      return await inventoryService.depleteInventoryItem(id, { qty: qty });
     } catch (error) {
       // Checking in multiple places for error
       const message =
