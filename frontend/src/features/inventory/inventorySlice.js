@@ -74,6 +74,24 @@ export const updateInventoryItem = createAsyncThunk(
   }
 );
 
+// Deplete inventory item
+export const depleteInventoryItem = createAsyncThunk(
+  'inventory/deplete',
+  async (item, thunkAPI) => {
+    try {
+      const { id, qty } = item;
+      return await inventoryService.depleteInventoryItem(id, qty);
+    } catch (error) {
+      // Checking in multiple places for error
+      const message =
+        (error.response && error.response.date && error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 // Inventory Slice
 export const inventorySlice = createSlice({
   name: 'inventory',
