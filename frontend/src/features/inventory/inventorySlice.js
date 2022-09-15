@@ -74,6 +74,24 @@ export const updateInventoryItem = createAsyncThunk(
   }
 );
 
+// Deplete inventory item
+export const depleteInventoryItem = createAsyncThunk(
+  'inventory/deplete',
+  async (item, thunkAPI) => {
+    try {
+      const { id, qty } = item;
+      return await inventoryService.depleteInventoryItem(id, { qty: qty });
+    } catch (error) {
+      // Checking in multiple places for error
+      const message =
+        (error.response && error.response.date && error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 // Inventory Slice
 export const inventorySlice = createSlice({
   name: 'inventory',
@@ -132,6 +150,20 @@ export const inventorySlice = createSlice({
         state.inventory.splice(itemIndex, 1, action.payload);
       })
       .addCase(updateInventoryItem.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(depleteInventoryItem.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(depleteInventoryItem.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        const itemIndex = state.inventory.findIndex((item) => item._id === action.payload._id);
+        state.inventory.splice(itemIndex, 1, action.payload);
+      })
+      .addCase(depleteInventoryItem.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

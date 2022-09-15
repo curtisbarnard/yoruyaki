@@ -14,8 +14,8 @@ export default function MenuCard(props) {
 
   function addOne(event) {
     if (event.target.innerText === '+') {
-      dispatch(addItem({ itemName: props.itemName, qty: 1, price: props.price }));
-    } else {
+      dispatch(addItem({ id: props._id, itemName: props.itemName, qty: 1, price: props.price }));
+    } else if (qty < props.stock) {
       dispatch(plusOne({ itemName: props.itemName }));
     }
   }
@@ -49,9 +49,9 @@ export default function MenuCard(props) {
       {props.stock > 0 && (
         <button
           onClick={addOne}
-          className={
-            'flex shrink-0 justify-center items-center h-12 w-12 text-2xl bg-white rounded-full shadow-sm'
-          }
+          className={`flex shrink-0 justify-center items-center h-12 w-12 text-2xl ${
+            qty >= props.stock ? 'bg-red-500' : 'bg-white'
+          } rounded-full shadow-sm`}
         >
           {qty > 0 ? qty : '+'}
         </button>

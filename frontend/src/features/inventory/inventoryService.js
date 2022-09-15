@@ -26,11 +26,18 @@ const updateInventoryItem = async (id, body) => {
   return response.data;
 };
 
+// Update inventory item
+const depleteInventoryItem = async (id, body) => {
+  const response = await axios.put(API_URL + 'deplete/' + id, body);
+  return response.data;
+};
+
 const inventoryService = {
   createInventoryItem,
   getInventory,
   deleteInventoryItem,
   updateInventoryItem,
+  depleteInventoryItem,
 };
 
 export default inventoryService;

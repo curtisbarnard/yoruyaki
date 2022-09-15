@@ -53,6 +53,35 @@ const updateInventory = asyncHandler(async (req, res) => {
   res.status(200).json(updatedInventoryItem);
 });
 
+// Deplete qty from inventory
+// PUT /api/inventory/deplete/:id
+// Public
+const depleteInventory = asyncHandler(async (req, res) => {
+  const inventoryItem = await Inventory.findById(req.params.id);
+
+  if (!inventoryItem) {
+    res.status(400);
+    throw new Error('Inventory item not found');
+  }
+
+  const newQty = inventoryItem.stock - req.body.qty;
+
+  if (newQty < 0) {
+    res.status(400);
+    throw new Error('Not enough items in inventory');
+  }
+
+  const updatedInventoryItem = await Inventory.findByIdAndUpdate(
+    req.params.id,
+    { stock: newQty },
+    {
+      new: true,
+    }
+  );
+
+  res.status(200).json(updatedInventoryItem);
+});
+
 // Delete inventory item
 // DELETE /api/inventory/:id
 // Public
@@ -73,5 +102,6 @@ module.exports = {
   getInventory,
   createInventory,
   updateInventory,
+  depleteInventory,
   deleteInventory,
 };

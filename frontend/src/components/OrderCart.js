@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createOrder, reset } from '../features/order/orderSlice';
+import { depleteInventoryItem } from '../features/inventory/inventorySlice';
 import shoppingCart from '../images/shopping-cart.svg';
 import ClickButton from './ClickButton';
 
@@ -51,6 +52,11 @@ export default function OrderCart() {
   function submitOrder(event) {
     event.preventDefault();
     const customer = JSON.parse(localStorage.getItem('customer'));
+
+    // Update stock levels for each item in the DB
+    order.map((item) => {
+      dispatch(depleteInventoryItem(item));
+    });
 
     const orderContents = {
       customerId: customer._id,
