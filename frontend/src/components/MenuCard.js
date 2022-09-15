@@ -50,7 +50,7 @@ export default function MenuCard(props) {
         <button
           onClick={addOne}
           className={`flex shrink-0 justify-center items-center h-12 w-12 text-2xl ${
-            qty >= props.stock ? 'bg-red-300' : 'bg-white'
+            qty >= props.stock ? 'bg-red-500' : 'bg-white'
           } rounded-full shadow-sm`}
         >
           {qty > 0 ? qty : '+'}
