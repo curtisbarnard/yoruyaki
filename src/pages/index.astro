@@ -1,94 +1,177 @@
 ---
+import '@fontsource/yuji-syuku';
 import BaseLayout from '../layouts/BaseLayout.astro';
 const title = 'Yaki Night';
 ---
 
 <BaseLayout title={title} />
 <main>
-	<section>
-		<h2>お通し</h2><span>Appetizer</span>
-		<p>Nibble on some soybeans with your drink and if you are famished have a rice ball. The rice ball goes well with skewers too so feel free to wait.</p>
-		<h3>枝豆</h3>
-		<p>boiled young soybeans, salt</p>
-		<h3>おにぎり</h3>
-		<p>rice ball, furikake</p>
-	</section>
-	<section>
-		<h2>串焼き</h2><span>Skewers</span>
-		<h3>ささみ</h3>
-		<p>tender</p>
-		<h3>胸</h3>
-		<p>breast</p>
-		<h3>椎茸</h3>
-		<p>shiitake mushroom</p>
-		<h3>ねぎま</h3>
-		<p>thigh, scallion</p>
-		<h3>つくね</h3>
-		<p>meatball</p>
-		<h3>しし唐</h3>
-		<p>shishitou pepper</p>
-		<h3>手羽レッグ</h3>
-		<p>wing, leg</p>
-	</section>
-	<section>
-		<h2>汁</h2><span>Soup</span>
-		<h3>鶏ラーメン</h3>
-		<p>chicken dashi, noodles, scallion </p>
-	</section>
-	<section>
-		<h2>追加</h2><span>Additions</span>
-		<p>Skewers for the more adventurous. Cuts of chicken that you don't typically see in the west along with organs. Limited amounts.</p>
-		<h3>手羽</h3>
-		<p>wing</p>
-		<h3>振袖</h3>
-		<p>shoulder</p>
-		<h3>ハラミ</h3>
-		<p>belly</p>
-		<h3>皮</h3>
-		<p>skin</p>
-		<h3>せせり</h3>
-		<p>neck</p>
-		<h3>軟骨</h3>
-		<p>cartilage</p>
-		<h3>砂肝</h3>
-		<p>gizzard</p>
-		<h3>ハツ</h3>
-		<p>heart</p>
-		<h3>レバー</h3>
-		<p>liver</p>
-		<h3>おびそり</h3>
-		<p>inner thigh, oyster</p>
-		<h3>胸ねぎま</h3>
-		<p>breast, scallion</p>
-		<h3>ぼんじり</h3>
-		<p>tail</p>
-	</section>
+  <section>
+    <h2>お通し</h2>
+    <div class='items'>
+      <p>
+        Nibble on some soybeans with your drink and if you are famished have a rice ball. The rice
+        ball goes well with skewers too so feel free to wait.
+      </p>
+      <div class='item'>
+        <h3>枝豆</h3>
+        <p>boiled young soybeans, salt</p>
+      </div>
+      <div class='item'>
+        <h3>おにぎり</h3>
+        <p>rice ball, furikake</p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>串焼き</h2>
+    <div class='items'>
+      <p>
+        The main event. These skewers are one per person and will come out starting from lightest to
+        heaviest. Eat them while they are hot.
+      </p>
+      <div class='item'>
+        <h3>ささみ</h3>
+        <p>tender</p>
+      </div>
+      <div class='item'>
+        <h3>胸</h3>
+        <p>breast</p>
+      </div>
+      <div class='item'>
+        <h3>椎茸</h3>
+        <p>shiitake mushroom</p>
+      </div>
+      <div class='item'>
+        <h3>ねぎま</h3>
+        <p>thigh, scallion</p>
+      </div>
+      <div class='item'>
+        <h3>つくね</h3>
+        <p>meatball</p>
+      </div>
+      <div class='item'>
+        <h3>しし唐</h3>
+        <p>shishitou pepper</p>
+      </div>
+      <div class='item'>
+        <h3>手羽レッグ</h3>
+        <p>wing, leg</p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>汁</h2>
+    <div class='items'>
+      <p>
+        Take a break from the skewers with a bowl of ramen. Long simmered chicken stock house made
+        from the bones of butchering the chicken and a bonito and kelp dashi.
+      </p>
+      <div class='item'>
+        <h3>鶏ラーメン</h3>
+        <p>chicken dashi, noodles, scallion</p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>追加</h2>
+    <div class='items'>
+      <p>
+        Skewers for the more adventurous. Cuts of chicken that you don't typically see in the west
+        along with organs. Limited amounts.
+      </p>
+      <div class='item'>
+        <h3>手羽</h3>
+        <p>wing</p>
+      </div>
+      <div class='item'>
+        <h3>振袖</h3>
+        <p>shoulder</p>
+      </div>
+      <div class='item'>
+        <h3>ハラミ</h3>
+        <p>belly</p>
+      </div>
+      <div class='item'>
+        <h3>皮</h3>
+        <p>skin</p>
+      </div>
+      <div class='item'>
+        <h3>せせり</h3>
+        <p>neck</p>
+      </div>
+      <div class='item'>
+        <h3>軟骨</h3>
+        <p>cartilage</p>
+      </div>
+      <div class='item'>
+        <h3>砂肝</h3>
+        <p>gizzard</p>
+      </div>
+      <div class='item'>
+        <h3>ハツ</h3>
+        <p>heart</p>
+      </div>
+      <div class='item'>
+        <h3>レバー</h3>
+        <p>liver</p>
+      </div>
+      <div class='item'>
+        <h3>おびそり</h3>
+        <p>inner thigh, oyster</p>
+      </div>
+      <div class='item'>
+        <h3>胸ねぎま</h3>
+        <p>breast, scallion</p>
+      </div>
+      <div class='item'>
+        <h3>ぼんじり</h3>
+        <p>tail</p>
+      </div>
+    </div>
+  </section>
 </main>
-</BaseLayout>
 
 <style>
-	main {
-	  margin: 0 auto;
-	  width: 100%;
-	  max-width: 65ch;
-	}
-	section {
-		margin-top: 2rem;
-	}
-	section > h2 {
-		display: inline;
-		margin-bottom: 0.5rem;
-		font-size: 2rem;
-	}
-	section > h3 {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-	}
-	section > p {
-		margin: 0;
-	}
-	section > span {
-		display: inline;
-		font-size: 0.8rem;
-	}
+  main {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 75ch;
+  }
+  section {
+    margin-bottom: 4rem;
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+  }
+  .items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-left: 1px solid rgb(173, 165, 159);
+    padding-left: 2.2rem;
+  }
+  section h2 {
+    font-family: 'Yuji Syuku', serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    font-size: 2.4rem;
+    writing-mode: vertical-lr;
+  }
+  section h3 {
+    font-family: 'Yuji Syuku', serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
+  .items > p {
+    font-style: italic;
+    grid-column-start: span 2;
+    margin: 0;
+    font-size: 0.8rem;
+  }
+  .item p {
+    margin: 0;
+    font-size: 0.8rem;
+  }
 </style>

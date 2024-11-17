@@ -1,9 +1,10 @@
 ---
-
+import '@fontsource/yuji-syuku';
+import '@fontsource/yuji-mai';
 ---
 
 <header>
-  <h1><a href='/yakinaito/'>焼きナイト</a></h1>
+  <h1><a href='/yakinaito/'>焼き<span class='katakana'>ナイト</span></a></h1>
   <nav>
     <a href='/yakinaito/about'>about</a>
   </nav>
@@ -13,7 +14,7 @@
   header {
     margin: 0 auto;
     width: 100%;
-    max-width: 65ch;
+    max-width: 75ch;
     display: flex;
     align-items: baseline;
     justify-content: space-between;
@@ -22,11 +23,16 @@
   }
 
   h1 {
-    font-family: sans-serif;
+    font-family: 'Yuji Mai', serif;
     font-weight: 400;
-    font-size: 1.4rem;
+    font-size: 2.5rem;
     display: inline-block;
-    margin-bottom: 0.5rem;
+    margin-top: 0;
+    margin-bottom: 0.2rem;
+  }
+
+  .katakana {
+    font-family: 'Yuji Syuku', serif;
   }
 
   a,
@@ -35,7 +41,7 @@
   }
 
   a:hover {
-    color: rgb(255, 161, 61);
+    color: rgb(37, 139, 254);
   }
 
   h1 a {
