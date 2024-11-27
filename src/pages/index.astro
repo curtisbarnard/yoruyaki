@@ -146,9 +146,11 @@ const title = 'Yaki Night';
   .items {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    column-gap: 1rem;
     border-left: 1px solid rgb(173, 165, 159);
     padding-left: 2.2rem;
   }
+  
   section h2 {
     font-family: 'Yuji Syuku', serif;
     font-weight: 400;
@@ -167,11 +169,20 @@ const title = 'Yaki Night';
   .items > p {
     font-style: italic;
     grid-column-start: span 2;
-    margin: 0;
     font-size: 0.8rem;
   }
-  .item p {
+  p {
     margin: 0;
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
+
+  @media (max-width: 650px) {
+  .items {
+    padding-left: 1rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+}
+
 </style>
