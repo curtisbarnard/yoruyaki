@@ -3,6 +3,5 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://curtisbarnard.github.io',
-  base: '/yakinaito',
+  site: 'https://yakinaito.curtisbarnard.com',
 });
