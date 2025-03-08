@@ -6,13 +6,14 @@ const title = 'Yaki Night';
 
 <BaseLayout title={title} />
 <main>
-  <span class="date">2024.12.21</span>
+  <span class='date'>2025.03.08</span>
   <section>
     <h2>お通し</h2>
     <div class='items'>
       <p>
-        Nibble on some soybeans with your drink and if you are famished have a rice ball. The rice
-        ball goes well with skewers too so feel free to wait.
+        Nibble on some soybeans with your drink, enjoy the crunch of some lightly pickled cucumbers,
+        or if you are famished have a rice ball. The rice balls and pickles go well with skewers too
+        so feel free to wait.
       </p>
       <div class='item'>
         <h3>枝豆</h3>
@@ -21,6 +22,10 @@ const title = 'Yaki Night';
       <div class='item'>
         <h3>おにぎり</h3>
         <p>rice ball, furikake</p>
+      </div>
+      <div class='item'>
+        <h3>浅漬け</h3>
+        <p>cucumber, salt</p>
       </div>
     </div>
   </section>
@@ -31,17 +36,19 @@ const title = 'Yaki Night';
         The main event. These skewers are one per person and will come out starting from lightest to
         heaviest. Eat them while they are hot.
       </p>
-      <div class='item'>
-        <h3>ささみ</h3>
-        <p>tender, sake, salt, wasabi</p>
-      </div>
+      <a href='/sasami'>
+        <div class='item'>
+          <h3>ささみ</h3>
+          <p>tender, sake, salt, wasabi</p>
+        </div>
+      </a>
       <div class='item'>
         <h3>胸</h3>
         <p>breast, sake, salt, umeboshi</p>
       </div>
       <div class='item'>
-        <h3>椎茸</h3>
-        <p>shiitake mushroom, tare</p>
+        <h3>エリンギでんがく</h3>
+        <p>king oyster mushroom, miso dengaku</p>
       </div>
       <div class='item'>
         <h3>ねぎま</h3>
@@ -57,7 +64,11 @@ const title = 'Yaki Night';
       </div>
       <div class='item'>
         <h3>手羽レッグ</h3>
-        <p>wing, leg, tare</p>
+        <p>drumette, leg, tare</p>
+      </div>
+      <div class='item'>
+        <h3>ステーキ</h3>
+        <p>flap steak, sake, salt</p>
       </div>
     </div>
   </section>
@@ -70,7 +81,7 @@ const title = 'Yaki Night';
       </p>
       <div class='item'>
         <h3>鶏ラーメン</h3>
-        <p>chicken dashi, noodles, scallion</p>
+        <p>chicken dashi, breast, noodles, scallion</p>
       </div>
     </div>
   </section>
@@ -86,6 +97,18 @@ const title = 'Yaki Night';
         <p>wing, tare</p>
       </div>
       <div class='item'>
+        <h3>もも</h3>
+        <p>thigh, tare</p>
+      </div>
+      <div class='item'>
+        <h3>おびそり</h3>
+        <p>inner thigh, oyster, sake, salt</p>
+      </div>
+      <div class='item'>
+        <h3>胸ねぎま</h3>
+        <p>breast, scallion, sake, salt</p>
+      </div>
+      <div class='item'>
         <h3>ふりそで</h3>
         <p>shoulder, sake, salt</p>
       </div>
@@ -96,6 +119,10 @@ const title = 'Yaki Night';
       <div class='item'>
         <h3>皮</h3>
         <p>skin, sake, salt</p>
+      </div>
+      <div class='item'>
+        <h3>ぼんじり</h3>
+        <p>tail, sake, salt</p>
       </div>
       <div class='item'>
         <h3>せせり</h3>
@@ -109,25 +136,13 @@ const title = 'Yaki Night';
         <h3>砂肝</h3>
         <p>gizzard, sake, salt</p>
       </div>
-      <div class='item'>
+      <!-- <div class='item'>
         <h3>ハツ</h3>
         <p>heart, sake, salt</p>
-      </div>
+      </div> -->
       <div class='item'>
         <h3>レバー</h3>
         <p>liver, tare</p>
-      </div>
-      <div class='item'>
-        <h3>おびそり</h3>
-        <p>inner thigh, oyster, sake, salt</p>
-      </div>
-      <div class='item'>
-        <h3>胸ねぎま</h3>
-        <p>breast, scallion, sake, salt</p>
-      </div>
-      <div class='item'>
-        <h3>ぼんじり</h3>
-        <p>tail, sake, salt</p>
       </div>
     </div>
   </section>
@@ -156,7 +171,6 @@ const title = 'Yaki Night';
     border-left: 1px solid rgb(173, 165, 159);
     padding-left: 2.2rem;
   }
-  
   section h2 {
     font-family: 'Yuji Syuku', serif;
     font-weight: 400;
@@ -172,6 +186,9 @@ const title = 'Yaki Night';
     margin-top: 0.5rem;
     margin-bottom: 0;
   }
+  section a {
+    text-decoration: none;
+  }
   .items > p {
     font-style: italic;
     grid-column-start: span 2;
@@ -183,12 +200,11 @@ const title = 'Yaki Night';
   }
 
   @media (max-width: 650px) {
-  .items {
-    padding-left: 1rem;
+    .items {
+      padding-left: 1rem;
+    }
+    p {
+      font-size: 1rem;
+    }
   }
-  p {
-    font-size: 1rem;
-  }
-}
-
 </style>
