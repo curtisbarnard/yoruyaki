@@ -1,0 +1,201 @@
+---
+import '@fontsource/yuji-syuku';
+import BaseLayout from '../layouts/BaseLayout.astro';
+const title = 'Yoruyaki - June 2025';
+---
+
+<BaseLayout title={title} />
+<main>
+  <span class='date'>2025.06.14</span>
+  <section>
+    <h2>お通し</h2>
+    <div class='items'>
+      <p>Snacks to nibble on as you wait for skewers to come off the grill.</p>
+      <div class='item'>
+        <h3>枝豆</h3>
+        <p>boiled young soybeans, salt</p>
+      </div>
+      <div class='item'>
+        <h3>おにぎり</h3>
+        <p>rice ball, furikake</p>
+      </div>
+      <div class='item'>
+        <h3>浅漬け</h3>
+        <p>cucumber, salt</p>
+      </div>
+      <div class='item'>
+        <h3>ポテトサラダ</h3>
+        <p>potato, carrot, onion, cucumber, corn, mayo</p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>串焼き</h2>
+    <div class='items'>
+      <p>
+        The main event. These skewers are one per person and will come out starting from lightest to
+        heaviest. Eat them while they are hot. Shichimi, yuzu kosho, and lemon are available as
+        toppings.
+      </p>
+      <div class='item'>
+        <h3>ささみ</h3>
+        <p>tender, sake, salt, wasabi</p>
+      </div>
+      <div class='item'>
+        <h3>胸</h3>
+        <p>breast, yuzu miso marinade</p>
+      </div>
+      <div class='item'>
+        <h3>エリンギ</h3>
+        <p>king oyster mushroom, tare</p>
+      </div>
+      <div class='item'>
+        <h3>ねぎま</h3>
+        <p>thigh, scallion, tare</p>
+      </div>
+      <div class='item'>
+        <h3>つくね</h3>
+        <p>meatball, tare</p>
+      </div>
+      <div class='item'>
+        <h3>しし唐</h3>
+        <p>shishitou pepper, tare</p>
+      </div>
+      <div class='item'>
+        <h3>豚バラ</h3>
+        <p>pork belly, green onion, sake, salt, sansho pepper</p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>汁</h2>
+    <div class='items'>
+      <p>
+        Take a break from the skewers with a bowl of ramen. Long simmered chicken stock house made
+        from chicken bones and a bonito/kelp dashi.
+      </p>
+      <div class='item'>
+        <h3>鶏ラーメン</h3>
+        <p>chicken dashi, breast, noodles, scallion</p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>追加</h2>
+    <div class='items'>
+      <p>
+        Skewers for the more adventurous. Cuts of chicken that you don't typically see in the west
+        along with organs. Limited amounts.
+      </p>
+      <div class='item'>
+        <h3>手羽レッグ</h3>
+        <p>drumette, leg, tare</p>
+      </div>
+      <div class='item'>
+        <h3>手羽</h3>
+        <p>wing, tare</p>
+      </div>
+      <div class='item'>
+        <h3>おびそり</h3>
+        <p>inner thigh, oyster, sake, salt</p>
+      </div>
+      <div class='item'>
+        <h3>ふりそで</h3>
+        <p>shoulder, sake, salt</p>
+      </div>
+      <div class='item'>
+        <h3>ハラミ</h3>
+        <p>belly, sake, salt</p>
+      </div>
+      <div class='item'>
+        <h3>皮</h3>
+        <p>skin, sake, salt</p>
+      </div>
+      <div class='item'>
+        <h3>ぼんじり</h3>
+        <p>tail, sake, salt</p>
+      </div>
+      <div class='item'>
+        <h3>せせり</h3>
+        <p>neck, tare</p>
+      </div>
+      <div class='item'>
+        <h3>軟骨</h3>
+        <p>cartilage, tare</p>
+      </div>
+      <div class='item'>
+        <h3>砂肝</h3>
+        <p>gizzard, sake, salt</p>
+      </div>
+      <div class='item'>
+        <h3>ハツ</h3>
+        <p>heart, sake, salt</p>
+      </div>
+      <div class='item'>
+        <h3>レバー</h3>
+        <p>liver, tare</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<style>
+  main {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 75ch;
+  }
+  .date {
+    display: block;
+    margin-bottom: 1rem;
+    text-align: right;
+  }
+  section {
+    margin-bottom: 4rem;
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+  }
+  .items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1rem;
+    border-left: 1px solid rgb(173, 165, 159);
+    padding-left: 2.2rem;
+  }
+  section h2 {
+    font-family: 'Yuji Syuku', serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    font-size: 2.4rem;
+    writing-mode: vertical-lr;
+  }
+  section h3 {
+    font-family: 'Yuji Syuku', serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
+  section a {
+    text-decoration: none;
+  }
+  .items > p {
+    font-style: italic;
+    grid-column-start: span 2;
+    font-size: 0.8rem;
+  }
+  p {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 650px) {
+    .items {
+      padding-left: 1rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+  }
+</style>
