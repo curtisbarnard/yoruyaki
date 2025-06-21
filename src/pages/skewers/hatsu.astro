@@ -1,0 +1,42 @@
+---
+import '@fontsource/yuji-syuku';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = 'Heart - Hatsu';
+---
+
+<BaseLayout title={title} />
+<main>
+  <h1>Heart - <span>ハツ</span></h1>
+  <p>
+    Even though chicken hearts are a muscle they are fairly tender. Their fairly rich flavor goes
+    well with a simple sake and salt coating. They aren't often included with the giblets of
+    chickens that I buy so I likely will only have one skewer, two if I'm lucky.
+  </p>
+</main>
+
+<style>
+  main {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 75ch;
+    font-weight: 300;
+  }
+
+  h1 {
+    font-weight: 300;
+  }
+
+  h1 span {
+    font-family: 'Yuji Syuku', serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    font-size: 2.4rem;
+  }
+
+  p {
+    margin: 0;
+    padding-bottom: 1rem;
+    font-size: 1rem;
+  }
+</style>

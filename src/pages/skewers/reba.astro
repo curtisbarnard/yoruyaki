@@ -1,0 +1,42 @@
+---
+import '@fontsource/yuji-syuku';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = 'Liver - Reba';
+---
+
+<BaseLayout title={title} />
+<main>
+  <h1>Liver - <span>レバー</span></h1>
+  <p>
+    Chicken livers are one of the most divisive skewers, either you love them or hate them. They
+    have a rich, gamey flavor with a note of iron and a smooth creamy texture. I dip them in tare to
+    help tone down the gaminess. Try them out and see what side of the fence you fall on.
+  </p>
+</main>
+
+<style>
+  main {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 75ch;
+    font-weight: 300;
+  }
+
+  h1 {
+    font-weight: 300;
+  }
+
+  h1 span {
+    font-family: 'Yuji Syuku', serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    font-size: 2.4rem;
+  }
+
+  p {
+    margin: 0;
+    padding-bottom: 1rem;
+    font-size: 1rem;
+  }
+</style>
