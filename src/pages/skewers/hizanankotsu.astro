@@ -1,0 +1,43 @@
+---
+import '@fontsource/yuji-syuku';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = 'Knee Cartilage - Hizanankotsu';
+---
+
+<BaseLayout title={title} />
+<main>
+  <h1>Knee Cartilage - <span>膝軟骨</span></h1>
+  <p>
+    Bits of cartilage and meat from between the thigh and leg bone. The flavor is a little better
+    than <a href='/skewers/yagennankotsu'>yagennankotsu</a>, but still pretty mild. The cartilage
+    isn’t as thick and the ratio of meat to cartilage is higher. This is a better introduction to
+    cartilage before you dive head first into <a href='/skewers/yagennankotsu'>yagennankotsu</a>.
+  </p>
+</main>
+
+<style>
+  main {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 75ch;
+    font-weight: 300;
+  }
+
+  h1 {
+    font-weight: 300;
+  }
+
+  h1 span {
+    font-family: 'Yuji Syuku', serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    font-size: 2.4rem;
+  }
+
+  p {
+    margin: 0;
+    padding-bottom: 1rem;
+    font-size: 1rem;
+  }
+</style>

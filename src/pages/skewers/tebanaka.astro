@@ -1,0 +1,43 @@
+---
+import '@fontsource/yuji-syuku';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = 'Wing - Tebanaka';
+---
+
+<BaseLayout title={title} />
+<main>
+  <h1>Wing - <span>手羽中</span></h1>
+  <p>
+    Wing flats are my favorite when having buffalo wings and they are also great as yakitori. The
+    flat is splayed out to allow it to cook faster and crisp the skin up. Right towards the end of
+    grilling the wing is dipped in tare. The bones are kept in, so make sure to get all the good
+    bits off.
+  </p>
+</main>
+
+<style>
+  main {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 75ch;
+    font-weight: 300;
+  }
+
+  h1 {
+    font-weight: 300;
+  }
+
+  h1 span {
+    font-family: 'Yuji Syuku', serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    font-size: 2.4rem;
+  }
+
+  p {
+    margin: 0;
+    padding-bottom: 1rem;
+    font-size: 1rem;
+  }
+</style>

@@ -1,0 +1,42 @@
+---
+import '@fontsource/yuji-syuku';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = 'Drumette & Leg - Tebamotoreggu';
+---
+
+<BaseLayout title={title} />
+<main>
+  <h1>Drumette & Leg - <span>手羽元レッグ</span></h1>
+  <p>
+    The leg is full of tendons that can be unpleasant to eat when there are so many. I remove as
+    many as possible and then pair the leg meat with some pieces from the drumette on the wing. The
+    meat is flavorful and juicy like thigh meat, but just a little more tough.
+  </p>
+</main>
+
+<style>
+  main {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 75ch;
+    font-weight: 300;
+  }
+
+  h1 {
+    font-weight: 300;
+  }
+
+  h1 span {
+    font-family: 'Yuji Syuku', serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    font-size: 2.4rem;
+  }
+
+  p {
+    margin: 0;
+    padding-bottom: 1rem;
+    font-size: 1rem;
+  }
+</style>

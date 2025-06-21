@@ -1,0 +1,42 @@
+---
+import '@fontsource/yuji-syuku';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = 'Neck - Seseri';
+---
+
+<BaseLayout title={title} />
+<main>
+  <h1>Neck - <span>せせり</span></h1>
+  <p>
+    Some fattiness, along with tendon and cartilage bits make this a crunchier skewer. The chicken’s
+    neck is always moving so the meat has a stronger flavor than other cuts which pairs well with
+    tare.
+  </p>
+</main>
+
+<style>
+  main {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 75ch;
+    font-weight: 300;
+  }
+
+  h1 {
+    font-weight: 300;
+  }
+
+  h1 span {
+    font-family: 'Yuji Syuku', serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    font-size: 2.4rem;
+  }
+
+  p {
+    margin: 0;
+    padding-bottom: 1rem;
+    font-size: 1rem;
+  }
+</style>

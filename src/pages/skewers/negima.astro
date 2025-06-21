@@ -1,0 +1,50 @@
+---
+import '@fontsource/yuji-syuku';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = 'Thigh & Onion - Negima';
+---
+
+<BaseLayout title={title} />
+<main>
+  <h1>Thigh & Onion - <span>ねぎま</span></h1>
+  <p>
+    Green onions, or if you're lucky Japanese negi, sandwiched between pieces of dark thigh meat
+    with a piece of chicken skin stretched over the top. Negima is a classic yakitori skewer in
+    Japan that can be found in izakayas, food stalls at festivals or even a convenience store. We
+    chose this style of wrapping the skin over the meat and onions to try and keep the skin crisp
+    and the meat succulent.
+  </p>
+  <p>
+    <i
+      >Note: This technique was picked up from a <a
+        href='https://youtu.be/2xepCaXbDlI?si=9AhL2RE47x6gqAM-&t=235'>Yakitoriguy video</a
+      > which claims it originated at <a href='https://maps.app.goo.gl/HTaCzPEj9NGhsuhF6'
+        >YAKITORI燃es</a
+      > in Roppongi, Tokyo</i
+    >
+  </p>
+</main>
+
+<style>
+  main {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 75ch;
+    font-weight: 300;
+  }
+  h1 {
+    font-weight: 300;
+  }
+  h1 span {
+    font-family: 'Yuji Syuku', serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    font-size: 2.4rem;
+  }
+  p {
+    margin: 0;
+    padding-bottom: 1rem;
+    font-size: 1rem;
+  }
+</style>
