@@ -3,8 +3,15 @@ import '@fontsource/yuji-syuku';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import sasamiImage from '../images/20250111_174619_A6602193.webp';
 import legImage from '../images/20250111_183930_A6602204.webp';
-import grillImage from '../images/PXL_20250511_012241346.RAW-02.ORIGINAL.webp';
-import curtisImage from '../images/PXL_20250309_054613274.RAW-02.ORIGINAL.webp';
+import tsukuneCloseImage from '../images/20251122_102718_1763937375819.webp';
+import plateImage from '../images/20251122_102719_1763937375704.webp';
+import negimaImage from '../images/20251122_102719_1763937375730.webp';
+import tsukuneGrillImage from '../images/20251122_102723_FullSizeRender_VSCO.webp';
+import dinersImage from '../images/20251122_102723_FullSizeRender_VSCO_2.webp';
+import shishitoImage from '../images/20251122_102730_IMG_1565.webp';
+import curtisSmileImage from '../images/20251122_102730_IMG_1568.webp';
+import eryngiiImage from '../images/20251122_154709_IMG_20251123_144916.webp';
+import signImage from '../images/20251122_102723_FullSizeRender_VSCO_1.webp';
 const title = 'Yoruyaki';
 ---
 
@@ -23,35 +30,50 @@ const title = 'Yoruyaki';
   <p>
     Thanks - Curtis
   </p>
-  <ul>
-    <li>
-      <a
-        href='mailto:curtis.barnard.jr@gmail.com?subject=Yoruyaki%20November%2022nd&body=I%20would%20like%20to%20attend%20Yoruyaki%20on%20November%2022nd,%202025.%0A%0AName:%0ANumber%20of%20people:%0A'
-      >
-        November 22nd, 2025 - 3pm (4 spots available)
-      </a>
-      <ul>
-        <li>
-          <a href="/20251122">
-            Menu
-          </a>
-        </li>
-      </ul>
-    </li>
-  </ul>
   <section class='images'>
-    <img src={sasamiImage.src} alt='A yakitori skewer with chicken tender and wasabi on top' />
+    <img 
+      src={sasamiImage.src}
+      alt='A yakitori skewer with chicken tender and wasabi on top'
+    />
+    <img
+      src={tsukuneGrillImage.src}
+      alt='A row of chicken meatball skewers on a japanese style grill'
+    />
+    <img
+      src={tsukuneCloseImage.src}
+      alt='Close up of a chicken meatball skewer'
+    />
     <img
       src={legImage.src}
       alt='A yakitori skewer with chicken leg meat and covered in a tare sauce'
     />
     <img
-      src={grillImage.src}
-      alt='Yakitori skewers on a grill with white smoke rising into the air'
+      src={plateImage.src}
+      alt='A plate with a rice ball, edamame, pickles, potato salad and two chicken skewers'
     />
     <img
-      src={curtisImage.src}
-      alt='A guy drink out of a bottle with a pile of yakitori in front of him and a glowing sign in the background'
+      src={dinersImage.src}
+      alt='A group of people eating food gathered around a person grill chicken skewers'
+    />
+    <img
+      src={eryngiiImage.src}
+      alt='A row of king oyster mushrooms coated in a miso dengaku on a japanese style grill'
+    />
+    <img
+      src={shishitoImage.src}
+      alt='Three grilled peppers on skewers'
+    />
+    <img
+      src={negimaImage.src}
+      alt='A steaming chicken thigh and onion skewer with a person cooking in the background'
+    />
+    <img
+      src={curtisSmileImage.src}
+      alt='A guy smiling while standing in front of some chicken skewers on a japanese style charcoal grill'
+    />
+    <img
+      src={signImage.src}
+      alt='A red lit sign that says yakitori in japanese'
     />
   </section>
 </main>

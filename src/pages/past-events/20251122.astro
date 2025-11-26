@@ -1,6 +1,15 @@
 ---
 import '@fontsource/yuji-syuku';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import tsukuneCloseImage from '../../images/20251122_102718_1763937375819.webp';
+import plateImage from '../../images/20251122_102719_1763937375704.webp';
+import negimaImage from '../../images/20251122_102719_1763937375730.webp';
+import tsukuneGrillImage from '../../images/20251122_102723_FullSizeRender_VSCO.webp';
+import dinersImage from '../../images/20251122_102723_FullSizeRender_VSCO_2.webp';
+import shishitoImage from '../../images/20251122_102730_IMG_1565.webp';
+import curtisSmileImage from '../../images/20251122_102730_IMG_1568.webp';
+import eryngiiImage from '../../images/20251122_154709_IMG_20251123_144916.webp';
+import signImage from '../../images/20251122_102723_FullSizeRender_VSCO_1.webp';
 const title = 'Yoruyaki - November 2025';
 ---
 
@@ -46,12 +55,12 @@ const title = 'Yoruyaki - November 2025';
       <div class='item'>
         <a href='/skewers/mune'>
           <h3>胸</h3>
-          <p>breast, yuzu miso marinade</p>
+          <p>breast, yuzu kosho</p>
         </a>
       </div>
       <div class='item'>
         <h3>エリンギ</h3>
-        <p>king oyster mushroom, tare</p>
+        <p>king oyster mushroom, miso dengaku</p>
       </div>
       <div class='item'>
         <a href='/skewers/negima'>
@@ -68,6 +77,10 @@ const title = 'Yoruyaki - November 2025';
       <div class='item'>
         <h3>しし唐</h3>
         <p>shishitou pepper, tare</p>
+      </div>
+      <div class='item'>
+        <h3>ソーセージ</h3>
+        <p>sausage, ketchup, mustard</p>
       </div>
     </div>
   </section>
@@ -163,6 +176,44 @@ const title = 'Yoruyaki - November 2025';
       </div>
     </div>
   </section>
+    <section class='images'>
+    <img
+      src={tsukuneGrillImage.src}
+      alt='A row of chicken meatball skewers on a japanese style grill'
+    />
+    <img
+      src={tsukuneCloseImage.src}
+      alt='Close up of a chicken meatball skewer'
+    />
+    <img
+      src={plateImage.src}
+      alt='A plate with a rice ball, edamame, pickles, potato salad and two chicken skewers'
+    />
+    <img
+      src={dinersImage.src}
+      alt='A group of people eating food gathered around a person grill chicken skewers'
+    />
+    <img
+      src={eryngiiImage.src}
+      alt='A row of king oyster mushrooms coated in a miso dengaku on a japanese style grill'
+    />
+    <img
+      src={shishitoImage.src}
+      alt='Three grilled peppers on skewers'
+    />
+    <img
+      src={negimaImage.src}
+      alt='A steaming chicken thigh and onion skewer with a person cooking in the background'
+    />
+    <img
+      src={curtisSmileImage.src}
+      alt='A guy smiling while standing in front of some chicken skewers on a japanese style charcoal grill'
+    />
+    <img
+      src={signImage.src}
+      alt='A red lit sign that says yakitori in japanese'
+    />
+  </section>
 </main>
 
 <style>
@@ -214,6 +265,18 @@ const title = 'Yoruyaki - November 2025';
   p {
     margin: 0;
     font-size: 1rem;
+  }
+  .images {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    justify-items: center;
+    padding: 0;
+  }
+  .images img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
   }
 
   @media (max-width: 650px) {
