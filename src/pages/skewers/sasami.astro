@@ -1,6 +1,7 @@
 ---
 import '@fontsource/yuji-syuku';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import sasamiImage from '../../images/20250111_174619_A6602193.webp';
 const title = 'Tender - Sasami';
 ---
 
@@ -20,6 +21,12 @@ const title = 'Tender - Sasami';
       ></i
     >
   </p>
+  <section class='images'>
+    <img 
+      src={sasamiImage.src}
+      alt='A yakitori skewer with chicken tender and wasabi on top'
+    />
+  </section>
 </main>
 
 <style>
@@ -43,5 +50,17 @@ const title = 'Tender - Sasami';
     margin: 0;
     padding-bottom: 1rem;
     font-size: 1rem;
+  }
+  .images {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    justify-items: center;
+    padding: 0;
+  }
+  .images img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
   }
 </style>

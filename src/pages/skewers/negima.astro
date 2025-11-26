@@ -1,6 +1,7 @@
 ---
 import '@fontsource/yuji-syuku';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import negimaImage from '../../images/20251122_102719_1763937375730.webp';
 const title = 'Thigh & Onion - Negima';
 ---
 
@@ -23,6 +24,12 @@ const title = 'Thigh & Onion - Negima';
       > in Roppongi, Tokyo</i
     >
   </p>
+  <section class='images'>
+    <img
+      src={negimaImage.src}
+      alt='A steaming chicken thigh and onion skewer with a person cooking in the background'
+    />
+  </section>
 </main>
 
 <style>
@@ -46,5 +53,17 @@ const title = 'Thigh & Onion - Negima';
     margin: 0;
     padding-bottom: 1rem;
     font-size: 1rem;
+  }
+  .images {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    justify-items: center;
+    padding: 0;
+  }
+  .images img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
   }
 </style>

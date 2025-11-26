@@ -1,6 +1,7 @@
 ---
 import '@fontsource/yuji-syuku';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import legImage from '../../images/20250111_183930_A6602204.webp';
 const title = 'Drumette & Leg - Tebamotoreggu';
 ---
 
@@ -12,6 +13,12 @@ const title = 'Drumette & Leg - Tebamotoreggu';
     many as possible and then pair the leg meat with some pieces from the drumette on the wing. The
     meat is flavorful and juicy like thigh meat, but just a little more tough.
   </p>
+  <section class='images'>
+    <img
+      src={legImage.src}
+      alt='A yakitori skewer with chicken leg meat and covered in a tare sauce'
+    />
+  </section>
 </main>
 
 <style>
@@ -21,11 +28,9 @@ const title = 'Drumette & Leg - Tebamotoreggu';
     max-width: 75ch;
     font-weight: 300;
   }
-
   h1 {
     font-weight: 300;
   }
-
   h1 span {
     font-family: 'Yuji Syuku', serif;
     font-weight: 400;
@@ -33,10 +38,21 @@ const title = 'Drumette & Leg - Tebamotoreggu';
     padding: 0;
     font-size: 2.4rem;
   }
-
   p {
     margin: 0;
     padding-bottom: 1rem;
     font-size: 1rem;
+  }
+  .images {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    justify-items: center;
+    padding: 0;
+  }
+  .images img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
   }
 </style>

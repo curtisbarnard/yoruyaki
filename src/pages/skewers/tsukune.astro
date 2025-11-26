@@ -1,6 +1,8 @@
 ---
 import '@fontsource/yuji-syuku';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import tsukuneCloseImage from '../../images/20251122_102718_1763937375819.webp';
+import tsukuneGrillImage from '../../images/20251122_102723_FullSizeRender_VSCO.webp';
 const title = 'Meatball - Tsukune';
 ---
 
@@ -14,6 +16,16 @@ const title = 'Meatball - Tsukune';
     balls. Typically it is served with a raw egg yolk in Japan, but we forgo that and rely on the
     tare to add moisture and flavor.
   </p>
+  <section class='images'>
+    <img
+      src={tsukuneCloseImage.src}
+      alt='Close up of a chicken meatball skewer'
+    />
+    <img
+      src={tsukuneGrillImage.src}
+      alt='A row of chicken meatball skewers on a japanese style grill'
+    />
+  </section>
 </main>
 
 <style>
@@ -37,5 +49,17 @@ const title = 'Meatball - Tsukune';
     margin: 0;
     padding-bottom: 1rem;
     font-size: 1rem;
+  }
+  .images {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    justify-items: center;
+    padding: 0;
+  }
+  .images img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
   }
 </style>
