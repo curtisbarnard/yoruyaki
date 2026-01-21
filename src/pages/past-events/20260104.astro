@@ -273,7 +273,12 @@ import tsukune from '../../images/20260104_195352.RAW-02_PXL.webp';
       src={tsukune.src}
       alt='Grilled chicken meatball skewer'
     />
-    <iframe width="600" height="1066" src="https://www.youtube.com/embed/bSTlwzXBB_M?si=Xyk7AZPADQUWHcVw&amp;controls=0" title="YouTube video player" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe
+    src="https://www.youtube.com/embed/bSTlwzXBB_M?si=Xyk7AZPADQUWHcVw&amp;controls=0"
+    title="YouTube video player" 
+    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" 
+    allowfullscreen></iframe>
   </section>
   <section class="notes">
     <h2>Notes</h3>
@@ -343,6 +348,13 @@ import tsukune from '../../images/20260104_195352.RAW-02_PXL.webp';
     width: 100%;
     max-width: 600px;
     height: auto;
+  }
+
+  .images iframe {
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 9 / 16;
+    border: none;
   }
 
   .notes {
