@@ -1,6 +1,8 @@
 ---
 import '@fontsource/yuji-syuku';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import harami from '../../images/20260104_195307.RAW-02_PXL.webp';
+
 const title = 'Belly - Harami';
 ---
 
@@ -13,6 +15,12 @@ const title = 'Belly - Harami';
       href='/skewers/kawa'>skin</a
     >.
   </p>
+  <section class='images'>
+    <img
+      src={harami.src}
+      alt='Grilled chicken belly skewer'
+    />
+  </section>
 </main>
 
 <style>
@@ -39,5 +47,17 @@ const title = 'Belly - Harami';
     margin: 0;
     padding-bottom: 1rem;
     font-size: 1rem;
+  }
+  .images {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    justify-items: center;
+    padding: 0;
+  }
+  .images img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
   }
 </style>
