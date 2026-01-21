@@ -1,7 +1,28 @@
 ---
 import '@fontsource/yuji-syuku';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 const title = 'Yoruyaki - January 2026';
+
+import whiskeyWall from '../../images/20260104_151645_1000003041.webp';
+import ramenShop from '../../images/20260104_151655_1000003042.webp';
+import smile from '../../images/20260104_154822_55705.webp';
+import mune from '../../images/20260104_155619_55710.webp';
+import kingOyster from '../../images/20260104_160450_55711.webp';
+import negima from '../../images/20260104_161712_55713.webp';
+import shishito from '../../images/20260104_163623_55715.webp';
+import kayu from '../../images/20260104_170621_55717.webp';
+import skewersOnGrill from '../../images/20260104_170846_55718.webp';
+import kanban from '../../images/20260104_171215_1000003045.webp';
+import dogSign from '../../images/20260104_171223_1000003046.webp';
+import threeSkewers from '../../images/20260104_171244_55719.webp';
+import grilling from '../../images/20260104_180603_PXL.webp';
+import cheese from '../../images/20260104_180605_55723.webp';
+import noren from '../../images/20260104_180622_PXL.webp';
+import nasu from '../../images/20260104_193233.RAW-02_PXL.webp';
+import heart from '../../images/20260104_193319.RAW-02_PXL.webp';
+import negima2 from '../../images/20260104_193405.RAW-02_PXL.webp';
+import harami from '../../images/20260104_195307.RAW-02_PXL.webp';
+import tsukune from '../../images/20260104_195352.RAW-02_PXL.webp';
 ---
 
 <BaseLayout title={title} />
@@ -171,6 +192,94 @@ const title = 'Yoruyaki - January 2026';
       </div>
     </div>
   </section>
+  <section class='images'>
+    <img
+      src={whiskeyWall.src}
+      alt='Person grilling skewers in front of a wall will whiskey bottles on it'
+    />
+    <img
+      src={ramenShop.src}
+      alt='Ramen shop diorama next to a jar of umeshu'
+    />
+    <img
+      src={smile.src}
+      alt='A man smiling standing behind a grill with skewers on it'
+    />
+    <img
+      src={mune.src}
+      alt='Breast and tender skewers along with onigiri, edamame, pickles and potato salad on a plate'
+    />
+    <img
+      src={kingOyster.src}
+      alt='King oyster mushroom skewers with dengaku sauce on top'
+    />
+    <img
+      src={negima.src}
+      alt='Grilled chicken thigh and scallion skewer'
+    />
+    <img
+      src={shishito.src}
+      alt='Grilled shishito pepper skewer'
+    />
+    <img
+      src={kayu.src}
+      alt='A bowl of chicken congee with chicken breast, skin, garlic and shiitake on top'
+    />
+    <img
+      src={skewersOnGrill.src}
+      alt='A variety of skewers grilling on a japanese style charcoal grill'
+    />
+    <img
+      src={kanban.src}
+      alt='A wooden board with paper menu items attached to it'
+    />
+    <img
+      src={threeSkewers.src}
+      alt='A hand holding three chicken offal skewers'
+    />
+    <img
+      src={grilling.src}
+      alt='A man rotating skewers on a japanese style charcoal grill'
+    />
+    <img
+      src={cheese.src}
+      alt='Three people smiling and holding up the peace sign'
+    />
+    <img
+      src={noren.src}
+      alt='A japanese curtain hanging in a doorway'
+    />
+    <img
+      src={dogSign.src}
+      alt='A sign with a dog illustration and japanese text'
+    />
+    <img
+      src={nasu.src}
+      alt='Grilled eggplant skewer'
+    />
+    <img
+      src={heart.src}
+      alt='Grilled chicken heart skewer'
+    />
+    <img
+      src={negima2.src}
+      alt='Grilled chicken thigh and scallion skewer'
+    />
+    <img
+      src={harami.src}
+      alt='Grilled chicken belly skewer'
+    />
+    <img
+      src={tsukune.src}
+      alt='Grilled chicken meatball skewer'
+    />
+    <iframe width="600" height="1066" src="https://www.youtube.com/embed/bSTlwzXBB_M?si=Xyk7AZPADQUWHcVw&amp;controls=0" title="YouTube video player" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </section>
+  <section class="notes">
+    <h2>Notes</h3>
+    <p>We had 12 guests this time and made 213 skewers along with 20 pork back ribs (baby back). There ended up being a decent amount of leftovers likely due to the pork rib and the double helping of rice. While the kayu was good it was too much rice overall having that along with the onigiri. Going forward I'll probably switch to doing a chicken broth served with the onigiri, edamame, potato salad, pickles and initial skewers.</p>
+    <p>I added eggplant skewers to the menu this time as I was inspired after a meal at <a href="https://notes.curtisbarnard.com/posts/afuri-skewers/">Afuri Izakaya</a>. I used my regular tare and then did a bit of microplaned ginger on top before serving. While not many were ordered I quite enjoyed it. I'll probably keep this as a staple for at least the next few parties.</p>
+  </section>
 </main>
 
 <style>
@@ -234,6 +343,27 @@ const title = 'Yoruyaki - January 2026';
     width: 100%;
     max-width: 600px;
     height: auto;
+  }
+
+  .notes {
+    display: block;
+  }
+
+  .notes h2 {
+    font-family: 'Noto Sans Variable', sans-serif;
+    font-weight: 700;
+    margin: 0;
+    padding: 0 0 1rem 0;
+    font-size: 2rem;
+    writing-mode: horizontal-tb;
+  }
+
+  .notes a {
+    text-decoration: underline;
+  }
+
+  .notes p {
+    margin-bottom: 1rem;
   }
 
   @media (max-width: 650px) {

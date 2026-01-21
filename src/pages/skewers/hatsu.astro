@@ -1,6 +1,8 @@
 ---
 import '@fontsource/yuji-syuku';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import heart from '../../images/20260104_193319.RAW-02_PXL.webp';
+
 const title = 'Heart - Hatsu';
 ---
 
@@ -12,6 +14,12 @@ const title = 'Heart - Hatsu';
     well with a simple sake and salt coating. They aren't often included with the giblets of
     chickens that I buy so I likely will only have one skewer, two if I'm lucky.
   </p>
+  <section class='images'>
+    <img
+      src={heart.src}
+      alt='Grilled chicken heart skewer'
+    />
+  </section>
 </main>
 
 <style>
@@ -38,5 +46,17 @@ const title = 'Heart - Hatsu';
     margin: 0;
     padding-bottom: 1rem;
     font-size: 1rem;
+  }
+  .images {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    justify-items: center;
+    padding: 0;
+  }
+  .images img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
   }
 </style>
