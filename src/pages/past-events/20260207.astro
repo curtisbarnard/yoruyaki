@@ -1,0 +1,419 @@
+---
+import '@fontsource/yuji-syuku';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = 'Yoruyaki - January 2026';
+
+import workingTheGrill from '../../images/20260207_151111_PXL.webp';
+import coatHooks from '../../images/20260207_151547_1000007378.webp';
+import happyGuests from '../../images/20260207_153141_1000007390.webp';
+import plateOfFood from '../../images/20260207_172109_IMG.webp';
+import sakeSpray from '../../images/20260207_180100_IMG_3569.webp';
+import relaxing from '../../images/20260207_193726_PXL.webp';
+import detailedMenu from '../../images/20260207_193752_PXL.webp';
+import coachingNorris from '../../images/20260207_210322_PXL.webp';
+import tokyoMap from '../../images/20260208_152052_A671944.webp';
+import fansAndBottles from '../../images/20260208_152246_A671948.webp';
+import chickenAndBooks from '../../images/20260208_152429_A671952.webp';
+import whiskyWall from '../../images/20260208_152529_A671953.webp';
+
+---
+
+<BaseLayout title={title} />
+<main>
+  <span class='date'>2026.02.07</span>
+  <section>
+    <h2>セット</h2>
+    <div class='items'>
+      <p>A set plate with edamame, onigiri, pickles, potato salad, soup, and two skewers. After being served feel free to order any other skewers you see below or on the hanging board.</p>
+      <div class='item'>
+        <h3>枝豆</h3>
+        <p>boiled young soybeans, salt</p>
+      </div>
+      <div class='item'>
+        <h3>おにぎり</h3>
+        <p>rice ball, chicken breast, ginger, tamari, furikake</p>
+      </div>
+      <div class='item'>
+        <h3>浅漬け</h3>
+        <p>cucumber, salt</p>
+      </div>
+      <div class='item'>
+        <h3>ポテトサラダ</h3>
+        <p>potato, carrot, onion, cucumber, corn, mayo</p>
+      </div>
+      <div class='item'>
+        <h3>チキンブロス</h3>
+        <p>chicken bones, kelp, bonito, daikon</p>
+      </div>
+      <div class='item'>
+        <a href='/skewers/sasami'>
+          <h3>ささみ</h3>
+          <p>tender, sake, salt, wasabi</p>
+        </a>
+      </div>
+      <div class='item'>
+        <a href='/skewers/mune'>
+          <h3>胸</h3>
+          <p>breast, yuzu kosho</p>
+        </a>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>串焼き</h2>
+    <div class='items'>
+      <p>
+        Various types of skewers with limited amounts, click on the name to go to a page with more detail. When ordering check the board to see if they are still available. Shichimi, yuzu kosho, and lemon are available as toppings.
+      </p>
+      <div class='item'>
+        <h3>しし唐</h3>
+        <p>shishitou pepper, tare</p>
+      </div>
+      <div class='item'>
+        <h3>エリンギ</h3>
+        <p>king oyster mushroom, miso dengaku</p>
+      </div>
+      <div class='item'>
+        <h3>なす</h3>
+        <p>eggplant, tare, ginger</p>
+      </div>
+      <div class='item'>
+        <a href='/skewers/negima'>
+          <h3>ねぎま</h3>
+          <p>thigh, scallion, tare</p>
+        </a>
+      </div>
+      <div class='item'>
+        <a href='/skewers/tsukune'>
+          <h3>つくね</h3>
+          <p>meatball, tare</p>
+        </a>
+      </div>
+      <div class='item'>
+        <a href='/skewers/tebamotoreggu'>
+          <h3>手羽元レッグ</h3>
+          <p>drumette, leg, tare</p>
+        </a>
+      </div>
+      <div class='item'>
+        <a href='/skewers/tebanaka'>
+          <h3>手羽中</h3>
+          <p>wing, tare</p>
+        </a>
+      </div>
+      <div class='item'>
+        <a href='/skewers/obisori'>
+          <h3>おびそり</h3>
+          <p>inner thigh, oyster, sake, salt</p>
+        </a>
+      </div>
+      <div class='item'>
+        <a href='/skewers/furisode'>
+          <h3>ふりそで</h3>
+          <p>shoulder, sake, salt</p>
+        </a>
+      </div>
+      <div class='item'>
+        <a href='/skewers/harami'>
+          <h3>ハラミ</h3>
+          <p>belly, sake, salt</p>
+        </a>
+      </div>
+      <div class='item'>
+        <a href='/skewers/kawa'>
+          <h3>皮</h3>
+          <p>skin, sake, salt</p>
+        </a>
+      </div>
+      <div class='item'>
+        <a href='/skewers/bonjiri'>
+          <h3>ぼんじり</h3>
+          <p>tail, sake, salt</p>
+        </a>
+      </div>
+      <div class='item'>
+        <a href='/skewers/seseri'>
+          <h3>せせり</h3>
+          <p>neck, tare</p>
+        </a>
+      </div>
+      <div class='item'>
+        <h3>軟骨</h3>
+        <p>cartilage, tare</p>
+      </div>
+      <div class='item'>
+        <a href='/skewers/sunagimo'>
+          <h3>砂肝</h3>
+          <p>gizzard, sake, salt</p>
+        </a>
+      </div>
+      <div class='item'>
+        <a href='/skewers/hatsu'>
+          <h3>ハツ</h3>
+          <p>heart, sake, salt</p>
+        </a>
+      </div>
+      <div class='item'>
+        <a href='/skewers/reba'>
+          <h3>レバー</h3>
+          <p>liver, tare</p>
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class='images'>
+    <img
+      src={workingTheGrill.src}
+      alt='Person grilling skewers'
+    />
+    <img
+      src={coatHooks.src}
+      alt='A hoodie on a coat hook with a picture of Mt. Fuji'
+    />
+    <img
+      src={chickenAndBooks.src}
+      alt='A small toy chicken sits on a shelf next to some books'
+    />
+    <img
+      src={detailedMenu.src}
+      alt='A man cooks on a grill while a sign directs guests to a detailed menu'
+    />
+    <img
+      src={plateOfFood.src}
+      alt='Breast and tender skewers along with onigiri, edamame, pickles and potato salad on a plate'
+    />
+    <img
+      src={tokyoMap.src}
+      alt='A vintage map of Tokyo on a wall along with some sings and a fortune'
+    />
+    <img
+      src={fansAndBottles.src}
+      alt='Japanese fans rest against a window and used sake bottles site on a shelf above'
+    />
+    <img
+      src={happyGuests.src}
+      alt='A man and woman smiling holding cups of soup'
+    />
+    <img
+      src={whiskyWall.src}
+      alt='Bottles of Japanese whisky and sake site on shelves along a plywood wall'
+    />
+    <img
+      src={sakeSpray.src}
+      alt='A man sprays sake into his mouth'
+    />
+    <img
+      src={coachingNorris.src}
+      alt='A man and small child grill skewers together'
+    />
+    <img
+      src={relaxing.src}
+      alt='A man relaxes in the background while skewers cook on the grill in the foreground'
+    />
+  </section>
+  <section class="notes">
+    <h2>Notes</h3>
+    <p>I decided to shift the format a decent amount this time around. Rather than server a course of 7 to 8 skewers, please the otoshi to start off. I made it a set plate which had edamame, onigiri, pickles, potato salad, soup, one breast skewer and one tender skewer. After everyone was served I let them know the rest of the menu was open for ordering. The benefit of doing it this way was that I didn't need to gurantee there were 12 skewers available of everything, just the breast and tender. The downside is that the ordering was frequent and a little hard to keep up with. I'll have to consider the plan for the next event.</p>
+    <p>Another change I made was just serving a simple chicken broth up front rather than having to remember to serve soup, noodles or congee part of the way thru. This was definetely an improvement and I'll probably stick with this.</p>
+    <p>Menu wise the only real change up was rather than doing onigiri with just furikake I made a filling with some low temp breast meat that was marinated in tamari, ginger and scallions. I quite liked it and will probably keep this item for the next event.</p>
+    <p>Regarding prep I started setup on Thursday night which helped Friday night not go as late and meant that on Saturday I was just on time for everyone showing up at 3pm. Still it was tight and I don't think I'll do 3pm starts anymore, I need the extra hour to two to get things in place and ideally cook some food beforehand for Tram and I, as well as to take photos of.</p>
+  </section>
+  <section class="costs">
+    <h2>Costs</h2>
+    <p>In the interests of transparency and to disuade myself from trying to open a restaurant, I figured I'd tally up the costs for me to put on an event. The labor costs use the <a href="https://livingwage.mit.edu/counties/41051">MIT living wage calculator</a> for a single person without a child in Multnomah county. That number is $26.84 per hour. These costs leave out some obvious things that are required to run a restaurant (rent, decoration, equipment, etc.) so it's just intended to give an idea of the general recurring costs if this were to be an official pop up.</p>
+
+    <h3>Ingredients</h3>
+    <table class="costs-table">
+      <tbody>
+        <tr><td>Two Chickens</td><td>$36.19</td></tr>
+        <tr><td>Charcoal</td><td>$15.00</td></tr>
+        <tr><td>Kurobuta Sausage</td><td>$10.00</td></tr>
+        <tr><td>Chicken Thighs</td><td>$7.39</td></tr>
+        <tr><td>Green Onions</td><td>$7.00</td></tr>
+        <tr><td>Edamame</td><td>$3.59</td></tr>
+        <tr><td>Chicken Gizzrds/Hearts</td><td>$2.90</td></tr>
+        <tr><td>Cucumbers</td><td>$2.89</td></tr>
+        <tr><td>Russet Potatoes</td><td>$2.57</td></tr>
+        <tr><td>Rice</td><td>$2.38</td></tr>
+        <tr><td>Shishito Peppers</td><td>$2.34</td></tr>
+        <tr><td>217 Skewers</td><td>$2.17</td></tr>
+        <tr><td>King Oyster Mushrooms</td><td>$2.11</td></tr>
+        <tr><td>Mirin</td><td>$1.72</td></tr>
+        <tr><td>Lemon</td><td>$1.29</td></tr>
+        <tr><td>Sake</td><td>$1.27</td></tr>
+        <tr><td>Eggplant</td><td>$1.02</td></tr>
+        <tr><td>Furikake</td><td>$1.00</td></tr>
+        <tr><td>Soy Sauce</td><td>$0.94</td></tr>
+        <tr><td>Katsuobushi</td><td>$0.75</td></tr>
+        <tr><td>Daikon</td><td>$0.53</td></tr>
+        <tr><td>Yuzu Kosho</td><td>$0.50</td></tr>
+        <tr><td>Konbu</td><td>$0.50</td></tr>
+        <tr><td>Ginger</td><td>$0.40</td></tr>
+        <tr><td>Carrots</td><td>$0.27</td></tr>
+        <tr><td>Wasabi</td><td>$0.25</td></tr>
+        <tr><td>Egg</td><td>$0.20</td></tr>
+        <tr><td>Corn</td><td>$0.20</td></tr>
+        <tr><td>Miso</td><td>$0.20</td></tr>
+        <tr><td>Salt</td><td>$0.10</td></tr>
+        <tr><td>Brown Sugar</td><td>$0.10</td></tr>
+        <tr class="total-row"><td>Total</td><td>$107.77</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Labor</h3>
+    <table class="costs-table">
+      <tbody>
+        <tr><td>9 hrs food prep</td><td>$241.56</td></tr>
+        <tr><td>3 hrs setup</td><td>$80.52</td></tr>
+        <tr><td>3 hrs cooking/hosting</td><td>$80.52</td></tr>
+        <tr><td>4 hrs cleanup</td><td>$107.36</td></tr>
+        <tr class="total-row"><td>Total</td><td>$509.96</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Per guest</h3>
+    <table class="costs-table">
+      <tbody>
+        <tr><td>Costs</td><td>$617.73</td></tr>
+        <tr><td>Guests</td><td>11</td></tr>
+        <tr><td>Workers</td><td>2</td></tr>
+        <tr class="total-row"><td>Cost per person</td><td>$47.52</td></tr>
+      </tbody>
+    </table>
+
+    <p>I've included Tram and I as we make a portion of the food for ourselves as well. I made 217 skewers this time which gives an average of just over 16 skewers per person (most people didn't eat that as we had leftovers). Would you pay $47 for the set plate and 16 total skewers? I think not. :) Seems like I need to get faster at my food prep!</p>
+    
+  </section>
+</main>
+
+<style>
+  main {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 75ch;
+  }
+  .date {
+    display: block;
+    margin-bottom: 1rem;
+    text-align: right;
+  }
+  section {
+    margin-bottom: 4rem;
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+  }
+  .items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1rem;
+    border-left: 1px solid rgb(173, 165, 159);
+    padding-left: 2.2rem;
+  }
+  section h2 {
+    font-family: 'Yuji Syuku', serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    font-size: 2.4rem;
+    writing-mode: vertical-lr;
+  }
+  section h3 {
+    font-family: 'Yuji Syuku', serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
+  section a {
+    text-decoration: none;
+  }
+  .items > p {
+    font-style: italic;
+    grid-column-start: span 2;
+    font-size: 0.8rem;
+  }
+  p {
+    margin: 0;
+    font-size: 1rem;
+  }
+  .images {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    justify-items: center;
+    padding: 0;
+  }
+  .images img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+  }
+
+  .images iframe {
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 9 / 16;
+    border: none;
+  }
+
+  .notes, .costs {
+    display: block;
+  }
+
+  .notes h2, .costs h2 {
+    font-family: 'Noto Sans Variable', sans-serif;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    font-size: 2rem;
+    writing-mode: horizontal-tb;
+  }
+
+  .costs h3 {
+    font-family: 'Noto Sans Variable', sans-serif;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+    font-size: 1.6rem;
+    writing-mode: horizontal-tb;
+  }
+
+  .notes a, .costs a {
+    text-decoration: underline;
+  }
+
+  .notes p, .costs p {
+    margin-bottom: 1rem;
+  }
+
+  .costs-table {
+    width: 100%;
+    margin-bottom: 2rem;
+    border-collapse: collapse;
+  }
+
+  .costs-table td {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid rgb(173, 165, 159);
+  }
+
+  .costs-table td:first-child {
+    text-align: left;
+  }
+
+  .costs-table td:last-child {
+    text-align: right;
+  }
+
+  .costs-table .total-row {
+    font-weight: 600;
+    background-color: rgb(245, 243, 240);
+  }
+
+  @media (max-width: 650px) {
+    .items {
+      padding-left: 1rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+  }
+</style>
