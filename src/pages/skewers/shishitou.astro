@@ -1,0 +1,61 @@
+---
+import '@fontsource/yuji-syuku';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import shishitouImage from '../../images/20260104_163623_55715.webp';
+import shishitouImage2 from '../../images/20251122_102730_IMG_1565.webp';
+const title = 'Pepper - Shishitou';
+---
+
+<BaseLayout title={title} />
+<main>
+  <h1>Pepper - <span>しし唐</span></h1>
+  <p>
+    The shishitou pepper is often seen on kushiyaki menus. The peppers are mostly mild, however around one in ten can be spicy. We try and grill them hot and quick for a little char, then a dip in tare, and a short finish on the grill. Ideally they still have a little of their pleasing crunchy texture left when you eat them.
+  </p>
+  <section class='images'>
+    <img 
+      src={shishitouImage.src}
+      alt='Blistered shishitou peppers on skewers'
+    />
+    <img 
+      src={shishitouImage2.src}
+      alt='Skewered and grilled shishitou peppers'
+    />
+  </section>
+</main>
+
+<style>
+  main {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 75ch;
+    font-weight: 300;
+  }
+  h1 {
+    font-weight: 300;
+  }
+  h1 span {
+    font-family: 'Yuji Syuku', serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    font-size: 2.4rem;
+  }
+  p {
+    margin: 0;
+    padding-bottom: 1rem;
+    font-size: 1rem;
+  }
+  .images {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    justify-items: center;
+    padding: 0;
+  }
+  .images img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+  }
+</style>
