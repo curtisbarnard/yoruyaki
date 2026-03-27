@@ -1,0 +1,61 @@
+---
+import '@fontsource/yuji-syuku';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import kingOyster from '../../images/20260104_160450_55711.webp';
+import eryngiiImage from '../../images/20251122_154709_IMG_20251123_144916.webp';
+const title = 'King Oyster Mushroom - Eringi';
+---
+
+<BaseLayout title={title} />
+<main>
+  <h1>King Oyster Mushroom - <span>エリンギ</span></h1>
+  <p>
+    A mushroom not often used in western cuisine, but common across east asian. We grill it slowly to soak up the smoke, concentrate the umami flavor, and give it a meaty texture. Finally it's coated on both sides with miso dengaku, which is a mixture of miso, sake, mirin, and sugar. Be careful it's hot!
+  </p>
+  <section class='images'>
+    <img 
+      src={kingOyster.src}
+      alt='Blistered shishitou peppers on skewers'
+    />
+    <img 
+      src={eryngiiImage.src}
+      alt='Skewered and grilled shishitou peppers'
+    />
+  </section>
+</main>
+
+<style>
+  main {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 75ch;
+    font-weight: 300;
+  }
+  h1 {
+    font-weight: 300;
+  }
+  h1 span {
+    font-family: 'Yuji Syuku', serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    font-size: 2.4rem;
+  }
+  p {
+    margin: 0;
+    padding-bottom: 1rem;
+    font-size: 1rem;
+  }
+  .images {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    justify-items: center;
+    padding: 0;
+  }
+  .images img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+  }
+</style>
