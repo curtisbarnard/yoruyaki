@@ -1,24 +1,26 @@
 ---
 import '@fontsource/yuji-syuku';
 import BaseLayout from '../layouts/BaseLayout.astro';
-const title = 'Yoruyaki - October 2026';
+const title = 'Yoruyaki - November 2026';
 
 ---
 
 <BaseLayout title={title} />
 <main>
-  <span class='date'>2026.10.24</span>
+  <span class='date'>2026.11.28</span>
+  <section class="top-notes">
+    <h2>焼きターキー</h2>
+    <p>
+      This event is going to be a little different, instead of the jungle fowl native to Asia, we'll be using our own North American native bird, the turkey. The skewers should be roughly the same and we plan to supplement with fomr chicken hearts and gizzards as they are a crowd favorite. There are also going to be some tweaks to the usual vegetable skewers we offer. We'll still have the same great sake & salt or tare coating though. Let's see how turkey compares to chicken at this special edition Yaki Turkey event!
+    </p>
+  </section>
   <section>
-    <h2>セット</h2>
+    <h2>コース</h2>
     <div class='items'>
-      <p>A set plate with edamame, pickles, potato salad, udon and three skewers. After being served feel free to order any other skewers you see below or on the hanging board.</p>
+      <p>A set course to open the meal with edamame, pickles, potato salad, soup, six skewers and rice. After being served feel free to order any other skewers you see below or on the hanging board.</p>
       <div class='item'>
         <h3>枝豆</h3>
         <p>boiled young soybeans, salt</p>
-      </div>
-      <div class='item'>
-        <h3>うどん</h3>
-        <p>udon, chicken broth, dashi, yuzu, shichimi</p>
       </div>
       <div class='item'>
         <h3>ぬか漬け</h3>
@@ -29,10 +31,28 @@ const title = 'Yoruyaki - October 2026';
         <p>potato, carrot, onion, cucumber, corn, mayo</p>
       </div>
       <div class='item'>
+        <h3>スープ</h3>
+        <p>chicken broth, dashi, daikon</p>
+      </div>
+      <div class='item'>
+        <a href='/skewers/sasami'>
+          <h3>ささみ</h3>
+          <p>tender, sake, salt, wasabi</p>
+        </a>
+      </div>
+      <div class='item'>
+        <h3>芽キャベツ</h3>
+        <p>brussel sprouts, sake, salt, pepper</p>
+      </div>
+      <div class='item'>
         <a href='/skewers/mune'>
           <h3>胸</h3>
           <p>breast, yuzu kosho</p>
         </a>
+      </div>
+      <div class='item'>
+        <h3>ズッキーニ</h3>
+        <p>zucchini, tare</p>
       </div>
       <div class='item'>
         <a href='/skewers/negima'>
@@ -45,6 +65,10 @@ const title = 'Yoruyaki - October 2026';
           <h3>つくね</h3>
           <p>meatball, tare</p>
         </a>
+      </div>
+      <div class='item'>
+        <h3>炊き込みご飯</h3>
+        <p>rice, mushrooms</p>
       </div>
     </div>
   </section>
@@ -65,10 +89,6 @@ const title = 'Yoruyaki - October 2026';
           <h3>エリンギ</h3>
           <p>king oyster mushroom, miso dengaku</p>
         </a>
-      </div>
-      <div class='item'>
-        <h3>しいたけ</h3>
-        <p>shitake mushroom, tare</p>
       </div>
       <div class='item'>
         <a href='/skewers/nasu'>
@@ -234,7 +254,7 @@ const title = 'Yoruyaki - October 2026';
     border: none;
   }
 
-  .notes {
+  .notes, .top-notes {
     display: block;
   }
 
@@ -253,6 +273,13 @@ const title = 'Yoruyaki - October 2026';
 
   .notes p {
     margin-bottom: 1rem;
+  }
+
+  .top-notes h2 {
+    margin: 0;
+    padding: 0 0 1rem 0;
+    font-size: 2rem;
+    writing-mode: horizontal-tb;
   }
 
   @media (max-width: 650px) {
